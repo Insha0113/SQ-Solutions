@@ -7,6 +7,7 @@ import "./lab-neural.css";
 import "./lab-services.css";
 import "./lab-workspace.css";
 import "./lab-process.css";
+import "./lab-connect.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

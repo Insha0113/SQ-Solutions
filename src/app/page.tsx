@@ -11,7 +11,7 @@ import CaseStudies from "@/components/home/CaseStudies";
 import TechEcosystem from "@/components/home/TechEcosystem";
 import TrustedPartners from "@/components/home/TrustedPartners";
 import BlogSection from "@/components/home/BlogSection";
-import ContactCTA from "@/components/home/ContactCTA";
+import ConnectScene from "@/components/sections/ConnectScene";
 
 export const metadata: Metadata = {
   title: "Squadify Solutions — AI-Powered Business Transformation",
@@ -35,7 +35,7 @@ export default function HomePage() {
       <TechEcosystem />
       <TrustedPartners />
       <BlogSection />
-      <ContactCTA />
+      <ConnectScene />
     </>
   );
 }
