@@ -91,11 +91,11 @@
 .neural__detail {
   position: relative;
   padding: 1.25rem 1.35rem 1.2rem;
-  background: linear-gradient(180deg, rgba(12,19,34,0.82), rgba(5,7,13,0.7));
+  /* Near-opaque instead of backdrop-filter: blurring a live WebGL canvas
+     every frame is expensive on integrated GPUs. */
+  background: linear-gradient(180deg, rgba(12,19,34,0.94), rgba(7,11,20,0.92));
   border: 1px solid rgba(0,217,255,0.12);
   border-radius: 6px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   animation: neuralDetailIn 0.45s cubic-bezier(.2,.7,.2,1) both;
 }
 .neural__detail[hidden] { display: none; }
