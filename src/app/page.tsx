@@ -4,7 +4,7 @@ import LabJourney from "@/components/laboratory/LabJourney";
 import NeuralSystem from "@/components/sections/NeuralSystem";
 import ServicesScene from "@/components/sections/ServicesScene";
 import WorkspaceScene from "@/components/sections/WorkspaceScene";
-import DeliveryFramework from "@/components/home/DeliveryFramework";
+import ProcessScene from "@/components/sections/ProcessScene";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import WhySquadify from "@/components/home/WhySquadify";
 import CaseStudies from "@/components/home/CaseStudies";
@@ -28,7 +28,7 @@ export default function HomePage() {
         <ServicesScene />
       </LabJourney>
       <WorkspaceScene />
-      <DeliveryFramework />
+      <ProcessScene />
       <IndustriesSection />
       <WhySquadify />
       <CaseStudies />
