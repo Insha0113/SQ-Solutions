@@ -48,7 +48,9 @@
 }
 
 /* ── Base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+}
 
 html {
   scroll-behavior: smooth;
@@ -161,6 +163,8 @@ body {
    COMPONENTS
    ============================================================ */
 
+/* Layered so Tailwind utilities (e.g. "py-2 px-4") can refine them. */
+@layer components {
 /* Label / eyebrow */
 .label {
   display: inline-flex;
@@ -345,6 +349,7 @@ body {
   background: var(--blue-glass);
   border: 1px solid var(--border-blue);
   color: #8FE3FF;
+}
 }
 
 /* ============================================================

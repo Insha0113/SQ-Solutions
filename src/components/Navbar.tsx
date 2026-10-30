@@ -198,7 +198,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-1 whitespace-nowrap" aria-label="Main navigation">
             {nav.map((item) =>
               item.href ? (
                 <Link
@@ -294,7 +294,7 @@ export default function Navbar() {
           </nav>
 
           {/* Right CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 whitespace-nowrap">
             <Link href="/contact" className="btn-secondary py-2 px-4 text-sm">
               Contact
             </Link>
