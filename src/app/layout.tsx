@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import "./lab-hero.css";
 import "./lab-ui.css";
+import "./lab-neural.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

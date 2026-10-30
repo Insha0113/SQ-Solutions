@@ -150,8 +150,10 @@ const lineFragment = /* glsl */ `
     float head = fract(uTime * speed + vSeed * 13.0) * 1.6 - 0.3;
     float d = head - t;
     float pulse = d > 0.0 && d < 0.2 ? pow(1.0 - d / 0.2, 3.0) : 0.0;
-    pulse *= lit * uMotion;
     float glow = clamp(vGlow, 0.0, 1.0);
+    // Pathways near the focused region light up and carry stronger pulses.
+    lit = max(lit, glow);
+    pulse *= lit * uMotion * (1.0 + glow * 1.5);
     vec3 col = mix(uBlue, uCyan, 0.35 + 0.65 * max(pulse, glow));
     col = mix(col, uIce, pulse * 0.45);
     float alpha = (0.035 + 0.2 * lit + 0.85 * pulse + 0.55 * glow) * uReveal;

@@ -6,9 +6,9 @@
   min-height: max(100svh, 680px);
   display: flex;
   flex-direction: column;
-  background: var(--bg-base);
   overflow: hidden;
   isolation: isolate;
+  z-index: 1; /* above the shared WebGL stage (lab-neural.css) */
 }
 
 .lab-canvas,
@@ -356,8 +356,6 @@
 /* Mobile/tablet: brain above, copy below. */
 @media (max-width: 1023px) {
   /* The scene owns the top of the screen; copy follows below it. */
-  .lab-canvas,
-  .lab-fallback { bottom: auto; height: 62svh; }
   .lab-hero__content { align-items: start; padding-top: calc(62svh - 3.5rem); }
   .lab-hero__vignette {
     height: 62svh;

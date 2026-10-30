@@ -43,24 +43,27 @@ function initialSettings(): TierSettings | null {
 }
 
 interface HeroCanvasProps {
-  sectionRef: RefObject<HTMLElement | null>;
+  /** Element whose visibility gates rendering (the sticky stage). */
+  observeRef: RefObject<HTMLElement | null>;
+  /** Element whose pointer events drive the scene (the whole lab journey). */
+  eventSource: RefObject<HTMLElement | null>;
 }
 
 /** Client-only (loaded with ssr:false), so probing the browser in state init is safe. */
-export default function HeroCanvas({ sectionRef }: HeroCanvasProps) {
+export default function HeroCanvas({ observeRef, eventSource }: HeroCanvasProps) {
   const [settings] = useState(initialSettings);
   const [failed, setFailed] = useState(false);
   const [active, setActive] = useState(true);
   const reducedMotion = useReducedMotion() ?? false;
 
-  // Stop rendering entirely while the hero is off-screen.
+  // Stop rendering entirely while the stage is off-screen.
   useEffect(() => {
-    const el = sectionRef.current;
+    const el = observeRef.current;
     if (!el) return;
     const io = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting), { threshold: 0 });
     io.observe(el);
     return () => io.disconnect();
-  }, [sectionRef]);
+  }, [observeRef]);
 
   if (!settings || failed) return <HeroFallback />;
 
@@ -71,7 +74,7 @@ export default function HeroCanvas({ sectionRef }: HeroCanvasProps) {
           settings={settings}
           active={active}
           reducedMotion={reducedMotion}
-          eventSource={sectionRef}
+          eventSource={eventSource}
           onContextLost={() => setFailed(true)}
         />
       </SceneBoundary>

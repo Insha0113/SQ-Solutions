@@ -1,17 +1,13 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties, type PointerEvent } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagneticLink from "@/components/ui/MagneticLink";
 import { CapabilityPanel, StagePanel } from "./HudPanels";
 import { sceneStore } from "@/lib/scene-store";
-
-// Browser-only: probes WebGL, then lazy-loads three.js.
-const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false, loading: () => null });
 
 const TRUST_MARKS = [
   "Business-first approach",
@@ -59,26 +55,8 @@ export default function LabHero() {
     };
   }, []);
 
-  const onPointerMove = (e: PointerEvent<HTMLElement>) => {
-    if (e.pointerType !== "mouse") return;
-    const r = e.currentTarget.getBoundingClientRect();
-    sceneStore.pointer.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-    sceneStore.pointer.y = -(((e.clientY - r.top) / r.height) * 2 - 1);
-  };
-  const onPointerLeave = () => {
-    sceneStore.pointer.x = 0;
-    sceneStore.pointer.y = 0;
-  };
-
   return (
-    <section
-      ref={sectionRef}
-      className="lab-hero"
-      aria-labelledby="hero-heading"
-      onPointerMove={onPointerMove}
-      onPointerLeave={onPointerLeave}
-    >
-      <HeroCanvas sectionRef={sectionRef} />
+    <section ref={sectionRef} className="lab-hero" aria-labelledby="hero-heading">
       <div className="lab-hero__vignette" aria-hidden="true" />
 
       <div ref={contentRef} className="container lab-hero__content">

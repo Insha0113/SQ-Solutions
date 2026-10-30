@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LabHero from "@/components/hero/LabHero";
-import ProblemsSection from "@/components/home/ProblemsSection";
+import LabJourney from "@/components/laboratory/LabJourney";
+import NeuralSystem from "@/components/sections/NeuralSystem";
 import ServicesSection from "@/components/home/ServicesSection";
 import SolutionsSection from "@/components/home/SolutionsSection";
 import DeliveryFramework from "@/components/home/DeliveryFramework";
@@ -21,8 +22,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <LabHero />
-      <ProblemsSection />
+      <LabJourney>
+        <LabHero />
+        <NeuralSystem />
+      </LabJourney>
       <ServicesSection />
       <SolutionsSection />
       <DeliveryFramework />

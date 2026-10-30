@@ -2,19 +2,36 @@ import * as THREE from "three";
 import type { RootState } from "@react-three/fiber";
 import { REGION_CENTERS } from "@/components/brain/brainGeometry";
 import { createSharedUniforms, type SharedUniforms } from "@/components/brain/uniforms";
-import { sceneStore } from "@/lib/scene-store";
+import { PROBLEMS } from "@/components/sections/problems";
+import { ANCHOR_COUNT, sceneStore } from "@/lib/scene-store";
 
 const { damp, smoothstep, lerp } = THREE.MathUtils;
+const TAU = Math.PI * 2;
+
+/** Brain yaw used for the Scene 02 close-up (three-quarter view). */
+const SCENE2_YAW = -0.5;
+/** Camera distance and brain scale in Scene 02. */
+const SCENE2_CAM_Z = 4.6;
+const SCENE2_SCALE = 0.52;
+/** Horizontal screen position of the brain in Scene 02, as a fraction of half-width. */
+const SCENE2_SCREEN_X = 0.31;
+
+/** Angle equivalent to `target` that is nearest to `from` (avoids unwinding spins). */
+function nearestAngle(from: number, target: number) {
+  return target + TAU * Math.round((from - target) / TAU);
+}
 
 /**
- * Owns the hero's mutable per-frame state (uniforms, easing, camera rig).
- * Kept outside React so per-frame mutation never goes through component state.
+ * Owns the lab scene's mutable per-frame state (uniforms, easing, camera rig,
+ * Scene 02 anchors). Kept outside React so per-frame mutation never goes
+ * through component state.
  */
 export class HeroController {
   readonly uniforms: SharedUniforms = createSharedUniforms();
   private reducedMotion = false;
   private start = -1;
   private scroll = 0;
+  private scene2 = 0;
   private px = 0;
   private py = 0;
   private spin = 0;
@@ -22,11 +39,43 @@ export class HeroController {
   private hoverTarget = 0;
   private focus = 0;
   private readonly lookAt = new THREE.Vector3();
+  private readonly anchors: THREE.Vector3[] = [];
+  private readonly tmp = new THREE.Vector3();
+  private readonly center = new THREE.Vector3();
 
   setReducedMotion(reduced: boolean) {
     this.reducedMotion = reduced;
     this.uniforms.uMotion.value = reduced ? 0 : 1;
     sceneStore.reducedMotion = reduced;
+  }
+
+  /** Snap each problem's view-space direction onto the brain surface (once per geometry). */
+  setGeometry(geometry: THREE.BufferGeometry) {
+    const pos = geometry.attributes.position as THREE.BufferAttribute;
+    const c = new THREE.Vector3(0, 0.05, 0);
+    const v = new THREE.Vector3();
+    const dir = new THREE.Vector3();
+    const yAxis = new THREE.Vector3(0, 1, 0);
+    this.anchors.length = 0;
+    PROBLEMS.slice(0, ANCHOR_COUNT).forEach((p, i) => {
+      // View space -> brain-local space for the Scene 02 pose.
+      dir.fromArray(p.dir).normalize().applyAxisAngle(yAxis, -SCENE2_YAW);
+      let best = -Infinity;
+      const hit = new THREE.Vector3();
+      for (let k = 0; k < pos.count; k++) {
+        v.fromBufferAttribute(pos, k);
+        const len = v.distanceTo(c) || 1;
+        // Mostly direction match; a small reach bonus prefers the outer cortex.
+        const score = ((v.x - c.x) * dir.x + (v.y - c.y) * dir.y + (v.z - c.z) * dir.z) / len + len * 0.05;
+        if (score > best) {
+          best = score;
+          hit.copy(v);
+        }
+      }
+      this.anchors.push(hit);
+      sceneStore.anchorLocal.set([hit.x, hit.y, hit.z], i * 3);
+    });
+    sceneStore.anchorsReady = true;
   }
 
   pointerMove(worldPoint: THREE.Vector3) {
@@ -51,23 +100,31 @@ export class HeroController {
     const intro = (a: number, b: number) => (reduced ? 1 : smoothstep(t, a, b));
 
     this.scroll = ease(this.scroll, sceneStore.scroll, 5);
+    this.scene2 = ease(this.scene2, sceneStore.scene2, 5);
     this.px = ease(this.px, reduced ? 0 : sceneStore.pointer.x, 3);
     this.py = ease(this.py, reduced ? 0 : sceneStore.pointer.y, 3);
     this.hover = ease(this.hover, this.hoverTarget, 6);
-    const fr = sceneStore.focusRegion;
-    if (fr >= 0) u.uFocus.value.fromArray(REGION_CENTERS[fr]);
-    this.focus = ease(this.focus, fr >= 0 ? 1 : 0, 5);
 
-    const sc = this.scroll;
+    // Focus: a Scene 02 problem anchor wins over a hero delivery-stage region.
+    const fa = sceneStore.focusAnchor;
+    const fr = sceneStore.focusRegion;
+    if (fa >= 0 && this.anchors[fa]) u.uFocus.value.copy(this.anchors[fa]);
+    else if (fr >= 0) u.uFocus.value.fromArray(REGION_CENTERS[fr]);
+    this.focus = ease(this.focus, fa >= 0 || fr >= 0 ? 1 : 0, 5);
+
+    const s1 = this.scroll;
+    const s2 = this.scene2;
+    const e2 = sceneStore.scene2Enabled;
+
     u.uTime.value = reduced ? 0 : t;
     u.uReveal.value = intro(0.25, 1.9);
-    u.uLab.value = intro(0.1, 2.6) * (1 - sc * 0.65);
-    u.uActivation.value = Math.min(1, intro(0.9, 3.0) * 0.55 + sc * 0.45 + this.focus * 0.1);
+    u.uLab.value = intro(0.1, 2.6) * (1 - s1 * (e2 ? 0.55 : 0.65));
+    u.uActivation.value = Math.min(1, intro(0.9, 3.0) * 0.55 + s1 * 0.3 + s2 * 0.25 + this.focus * 0.1);
     u.uPointerStrength.value = this.hover;
     u.uFocusStrength.value = this.focus;
     u.uPixelRatio.value = frame.gl.getPixelRatio();
 
-    // Layout: brain sits right of the copy on wide screens, above it on narrow ones.
+    // Hero layout: brain sits right of the copy on wide screens, above it on narrow ones.
     const aspect = frame.size.width / frame.size.height;
     const wide = aspect > 1.15;
     const baseX = wide ? Math.min(1.1, 0.6 * aspect) : 0;
@@ -75,20 +132,62 @@ export class HeroController {
     // On portrait screens, fit the brain to the width of its (shorter) canvas.
     const baseScale = wide ? 0.9 : Math.min(0.9, 1.15 * aspect);
 
+    if (!reduced) this.spin += delta * 0.07 * (e2 ? 1 - s1 : 1);
+    const heroYaw = -0.55 + this.spin + this.px * 0.35;
+
+    let x: number, y: number, scale: number, yaw: number, camZ: number, lookFactor: number;
+    if (e2) {
+      // Hero exit flows directly into the Scene 02 close-up pose.
+      const x2 = SCENE2_SCREEN_X * Math.tan(THREE.MathUtils.degToRad(19)) * SCENE2_CAM_Z * aspect;
+      const k = smoothstep(s1, 0, 1);
+      x = lerp(baseX, x2, k);
+      y = lerp(baseY, 0, k);
+      scale = lerp(baseScale, SCENE2_SCALE, k) * (1 + s2 * 0.08);
+      const scene2Yaw = SCENE2_YAW + this.px * 0.12 + (s2 - 0.5) * 0.18;
+      yaw = lerp(heroYaw, nearestAngle(heroYaw, scene2Yaw), k);
+      camZ = lerp(6.2, SCENE2_CAM_Z, k) - s2 * 0.25;
+      lookFactor = 0.45 * (1 - k);
+    } else {
+      x = lerp(baseX, 0, s1 * 0.7);
+      y = baseY - s1 * 0.1;
+      scale = baseScale * (1 + s1 * 0.12);
+      yaw = heroYaw + s1 * 1.1;
+      camZ = 6.2 - s1 * 1.5;
+      lookFactor = 0.45;
+    }
+
     if (group) {
-      if (!reduced) this.spin += delta * 0.07;
-      group.position.x = ease(group.position.x, lerp(baseX, 0, sc * 0.7), 4);
-      group.position.y = ease(group.position.y, baseY - sc * 0.1, 4);
-      group.rotation.y = ease(group.rotation.y, -0.55 + this.spin + this.px * 0.35 + sc * 1.1, 4);
+      group.position.x = ease(group.position.x, x, 4);
+      group.position.y = ease(group.position.y, y, 4);
+      group.rotation.y = ease(group.rotation.y, yaw, 4);
       group.rotation.x = ease(group.rotation.x, 0.06 - this.py * 0.12, 4);
-      group.scale.setScalar(baseScale * (0.92 + 0.08 * u.uReveal.value) * (1 + sc * 0.12));
+      group.scale.setScalar(scale * (0.92 + 0.08 * u.uReveal.value));
     }
 
     const cam = frame.camera;
-    cam.position.x = ease(cam.position.x, this.px * 0.35, 3);
-    cam.position.y = ease(cam.position.y, 0.3 + this.py * 0.18 - sc * 0.2, 3);
-    cam.position.z = ease(cam.position.z, 6.2 - sc * 1.5, 3);
-    this.lookAt.set((group?.position.x ?? 0) * 0.45, 0, 0);
+    cam.position.x = ease(cam.position.x, this.px * (e2 ? 0.2 : 0.35) * (1 - s2 * 0.5), 3);
+    cam.position.y = ease(cam.position.y, 0.3 + this.py * 0.18 - s1 * (e2 ? 0.3 : 0.2), 3);
+    cam.position.z = ease(cam.position.z, camZ, 3);
+    this.lookAt.set((group?.position.x ?? 0) * lookFactor, 0, 0);
     cam.lookAt(this.lookAt);
+    cam.updateMatrixWorld();
+
+    if (group && this.anchors.length) this.projectAnchors(group, cam);
+  }
+
+  /** Project anchors to NDC for the DOM leader lines; `facing` fades anchors on the far side. */
+  private projectAnchors(group: THREE.Group, cam: THREE.Camera) {
+    group.updateMatrixWorld();
+    this.center.set(0, 0.05, 0).applyMatrix4(group.matrixWorld);
+    const dCenter = this.center.distanceTo(cam.position);
+    const out = sceneStore.anchors;
+    for (let i = 0; i < this.anchors.length; i++) {
+      this.tmp.copy(this.anchors[i]).applyMatrix4(group.matrixWorld);
+      const dAnchor = this.tmp.distanceTo(cam.position);
+      this.tmp.project(cam);
+      out[i * 3] = this.tmp.x;
+      out[i * 3 + 1] = this.tmp.y;
+      out[i * 3 + 2] = THREE.MathUtils.clamp((dCenter - dAnchor) / 0.25 + 0.5, 0, 1);
+    }
   }
 }

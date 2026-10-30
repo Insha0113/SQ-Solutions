@@ -106,6 +106,10 @@ function Rig({ geometry, settings, reducedMotion }: RigOptions & { geometry: THR
   }, [reducedMotion, controller, invalidate]);
 
   useEffect(() => {
+    controller.setGeometry(geometry);
+  }, [controller, geometry]);
+
+  useEffect(() => {
     sceneStore.ready = true;
     return () => {
       sceneStore.ready = false;
