@@ -54,7 +54,7 @@ export default function AIConsultingPage() {
             <div className="label mb-6">AI Consulting</div>
             <h1 className="display-xl mb-6">
               Have a Business Problem?{" "}
-              <span className="text-gradient">Let's Find the AI Solution.</span>
+              <span className="text-gradient">Let&apos;s Find the AI Solution.</span>
             </h1>
             <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", lineHeight: 1.7, marginBottom: "2rem" }}>
               You don&apos;t need to be an AI expert to benefit from AI. Squadify helps businesses

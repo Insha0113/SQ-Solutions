@@ -162,10 +162,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  // Close menus on navigation (adjust state during render, not in an effect).
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setMobileOpen(false);
     setOpen(null);
-  }, [pathname]);
+  }
 
   const handleEnter = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
