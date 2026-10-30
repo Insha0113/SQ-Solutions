@@ -12,7 +12,7 @@ export default function ContactPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-25 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top, rgba(16,0,255,0.1) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top, rgba(37,99,235,0.1) 0%, transparent 65%)" }} />
         <div className="container relative z-10 text-center">
           <span className="label mb-6 inline-flex">Get in Touch</span>
           <h1 className="display-hero text-white mb-5" style={{ fontFamily: "var(--font-sora)" }}>
@@ -62,7 +62,7 @@ export default function ContactPage() {
               </div>
 
               <div className="rounded-xl p-4" style={{ background: "var(--blue-glass)", border: "1px solid var(--border-blue)" }}>
-                <p className="text-xs font-semibold mb-2" style={{ color: "#a0a8ff" }}>Our Promise</p>
+                <p className="text-xs font-semibold mb-2" style={{ color: "#8FE3FF" }}>Our Promise</p>
                 {["Response within 24 hours", "No-obligation consultation", "Transparent process"].map((i) => (
                   <div key={i} className="flex items-center gap-2 text-xs mb-1.5" style={{ color: "var(--text-secondary)" }}>
                     <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--blue)" }} /> {i}

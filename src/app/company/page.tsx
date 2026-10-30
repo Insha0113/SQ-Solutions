@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function CompanyPage() {
   return (
-    <div className="pt-20 bg-[#080808] min-h-screen">
+    <div className="pt-20 bg-[#05070D] min-h-screen">
       <section className="py-24 relative overflow-hidden relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="container-custom relative z-10 text-center">

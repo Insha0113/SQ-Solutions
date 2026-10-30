@@ -22,7 +22,7 @@ export default function DeliveryPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-25 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top, rgba(16,0,255,0.12) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top, rgba(37,99,235,0.12) 0%, transparent 65%)" }} />
         <div className="container relative z-10 text-center">
           <span className="label mb-6 inline-flex">The 150-Hour Framework</span>
           <h1 className="display-hero text-white mb-5" style={{ fontFamily: "var(--font-sora)" }}>
@@ -69,7 +69,7 @@ export default function DeliveryPage() {
                       <div className="step-circle">{num}</div>
                       <h3 className="text-white font-bold text-lg" style={{ fontFamily: "var(--font-sora)" }}>{title}</h3>
                     </div>
-                    <div className="flex items-center gap-2 text-xs" style={{ color: "#a0a8ff" }}>
+                    <div className="flex items-center gap-2 text-xs" style={{ color: "#8FE3FF" }}>
                       <Clock className="w-3.5 h-3.5" /> {hours}
                     </div>
                     <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{desc}</p>

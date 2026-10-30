@@ -3,10 +3,10 @@ import { ArrowRight, Calendar, CheckCircle } from "lucide-react";
 
 export default function BookCallPage() {
   return (
-    <div className="pt-20 bg-[#080808] min-h-screen">
+    <div className="pt-20 bg-[#05070D] min-h-screen">
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#1000FF]/8 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#2563EB]/8 rounded-full blur-[120px]" />
         </div>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="label mb-5">Book a Discovery Call</div>
@@ -21,7 +21,7 @@ export default function BookCallPage() {
 
           <div className="rounded-2xl border border-[#292929] bg-[#141414] p-8 text-left mb-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-[#1000FF] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB] flex items-center justify-center">
                 <Calendar className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -38,7 +38,7 @@ export default function BookCallPage() {
                 "You get an honest assessment — no pressure",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-white/60">
-                  <CheckCircle className="w-4 h-4 text-[#1000FF] flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
                   {item}
                 </li>
               ))}
@@ -53,7 +53,7 @@ export default function BookCallPage() {
             </a>
             <p className="text-center text-[#858591] text-xs mt-4">
               Or email us at{" "}
-              <a href="mailto:hello@squadifysolutions.com" className="text-[#1000FF] hover:underline">
+              <a href="mailto:hello@squadifysolutions.com" className="text-[#2563EB] hover:underline">
                 hello@squadifysolutions.com
               </a>
             </p>

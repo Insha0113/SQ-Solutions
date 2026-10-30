@@ -37,7 +37,7 @@ export default function ServicesPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {groups.map(({ title, desc, services, href }) => (
               <Link key={title} href={href} className="card p-6 flex flex-col gap-4 no-underline group">
-                <h3 className="text-white font-semibold text-lg group-hover:text-[#4B3FFF] transition-colors"
+                <h3 className="text-white font-semibold text-lg group-hover:text-[#1E93F3] transition-colors"
                   style={{ fontFamily: "var(--font-sora)" }}>{title}</h3>
                 <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{desc}</p>
                 <ul className="space-y-1.5 flex-1">

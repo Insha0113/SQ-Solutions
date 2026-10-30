@@ -41,7 +41,7 @@ export default function CaseStudies() {
           right: "-10%",
           width: "500px",
           height: "400px",
-          background: "radial-gradient(ellipse, rgba(16,0,255,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(37,99,235,0.07) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />

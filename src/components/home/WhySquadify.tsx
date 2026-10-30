@@ -49,7 +49,7 @@ export default function WhySquadify() {
           left: "-10%",
           width: "500px",
           height: "500px",
-          background: "radial-gradient(circle, rgba(16,0,255,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />

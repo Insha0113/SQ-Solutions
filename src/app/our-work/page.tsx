@@ -20,7 +20,7 @@ export default function OurWorkPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-25 pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[400px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top right, rgba(16,0,255,0.1) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top right, rgba(37,99,235,0.1) 0%, transparent 65%)" }} />
         <div className="container relative z-10">
           <span className="label mb-6 inline-flex">Our Work</span>
           <h1 className="display-hero text-white mb-5" style={{ fontFamily: "var(--font-sora)" }}>

@@ -53,7 +53,7 @@ export default function PricingPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-25 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top, rgba(16,0,255,0.1) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top, rgba(37,99,235,0.1) 0%, transparent 65%)" }} />
         <div className="container relative z-10 text-center">
           <span className="label mb-6 inline-flex">Pricing</span>
           <h1 className="display-hero text-white mb-5" style={{ fontFamily: "var(--font-sora)" }}>
@@ -75,7 +75,7 @@ export default function PricingPage() {
                 style={{
                   background: featured ? "var(--blue)" : "var(--bg-card)",
                   border: `1px solid ${featured ? "var(--blue)" : "var(--border)"}`,
-                  boxShadow: featured ? "0 0 60px rgba(16,0,255,0.2)" : "none",
+                  boxShadow: featured ? "0 0 60px rgba(37,99,235,0.2)" : "none",
                 }}>
                 {featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -87,7 +87,7 @@ export default function PricingPage() {
                 )}
                 <div className="mb-5">
                   <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
-                    style={{ background: featured ? "rgba(255,255,255,0.15)" : "var(--blue-glass)", color: featured ? "#fff" : "#a0a8ff" }}>
+                    style={{ background: featured ? "rgba(255,255,255,0.15)" : "var(--blue-glass)", color: featured ? "#fff" : "#8FE3FF" }}>
                     {sub}
                   </span>
                 </div>

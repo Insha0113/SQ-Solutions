@@ -186,7 +186,7 @@ export default function Navbar() {
         <div className="container flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-[#1000FF] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#2563EB] flex items-center justify-center">
               <Zap className="w-4 h-4 text-white fill-white" />
             </div>
             <span

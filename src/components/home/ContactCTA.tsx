@@ -42,7 +42,7 @@ export default function ContactCTA() {
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(16,0,255,0.12) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.12) 0%, transparent 65%)",
         }}
       />
       <div className="dot-grid absolute inset-0 opacity-[0.25] pointer-events-none" />

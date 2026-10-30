@@ -48,7 +48,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       >
         <span className="font-semibold text-gray-900">{q}</span>
         <ChevronDown
-          className={`w-5 h-5 text-[#1000FF] flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`w-5 h-5 text-[#2563EB] flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
       {open && (
@@ -70,7 +70,7 @@ export default function DeliveryFaqsPage() {
             150-Hour Delivery
           </span>
           <h1 className="text-5xl font-bold mb-4">
-            Delivery <span className="text-[#1000FF]">FAQs</span>
+            Delivery <span className="text-[#2563EB]">FAQs</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Everything you need to know about how our 150-hour AI delivery framework works.
@@ -91,7 +91,7 @@ export default function DeliveryFaqsPage() {
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-3xl mx-auto text-center">
           <div className="bg-gray-900 rounded-3xl p-12 text-white">
-            <div className="w-16 h-16 rounded-2xl bg-[#1000FF] flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 rounded-2xl bg-[#2563EB] flex items-center justify-center mx-auto mb-6">
               <span className="text-white font-bold text-xl">150</span>
             </div>
             <h2 className="text-3xl font-bold mb-4">Ready to Start Your 150-Hour Sprint?</h2>

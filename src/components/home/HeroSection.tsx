@@ -3,12 +3,12 @@ import Link from "next/link";
 import { ArrowRight, RefreshCw, Shield, Monitor, BarChart2 } from "lucide-react";
 
 const stages = [
-  { label: "Discovery Workshop", color: "#1000FF" },
-  { label: "Design", color: "#3026FF" },
-  { label: "Build", color: "#4B3FFF" },
-  { label: "Deploy", color: "#6057FF" },
-  { label: "Training", color: "#7B75FF" },
-  { label: "Support", color: "#9A96FF" },
+  { label: "Discovery Workshop", color: "#2563EB" },
+  { label: "Design", color: "#2B7BF0" },
+  { label: "Build", color: "#1E93F3" },
+  { label: "Deploy", color: "#0EA9F6" },
+  { label: "Training", color: "#03C2FA" },
+  { label: "Support", color: "#00D9FF" },
 ];
 
 const capabilities = [
@@ -28,7 +28,7 @@ function DonutChart() {
   const segCount = 6;
   const segLen = (total - gap * segCount) / segCount;
 
-  const colors = ["#1000FF", "#3026FF", "#4B3FFF", "#6057FF", "#7B75FF", "#9A96FF"];
+  const colors = ["#2563EB", "#2B7BF0", "#1E93F3", "#0EA9F6", "#03C2FA", "#00D9FF"];
 
   return (
     <svg width="140" height="140" viewBox="0 0 140 140" style={{ transform: "rotate(-90deg)" }}>
@@ -71,7 +71,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 60% 0%, rgba(16,0,255,0.13) 0%, transparent 60%)",
+            "radial-gradient(ellipse 80% 60% at 60% 0%, rgba(37,99,235,0.13) 0%, transparent 60%)",
         }}
       />
       <div className="absolute inset-0 dot-grid opacity-[0.35] pointer-events-none" />
@@ -83,7 +83,7 @@ export default function HeroSection() {
           left: "-10%",
           width: "500px",
           height: "500px",
-          background: "rgba(16,0,255,0.10)",
+          background: "rgba(37,99,235,0.10)",
           borderRadius: "50%",
           filter: "blur(100px)",
         }}
@@ -228,7 +228,7 @@ export default function HeroSection() {
                 padding: "2rem",
                 width: "100%",
                 maxWidth: "380px",
-                boxShadow: "0 0 60px rgba(16,0,255,0.12), 0 24px 48px rgba(0,0,0,0.4)",
+                boxShadow: "0 0 60px rgba(37,99,235,0.12), 0 24px 48px rgba(0,0,0,0.4)",
                 position: "relative",
                 overflow: "hidden",
               }}
@@ -241,7 +241,7 @@ export default function HeroSection() {
                   right: 0,
                   width: "200px",
                   height: "200px",
-                  background: "rgba(16,0,255,0.08)",
+                  background: "rgba(37,99,235,0.08)",
                   borderRadius: "50%",
                   filter: "blur(60px)",
                   pointerEvents: "none",

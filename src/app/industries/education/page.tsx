@@ -28,7 +28,7 @@ export default function EducationPage() {
     <>
       {/* Hero */}
       <section className="section relative overflow-hidden" style={{ background: "var(--bg-base)", paddingTop: "7rem" }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 0%, rgba(16,0,255,0.12) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 0%, rgba(37,99,235,0.12) 0%, transparent 60%)" }} />
         <div className="dot-grid absolute inset-0 opacity-25 pointer-events-none" />
         <div className="container relative" style={{ zIndex: 1 }}>
           <div className="label mb-6">Education Solutions</div>

@@ -21,7 +21,7 @@ export default function AboutPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top right, rgba(16,0,255,0.1) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top right, rgba(37,99,235,0.1) 0%, transparent 65%)" }} />
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <span className="label mb-6 inline-flex">About Squadify</span>
@@ -93,7 +93,7 @@ export default function AboutPage() {
               <div className="icon-box mb-5"><TrendingUp className="w-5 h-5" style={{ color: "var(--blue)" }} /></div>
               <h3 className="text-white font-bold text-xl mb-4" style={{ fontFamily: "var(--font-sora)" }}>Our Vision</h3>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>To become a trusted global partner for businesses seeking to work smarter with AI, where every business problem has the potential to become an opportunity for automation, innovation, and growth.</p>
-              <p className="text-sm italic" style={{ color: "#a0a8ff" }}>&ldquo;AI should work for your business — not the other way around.&rdquo;</p>
+              <p className="text-sm italic" style={{ color: "#8FE3FF" }}>&ldquo;AI should work for your business — not the other way around.&rdquo;</p>
             </div>
           </div>
         </div>

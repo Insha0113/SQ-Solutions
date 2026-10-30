@@ -18,7 +18,7 @@ const solutions = [
 
 export default function SolutionsPage() {
   return (
-    <div className="pt-20 bg-[#080808] min-h-screen">
+    <div className="pt-20 bg-[#05070D] min-h-screen">
       <section className="py-24 relative overflow-hidden relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="container-custom relative z-10 text-center">
@@ -41,7 +41,7 @@ export default function SolutionsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((s) => (
               <Link key={s.title} href={s.href}
-                className="group bg-[#141414] rounded-2xl overflow-hidden border border-gray-100 rounded-2xl border border-[#292929] bg-[#141414] hover:border-[#1000FF]/30 transition-all">
+                className="group bg-[#141414] rounded-2xl overflow-hidden border border-gray-100 rounded-2xl border border-[#292929] bg-[#141414] hover:border-[#2563EB]/30 transition-all">
                 <div className="h-1.5 bg-gradient-to-r from-orange-500 to-red-600"></div>
                 <div className="p-6">
                   <div className="text-4xl mb-4">{s.icon}</div>
