@@ -5,12 +5,12 @@ import NeuralSystem from "@/components/sections/NeuralSystem";
 import ServicesScene from "@/components/sections/ServicesScene";
 import WorkspaceScene from "@/components/sections/WorkspaceScene";
 import ProcessScene from "@/components/sections/ProcessScene";
-import IndustriesSection from "@/components/home/IndustriesSection";
-import WhySquadify from "@/components/home/WhySquadify";
-import CaseStudies from "@/components/home/CaseStudies";
-import TechEcosystem from "@/components/home/TechEcosystem";
-import TrustedPartners from "@/components/home/TrustedPartners";
-import BlogSection from "@/components/home/BlogSection";
+import IndustriesMatrix from "@/components/sections/IndustriesMatrix";
+import WhyProtocol from "@/components/sections/WhyProtocol";
+import CaseFiles from "@/components/sections/CaseFiles";
+import StackDiagram from "@/components/sections/StackDiagram";
+import PartnerTicker from "@/components/sections/PartnerTicker";
+import ResearchLog from "@/components/sections/ResearchLog";
 import ConnectScene from "@/components/sections/ConnectScene";
 
 export const metadata: Metadata = {
@@ -29,12 +29,12 @@ export default function HomePage() {
       </LabJourney>
       <WorkspaceScene />
       <ProcessScene />
-      <IndustriesSection />
-      <WhySquadify />
-      <CaseStudies />
-      <TechEcosystem />
-      <TrustedPartners />
-      <BlogSection />
+      <IndustriesMatrix />
+      <WhyProtocol />
+      <CaseFiles />
+      <StackDiagram />
+      <PartnerTicker />
+      <ResearchLog />
       <ConnectScene />
     </>
   );
