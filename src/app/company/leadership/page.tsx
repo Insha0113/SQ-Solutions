@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Users, Star, Award, Target } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Leadership Team — Squadify Solutions",
+  title: "Leadership Team",
   description: "Meet the Squadify Solutions leadership team — AI engineers, strategists, and business operators building the future of practical business AI.",
 };
 

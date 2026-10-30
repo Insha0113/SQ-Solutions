@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Services — Squadify Solutions",
+  title: "AI Services",
   description: "Five capability groups covering AI advisory, engineering, automation, applications, and data & integration support.",
 };
 

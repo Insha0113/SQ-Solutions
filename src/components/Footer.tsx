@@ -94,7 +94,7 @@ export default function Footer() {
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-3"
-                style={{ color: "var(--blue)" }}
+                style={{ color: "var(--cyan)" }}
               >
                 Ready to get started?
               </p>

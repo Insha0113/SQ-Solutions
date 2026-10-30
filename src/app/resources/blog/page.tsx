@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Rss, Clock, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Blog & Insights — Squadify Solutions",
+  title: "AI Blog & Insights",
   description: "Practical AI insights for business leaders. Real-world guides on AI implementation, automation ROI, and digital transformation.",
 };
 

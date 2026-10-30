@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Bot, MessageCircle, Headphones, ShoppingCart, Calendar, Globe, Cpu, Zap, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Chatbots — Squadify Solutions",
+  title: "AI Chatbots",
   description: "Build intelligent AI chatbots and virtual assistants. Squadify delivers custom chatbots that handle support, sales, and operations 24/7.",
 };
 
@@ -178,17 +178,17 @@ export default function AIChatbotsPage() {
       {/* CTA */}
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <MessageCircle className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Let&apos;s Build Your AI Assistant
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a 30-minute call to discuss your use case. We&apos;ll scope a chatbot solution and deliver it in 150 hours.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Call
                 <ArrowRight className="w-5 h-5" />
               </Link>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, HardHat, CheckCircle, Cog, BarChart3, Bot, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI for Construction — Squadify Solutions",
+  title: "AI for Construction",
   description: "AI solutions for construction companies. Automate project documentation, tender responses, site reporting, and procurement with AI.",
 };
 
@@ -64,14 +64,14 @@ export default function ConstructionPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <HardHat className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Ready to Modernise Your Construction Operations?
               </h3>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Free Consultation
                 <ArrowRight className="w-5 h-5" />
               </Link>

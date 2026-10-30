@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Zap, Bot, GitBranch, Mail, FileText, BarChart3, Settings, Clock, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Automation — Squadify Solutions",
+  title: "AI Automation",
   description: "Automate repetitive workflows with AI. Squadify builds intelligent automation systems that free your team to focus on high-value work.",
 };
 
@@ -196,11 +196,11 @@ export default function AIAutomationPage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Zap className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Ready to Automate Your Workflows?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Target, Eye, Heart, Zap, Shield, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Mission & Vision — Squadify Solutions",
+  title: "Mission & Vision",
   description: "Squadify's mission: make powerful AI accessible to every business that needs it. Our vision: a world where no business is held back by preventable inefficiency.",
 };
 
@@ -34,7 +34,7 @@ export default function MissionPage() {
             <div className="card" style={{ border: "1px solid var(--border-blue)", background: "var(--blue-glass)" }}>
               <div className="icon-box mb-6"><Target className="w-6 h-6" style={{ color: "var(--blue)" }} /></div>
               <div style={{ color: "var(--blue)", fontWeight: 700, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>Our Mission</div>
-              <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 800, color: "var(--text-primary)", fontSize: "1.5rem", lineHeight: 1.3, marginBottom: "1rem" }}>
+              <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, color: "var(--text-primary)", fontSize: "1.5rem", lineHeight: 1.3, marginBottom: "1rem" }}>
                 Make powerful AI accessible to every business that needs it
               </h2>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
@@ -44,7 +44,7 @@ export default function MissionPage() {
             <div className="card">
               <div className="icon-box mb-6"><Eye className="w-6 h-6" style={{ color: "var(--blue)" }} /></div>
               <div style={{ color: "var(--text-muted)", fontWeight: 700, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>Our Vision</div>
-              <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 800, color: "var(--text-primary)", fontSize: "1.5rem", lineHeight: 1.3, marginBottom: "1rem" }}>
+              <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, color: "var(--text-primary)", fontSize: "1.5rem", lineHeight: 1.3, marginBottom: "1rem" }}>
                 A world where no business is held back by preventable inefficiency
               </h2>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
@@ -82,21 +82,21 @@ export default function MissionPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Aligned with Our Mission?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 If our mission resonates, let&apos;s talk. Whether you&apos;re a potential client or want to join the team.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+                <Link href="/get-started/book-call" className="lab-btn">
                   Work With Us
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-                <Link href="/company/careers" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>
+                <Link href="/company/careers" className="lab-btn lab-btn--ghost">
                   Join the Team
                 </Link>
               </div>

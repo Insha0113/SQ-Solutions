@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Brain, Zap, Users, Target, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Story — Squadify Solutions",
+  title: "Our Story",
   description: "How Squadify Solutions was founded and why we believe every business deserves access to AI that works.",
 };
 

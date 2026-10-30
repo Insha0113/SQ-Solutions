@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "The 150-Hour Delivery Framework — Squadify Solutions",
+  title: "The 150-Hour Delivery Framework",
   description: "Our structured delivery approach moves from business problem to practical AI solution through five clear stages.",
 };
 

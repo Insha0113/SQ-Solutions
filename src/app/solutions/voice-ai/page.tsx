@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Mic, Phone, Globe, Clock, BarChart3, Zap, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Voice AI — AI-Powered Voice Assistants | Squadify Solutions",
+  title: "Voice AI — AI-Powered Voice Assistants",
   description: "Build intelligent voice AI systems for customer service, booking, and support. Squadify delivers custom voice agents that handle calls 24/7.",
 };
 
@@ -82,17 +82,17 @@ export default function VoiceAIPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Mic className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Never Miss Another Call
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a call to hear a Voice AI demo and discuss your phone use case.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Voice AI Demo
                 <ArrowRight className="w-5 h-5" />
               </Link>

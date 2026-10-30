@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Headphones, Clock, Shield, RefreshCw, CheckCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ongoing Support & Maintenance — Squadify Solutions",
+  title: "Ongoing Support & Maintenance",
   description: "Keep your AI systems running at peak performance. Squadify provides ongoing monitoring, maintenance, updates, and optimisation for all deployed solutions.",
 };
 

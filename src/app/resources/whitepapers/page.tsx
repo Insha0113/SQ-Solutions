@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, FileText, Download, Rss } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Whitepapers & Guides — Squadify Solutions",
+  title: "Whitepapers & Guides",
   description: "Download free AI guides, whitepapers, and frameworks from Squadify Solutions. Practical resources for business leaders exploring AI adoption.",
 };
 

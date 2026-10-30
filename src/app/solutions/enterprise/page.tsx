@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, Shield, Globe, Users, BarChart3, Zap, CheckCircle, Lock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Enterprise AI Solutions — Squadify Solutions",
+  title: "Enterprise AI Solutions",
   description: "Enterprise-grade AI transformation at scale. Squadify delivers secure, compliant, and fully integrated AI systems for large organisations.",
 };
 
@@ -110,17 +110,17 @@ export default function EnterprisePage() {
 
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Building2 className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Start Your Enterprise AI Programme
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Speak with our enterprise team. We&apos;ll scope your transformation roadmap and identify quick wins.
               </p>
-              <Link href="/get-started/contact-sales" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/contact-sales" className="lab-btn">
                 Talk to Enterprise Sales
                 <ArrowRight className="w-5 h-5" />
               </Link>

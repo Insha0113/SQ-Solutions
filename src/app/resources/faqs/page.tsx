@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, HelpCircle, ChevronDown } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "FAQs — Frequently Asked Questions | Squadify Solutions",
+  title: "FAQs — Frequently Asked Questions",
   description: "Answers to common questions about Squadify Solutions — our services, delivery model, pricing, process, and AI approach.",
 };
 

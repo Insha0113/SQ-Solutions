@@ -9,6 +9,7 @@ import "./lab-workspace.css";
 import "./lab-process.css";
 import "./lab-connect.css";
 import "./lab-home.css";
+import "./lab-inner.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

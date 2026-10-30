@@ -69,9 +69,9 @@ export default function ROICalculatorPage() {
                   {Math.round(annualHoursSaved).toLocaleString()}h
                 </div>
               </div>
-              <div className="card mb-6" style={{ background: "var(--blue)" }}>
+              <div className="card lab-cta-panel mb-6">
                 <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.85rem", marginBottom: "0.5rem" }}>Estimated Annual Saving</div>
-                <div style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#fff", lineHeight: 1.1 }}>
+                <div style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#fff", lineHeight: 1.1 }}>
                   {fmt(annualSaving)}
                 </div>
               </div>

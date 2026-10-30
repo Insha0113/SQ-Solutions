@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BarChart3, TrendingUp, PieChart, LineChart, Target, Lightbulb, Database, Eye } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Analytics & BI — Data Intelligence | Squadify Solutions",
+  title: "AI Analytics & BI — Data Intelligence",
   description: "Turn your business data into actionable intelligence. Squadify builds AI-powered analytics dashboards, predictive models, and BI systems.",
 };
 
@@ -114,17 +114,17 @@ export default function AnalyticsPage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <LineChart className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Ready to Turn Data into Decisions?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a data audit call. We&apos;ll identify your best analytics opportunities and scope a solution.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Data Audit
                 <ArrowRight className="w-5 h-5" />
               </Link>

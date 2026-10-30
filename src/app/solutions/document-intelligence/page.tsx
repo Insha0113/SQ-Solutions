@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, FileText, Search, Cpu, Shield, Clock, BarChart3 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Document Intelligence AI — Squadify Solutions",
+  title: "Document Intelligence AI",
   description: "Extract, classify, and process documents automatically with AI. Invoices, contracts, forms — processed in seconds, not hours.",
 };
 
@@ -95,17 +95,17 @@ export default function DocumentIntelligencePage() {
 
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <FileText className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Stop Processing Documents Manually
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a demo. We&apos;ll show you how AI handles your specific document types.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Demo
                 <ArrowRight className="w-5 h-5" />
               </Link>

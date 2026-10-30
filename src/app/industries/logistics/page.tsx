@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Truck, MapPin, Package, BarChart2, Clock, AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Logistics AI Solutions | Squadify Solutions",
+  title: "Logistics AI Solutions",
   description: "AI solutions for logistics businesses — route optimisation, predictive delay detection, warehouse automation, and cargo tracking intelligence to cut costs and improve delivery performance.",
 };
 
@@ -51,7 +51,7 @@ export default function LogisticsPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1px", background: "var(--border)" }}>
             {stats.map(({ value, label }) => (
               <div key={label} style={{ background: "var(--bg-card)", padding: "2rem 1.5rem" }}>
-                <div style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--blue)", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.5rem" }}>{value}</div>
+                <div style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--blue)", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.5rem" }}>{value}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.82rem", fontWeight: 500 }}>{label}</div>
               </div>
             ))}
@@ -69,7 +69,7 @@ export default function LogisticsPage() {
               <div key={num} style={{ background: "var(--bg-base)", padding: "2rem 1.75rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <div className="icon-box"><Icon className="w-5 h-5" style={{ color: "var(--blue)" }} /></div>
-                  <span style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "0.65rem", color: "var(--border-light)", letterSpacing: "0.08em" }}>{num}</span>
+                  <span style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "0.65rem", color: "var(--border-light)", letterSpacing: "0.08em" }}>{num}</span>
                 </div>
                 <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 700, color: "var(--text-primary)", fontSize: "0.95rem" }}>{title}</h3>
                 <p style={{ color: "var(--text-muted)", fontSize: "0.82rem", lineHeight: 1.7 }}>{desc}</p>
@@ -80,19 +80,19 @@ export default function LogisticsPage() {
       </section>
 
       {/* CTA */}
-      <section className="section" style={{ background: "var(--blue)", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+      <section className="section lab-cta-band">
         <div className="container" style={{ textAlign: "center" }}>
-          <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#fff", marginBottom: "1.25rem", letterSpacing: "-0.025em" }}>
+          <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#fff", marginBottom: "1.25rem", letterSpacing: "-0.025em" }}>
             Ready to Explore AI for Your Logistics Business?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "1.05rem", lineHeight: 1.75, maxWidth: "560px", margin: "0 auto 2.5rem" }}>
             Book a discovery call and we&apos;ll identify where AI can deliver genuine value for your specific operation.
           </p>
           <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#fff", color: "var(--blue)", padding: "0.85rem 2rem", borderRadius: "9999px", fontWeight: 800, fontSize: "0.9rem", textDecoration: "none" }}>
+            <Link href="/contact" className="lab-btn">
               Book Discovery Call <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/services" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "transparent", color: "#fff", border: "1.5px solid rgba(255,255,255,0.4)", padding: "0.85rem 2rem", borderRadius: "9999px", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none" }}>
+            <Link href="/services" className="lab-btn lab-btn--ghost">
               Our Services <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
