@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HeroSection from "@/components/home/HeroSection";
+import LabHero from "@/components/hero/LabHero";
 import ProblemsSection from "@/components/home/ProblemsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import SolutionsSection from "@/components/home/SolutionsSection";
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
+      <LabHero />
       <ProblemsSection />
       <ServicesSection />
       <SolutionsSection />
