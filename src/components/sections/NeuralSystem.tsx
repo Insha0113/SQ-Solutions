@@ -1,31 +1,15 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROBLEMS } from "./problems";
-import { probeWebGL } from "@/lib/device-tier";
+import { useOrbitMode } from "@/lib/orbit-mode";
 import { sceneStore } from "@/lib/scene-store";
 
-const ORBIT_QUERY = "(min-width: 1200px) and (prefers-reduced-motion: no-preference)";
 const COUNT = PROBLEMS.length;
-
-let webglCache: boolean | null = null;
-function hasWebGL() {
-  if (webglCache === null) webglCache = probeWebGL().webgl;
-  return webglCache;
-}
-
-function subscribeOrbit(cb: () => void) {
-  const mq = window.matchMedia(ORBIT_QUERY);
-  mq.addEventListener("change", cb);
-  return () => mq.removeEventListener("change", cb);
-}
-/** Pinned 3D "orbit" layout only on wide screens, with motion allowed and WebGL available. */
-const getOrbit = () => window.matchMedia(ORBIT_QUERY).matches && hasWebGL();
-const getOrbitServer = () => false;
 
 /** Scroll progress -> which problem is narrated, and how many are revealed. */
 const autoIndexFor = (p: number) => (p < 0.04 ? -1 : Math.min(COUNT - 1, Math.floor(((p - 0.04) / 0.86) * COUNT)));
@@ -39,7 +23,7 @@ const revealedFor = (p: number) => Math.max(0, Math.min(COUNT, Math.floor((p - 0
  * focus or click selects one. Elsewhere: a plain, accessible disclosure list.
  */
 export default function NeuralSystem() {
-  const orbit = useSyncExternalStore(subscribeOrbit, getOrbit, getOrbitServer);
+  const orbit = useOrbitMode();
   const sectionRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -130,10 +114,12 @@ export default function NeuralSystem() {
       const h = pin.clientHeight;
       const a = sceneStore.anchors;
       const ready = sceneStore.anchorsReady;
+      // Lines let go of the brain as it leaves for Scene 03.
+      const hold = Math.max(0, 1 - sceneStore.scene3In * 2.5);
       for (let i = 0; i < COUNT; i++) {
         const ax = (a[i * 3] * 0.5 + 0.5) * w;
         const ay = (-a[i * 3 + 1] * 0.5 + 0.5) * h;
-        const facing = ready ? a[i * 3 + 2] : 0;
+        const facing = ready ? a[i * 3 + 2] * hold : 0;
         const e = ends[i];
         const elbow = e.x + (PROBLEMS[i].side === "left" ? 28 : -28);
         lines[i].setAttribute("points", `${e.x},${e.y} ${elbow},${e.y} ${ax},${ay}`);

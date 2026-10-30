@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LabHero from "@/components/hero/LabHero";
 import LabJourney from "@/components/laboratory/LabJourney";
 import NeuralSystem from "@/components/sections/NeuralSystem";
-import ServicesSection from "@/components/home/ServicesSection";
+import ServicesScene from "@/components/sections/ServicesScene";
 import SolutionsSection from "@/components/home/SolutionsSection";
 import DeliveryFramework from "@/components/home/DeliveryFramework";
 import IndustriesSection from "@/components/home/IndustriesSection";
@@ -25,8 +25,8 @@ export default function HomePage() {
       <LabJourney>
         <LabHero />
         <NeuralSystem />
+        <ServicesScene />
       </LabJourney>
-      <ServicesSection />
       <SolutionsSection />
       <DeliveryFramework />
       <IndustriesSection />

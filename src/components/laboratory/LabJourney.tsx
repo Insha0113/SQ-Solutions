@@ -9,7 +9,7 @@ const HeroCanvas = dynamic(() => import("@/components/hero/HeroCanvas"), { ssr: 
 
 /**
  * One continuous lab environment spanning several scenes. A single WebGL stage
- * sits behind the scenes: sticky across Hero + Scene 02 on wide screens,
+ * sits behind the scenes: sticky across Hero, Scene 02 and Scene 03 on wide screens,
  * confined to the hero on narrow ones (see lab-hero.css).
  */
 export default function LabJourney({ children }: { children: ReactNode }) {

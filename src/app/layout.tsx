@@ -4,6 +4,7 @@ import "./globals.css";
 import "./lab-hero.css";
 import "./lab-ui.css";
 import "./lab-neural.css";
+import "./lab-services.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

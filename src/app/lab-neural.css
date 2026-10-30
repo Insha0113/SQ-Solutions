@@ -164,10 +164,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* No bottom fade: the stage continues into Scene 03, whose veil matches this one. */
   background:
-    linear-gradient(90deg, rgba(5,7,13,0.88) 0%, rgba(5,7,13,0.55) 28%, rgba(5,7,13,0) 46%),
-    /* Soft hand-off into the next section as the stage releases. */
-    linear-gradient(180deg, rgba(10,16,32,0) 84%, var(--bg-2) 100%);
+    linear-gradient(90deg, rgba(5,7,13,0.88) 0%, rgba(5,7,13,0.55) 28%, rgba(5,7,13,0) 46%);
 }
 .neural[data-mode="orbit"] .neural__intro {
   position: absolute;

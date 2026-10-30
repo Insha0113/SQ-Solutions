@@ -8,6 +8,8 @@ export interface TierSettings {
   brainDetail: number;
   neuralNodes: number;
   dustParticles: number;
+  /** Points per Scene 03 service cluster. */
+  clusterPoints: number;
   /** Planar floor reflection (renders the scene twice). */
   reflections: boolean;
   /** Back-face glass pass for depth. */
@@ -15,9 +17,9 @@ export interface TierSettings {
 }
 
 export const TIER_SETTINGS: Record<Tier, TierSettings> = {
-  low: { tier: "low", dpr: [1, 1.25], brainDetail: 26, neuralNodes: 420, dustParticles: 220, reflections: false, backFaces: false },
-  mid: { tier: "mid", dpr: [1, 1.5], brainDetail: 40, neuralNodes: 850, dustParticles: 500, reflections: false, backFaces: true },
-  high: { tier: "high", dpr: [1, 2], brainDetail: 56, neuralNodes: 1400, dustParticles: 900, reflections: true, backFaces: true },
+  low: { tier: "low", dpr: [1, 1.25], brainDetail: 26, neuralNodes: 420, dustParticles: 220, clusterPoints: 36, reflections: false, backFaces: false },
+  mid: { tier: "mid", dpr: [1, 1.5], brainDetail: 40, neuralNodes: 850, dustParticles: 500, clusterPoints: 60, reflections: false, backFaces: true },
+  high: { tier: "high", dpr: [1, 2], brainDetail: 56, neuralNodes: 1400, dustParticles: 900, clusterPoints: 90, reflections: true, backFaces: true },
 };
 
 export interface Capabilities {

@@ -7,8 +7,9 @@ import { Bvh, PerformanceMonitor, useGLTF } from "@react-three/drei";
 import Brain from "@/components/brain/Brain";
 import { createProceduralBrain, normalizeBrainGeometry } from "@/components/brain/brainGeometry";
 import NeuralNetwork from "@/components/neural-network/NeuralNetwork";
+import ServiceClusters from "@/components/neural-network/ServiceClusters";
 import Laboratory from "@/components/laboratory/Laboratory";
-import { sceneStore } from "@/lib/scene-store";
+import { CLUSTER_COUNT, sceneStore } from "@/lib/scene-store";
 import { HeroController } from "./heroController";
 import type { TierSettings } from "@/lib/device-tier";
 
@@ -88,6 +89,7 @@ function ScanBrain({ url, ...props }: RigOptions & { url: string }) {
 function Rig({ geometry, settings, reducedMotion }: RigOptions & { geometry: THREE.BufferGeometry }) {
   const [controller] = useState(() => new HeroController());
   const group = useRef<THREE.Group>(null);
+  const constellation = useRef<THREE.Group>(null);
   const invalidate = useThree((s) => s.invalidate);
 
   useEffect(() => {
@@ -116,7 +118,7 @@ function Rig({ geometry, settings, reducedMotion }: RigOptions & { geometry: THR
     };
   }, []);
 
-  useFrame((frame, delta) => controller.step(frame, delta, group.current));
+  useFrame((frame, delta) => controller.step(frame, delta, group.current, constellation.current));
 
   return (
     <>
@@ -132,6 +134,13 @@ function Rig({ geometry, settings, reducedMotion }: RigOptions & { geometry: THR
         </Bvh>
         <NeuralNetwork geometry={geometry} uniforms={controller.uniforms} count={settings.neuralNodes} />
       </group>
+      <ServiceClusters
+        ref={constellation}
+        shared={controller.uniforms}
+        clusterUniforms={controller.clusterUniforms}
+        count={CLUSTER_COUNT}
+        pointsPerCluster={settings.clusterPoints}
+      />
       <Laboratory uniforms={controller.uniforms} dust={settings.dustParticles} reflections={settings.reflections} />
     </>
   );

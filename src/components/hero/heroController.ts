@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import type { RootState } from "@react-three/fiber";
 import { REGION_CENTERS } from "@/components/brain/brainGeometry";
-import { createSharedUniforms, type SharedUniforms } from "@/components/brain/uniforms";
+import { createClusterUniforms, createSharedUniforms, type SharedUniforms } from "@/components/brain/uniforms";
 import { PROBLEMS } from "@/components/sections/problems";
-import { ANCHOR_COUNT, sceneStore } from "@/lib/scene-store";
+import { ANCHOR_COUNT, CLUSTER_COUNT, sceneStore } from "@/lib/scene-store";
 
 const { damp, smoothstep, lerp } = THREE.MathUtils;
 const TAU = Math.PI * 2;
@@ -15,6 +15,22 @@ const SCENE2_CAM_Z = 4.6;
 const SCENE2_SCALE = 0.52;
 /** Horizontal screen position of the brain in Scene 02, as a fraction of half-width. */
 const SCENE2_SCREEN_X = 0.31;
+
+/** Scene 03: brain at the hub of the service constellation, right of the copy. */
+const SCENE3_CAM_Z = 6.0;
+const SCENE3_SCALE = 0.36;
+/** Constellation centre in NDC. */
+const SCENE3_SCREEN_X = 0.3;
+const SCENE3_SCREEN_Y = -0.02;
+/** Constellation radii in NDC. */
+const SCENE3_RX = 0.4;
+const SCENE3_RY = 0.56;
+/** Pentagon slots (unit), clockwise from the top: one per service cluster. */
+const CLUSTER_SLOTS = Array.from({ length: CLUSTER_COUNT }, (_, i) => {
+  const a = Math.PI / 2 - (i * TAU) / CLUSTER_COUNT;
+  return [Math.cos(a), Math.sin(a), Math.sin(i * 2.1) * 0.25] as const;
+});
+const HALF_FOV_TAN = Math.tan(THREE.MathUtils.degToRad(19));
 
 /** Angle equivalent to `target` that is nearest to `from` (avoids unwinding spins). */
 function nearestAngle(from: number, target: number) {
@@ -28,6 +44,7 @@ function nearestAngle(from: number, target: number) {
  */
 export class HeroController {
   readonly uniforms: SharedUniforms = createSharedUniforms();
+  readonly clusterUniforms = createClusterUniforms(CLUSTER_COUNT);
   private reducedMotion = false;
   private start = -1;
   private scroll = 0;
@@ -38,6 +55,10 @@ export class HeroController {
   private hover = 0;
   private hoverTarget = 0;
   private focus = 0;
+  private scene3In = 0;
+  private scene3 = 0;
+  private spin3 = 0;
+  private sel = 0;
   private readonly lookAt = new THREE.Vector3();
   private readonly anchors: THREE.Vector3[] = [];
   private readonly tmp = new THREE.Vector3();
@@ -87,7 +108,7 @@ export class HeroController {
     this.hoverTarget = 0;
   }
 
-  step(frame: RootState, rawDelta: number, group: THREE.Group | null) {
+  step(frame: RootState, rawDelta: number, group: THREE.Group | null, constellation: THREE.Group | null) {
     const u = this.uniforms;
     const reduced = this.reducedMotion;
     const delta = Math.min(rawDelta, 1 / 20);
@@ -104,13 +125,17 @@ export class HeroController {
     this.px = ease(this.px, reduced ? 0 : sceneStore.pointer.x, 3);
     this.py = ease(this.py, reduced ? 0 : sceneStore.pointer.y, 3);
     this.hover = ease(this.hover, this.hoverTarget, 6);
+    this.scene3In = ease(this.scene3In, sceneStore.scene3In, 5);
+    this.scene3 = ease(this.scene3, sceneStore.scene3, 5);
+    // Scene 03 takes over from the problem/stage focus.
+    const k3 = sceneStore.scene2Enabled ? smoothstep(this.scene3In, 0, 1) : 0;
 
     // Focus: a Scene 02 problem anchor wins over a hero delivery-stage region.
     const fa = sceneStore.focusAnchor;
     const fr = sceneStore.focusRegion;
     if (fa >= 0 && this.anchors[fa]) u.uFocus.value.copy(this.anchors[fa]);
     else if (fr >= 0) u.uFocus.value.fromArray(REGION_CENTERS[fr]);
-    this.focus = ease(this.focus, fa >= 0 || fr >= 0 ? 1 : 0, 5);
+    this.focus = ease(this.focus, (fa >= 0 || fr >= 0) && k3 < 0.5 ? 1 : 0, 5);
 
     const s1 = this.scroll;
     const s2 = this.scene2;
@@ -118,8 +143,8 @@ export class HeroController {
 
     u.uTime.value = reduced ? 0 : t;
     u.uReveal.value = intro(0.25, 1.9);
-    u.uLab.value = intro(0.1, 2.6) * (1 - s1 * (e2 ? 0.55 : 0.65));
-    u.uActivation.value = Math.min(1, intro(0.9, 3.0) * 0.55 + s1 * 0.3 + s2 * 0.25 + this.focus * 0.1);
+    u.uLab.value = intro(0.1, 2.6) * (1 - s1 * (e2 ? 0.55 : 0.65)) * (1 - k3 * 0.25);
+    u.uActivation.value = Math.min(1, intro(0.9, 3.0) * 0.55 + s1 * 0.3 + s2 * 0.25 + k3 * 0.2 + this.focus * 0.1);
     u.uPointerStrength.value = this.hover;
     u.uFocusStrength.value = this.focus;
     u.uPixelRatio.value = frame.gl.getPixelRatio();
@@ -147,6 +172,17 @@ export class HeroController {
       yaw = lerp(heroYaw, nearestAngle(heroYaw, scene2Yaw), k);
       camZ = lerp(6.2, SCENE2_CAM_Z, k) - s2 * 0.25;
       lookFactor = 0.45 * (1 - k);
+
+      if (k3 > 0) {
+        // Scene 03: the brain recentres as the hub of the service constellation.
+        const halfH = HALF_FOV_TAN * SCENE3_CAM_Z;
+        if (!reduced) this.spin3 += delta * 0.06;
+        x = lerp(x, SCENE3_SCREEN_X * halfH * aspect, k3);
+        y = lerp(y, SCENE3_SCREEN_Y * halfH, k3);
+        scale = lerp(scale, SCENE3_SCALE, k3);
+        yaw += this.spin3 * k3;
+        camZ = lerp(camZ, SCENE3_CAM_Z - this.scene3 * 0.2, k3);
+      }
     } else {
       x = lerp(baseX, 0, s1 * 0.7);
       y = baseY - s1 * 0.1;
@@ -173,6 +209,49 @@ export class HeroController {
     cam.updateMatrixWorld();
 
     if (group && this.anchors.length) this.projectAnchors(group, cam);
+    if (group && constellation) this.stepConstellation(group, constellation, cam, k3, aspect, t, ease);
+  }
+
+  /** Scene 03: place the cluster constellation around the brain and project it for the DOM labels. */
+  private stepConstellation(
+    group: THREE.Group,
+    constellation: THREE.Group,
+    cam: THREE.Camera,
+    k3: number,
+    aspect: number,
+    t: number,
+    ease: (from: number, to: number, lambda: number) => number,
+  ) {
+    const cu = this.clusterUniforms;
+    const out = sceneStore.clusters;
+    constellation.visible = k3 > 0.001;
+    if (!constellation.visible) {
+      out.fill(0);
+      return;
+    }
+    // Clusters grow out of the brain one after another during the entry.
+    const count = THREE.MathUtils.clamp((this.scene3In - 0.3) / 0.6, 0, 1) * CLUSTER_COUNT;
+    const fc = sceneStore.focusCluster;
+    if (fc >= 0) cu.uSel.value = fc;
+    this.sel = ease(this.sel, fc >= 0 ? 1 : 0, 6);
+    cu.uCount.value = count;
+    cu.uScene3.value = k3;
+    cu.uSelStrength.value = this.sel;
+
+    constellation.position.set(group.position.x, group.position.y, 0);
+    constellation.updateMatrixWorld();
+    const halfH = HALF_FOV_TAN * SCENE3_CAM_Z;
+    const reach = 0.35 + 0.65 * k3;
+    for (let i = 0; i < CLUSTER_COUNT; i++) {
+      const [sx, sy, sz] = CLUSTER_SLOTS[i];
+      const bob = this.reducedMotion ? 0 : Math.sin(t * 0.5 + i * 1.7) * 0.03;
+      const end = cu.uEnds.value[i];
+      end.set(sx * SCENE3_RX * halfH * aspect * reach, (sy * SCENE3_RY * halfH + bob) * reach, sz * reach);
+      this.tmp.copy(end).applyMatrix4(constellation.matrixWorld).project(cam);
+      out[i * 3] = this.tmp.x;
+      out[i * 3 + 1] = this.tmp.y;
+      out[i * 3 + 2] = THREE.MathUtils.clamp(count - i, 0, 1) * k3;
+    }
   }
 
   /** Project anchors to NDC for the DOM leader lines; `facing` fades anchors on the far side. */
