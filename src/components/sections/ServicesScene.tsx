@@ -6,7 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SERVICES } from "./services";
-import { useOrbitMode } from "@/lib/orbit-mode";
+import { useLabMode } from "@/lib/orbit-mode";
+import NarrateSteps, { type NarrateItem } from "./NarrateSteps";
 import { sceneStore } from "@/lib/scene-store";
 
 const COUNT = SERVICES.length;
@@ -14,15 +15,34 @@ const COUNT = SERVICES.length;
 /** Pinned scroll progress -> which service is narrated. */
 const autoIndexFor = (p: number) => (p < 0.06 ? -1 : Math.min(COUNT - 1, Math.floor(((p - 0.06) / 0.84) * COUNT)));
 
+const NARRATE_ITEMS: NarrateItem[] = SERVICES.map((s) => ({
+  num: s.num,
+  kicker: `${s.num} · ${s.subtitle}`,
+  title: s.title,
+  desc: s.desc,
+  tags: s.tags,
+  primary: { href: s.href, label: "Explore" },
+  secondary: { href: `/contact?service=${encodeURIComponent(s.title)}#enquiry`, label: "Enquire" },
+}));
+
+/** Narrated service brightens its cluster on the brain constellation. */
+const narrateFocus = (i: number) => {
+  sceneStore.focusCluster = i;
+  window.dispatchEvent(new Event("hero:focus"));
+};
+
 /**
  * Scene 03 — Intelligence in Motion.
  * Wide screens: the brain's network extends into five service clusters on the
  * shared 3D stage; each cluster carries a focusable label, scrolling narrates
- * them in turn, and hover/focus/click selects one. Elsewhere: a card grid with
- * every service fully visible.
+ * them in turn, and hover/focus/click selects one. Small screens (narrate): the
+ * constellation grows around the sticky brain while a dock narrates each
+ * service. Reduced motion: a card grid with every service fully visible.
  */
 export default function ServicesScene() {
-  const orbit = useOrbitMode();
+  const mode = useLabMode();
+  const orbit = mode === "orbit";
+  const narrate = mode === "narrate";
   const sectionRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -33,6 +53,25 @@ export default function ServicesScene() {
   const active = orbit ? (hovered >= 0 ? hovered : pinned >= 0 ? pinned : auto) : -1;
 
   // Entry (brain recentres, clusters grow out) and pinned narration.
+  useEffect(() => {
+    if (!narrate) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const section = sectionRef.current;
+    if (!section) return;
+    const entry = ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom",
+      end: "top top",
+      onUpdate: (self) => {
+        sceneStore.scene3In = self.progress;
+      },
+    });
+    return () => {
+      entry.kill();
+      sceneStore.scene3In = 0;
+    };
+  }, [narrate]);
+
   useEffect(() => {
     if (!orbit) return;
     gsap.registerPlugin(ScrollTrigger);
@@ -71,9 +110,10 @@ export default function ServicesScene() {
 
   // Selected service brightens its cluster and the strands feeding it.
   useEffect(() => {
+    if (narrate) return; // NarrateSteps drives the focus.
     sceneStore.focusCluster = orbit ? active : -1;
     window.dispatchEvent(new Event("hero:focus"));
-  }, [orbit, active]);
+  }, [orbit, narrate, active]);
   useEffect(() => () => void (sceneStore.focusCluster = -1), []);
 
   // Labels ride on the projected cluster centres while the section is on screen.
@@ -119,7 +159,7 @@ export default function ServicesScene() {
   const toggle = (i: number) => setPinned((p) => (p === i ? -1 : i));
 
   return (
-    <section ref={sectionRef} className="svc" data-mode={orbit ? "orbit" : "list"} aria-labelledby="svc-heading">
+    <section ref={sectionRef} className="svc" data-mode={mode} aria-labelledby="svc-heading">
       <div ref={pinRef} className="svc__pin">
         <div className="svc__veil" aria-hidden="true" />
         <header className="svc__intro">
@@ -181,6 +221,8 @@ export default function ServicesScene() {
               );
             })}
           </ol>
+        ) : narrate ? (
+          <NarrateSteps items={NARRATE_ITEMS} label="Services" onActive={narrateFocus} />
         ) : (
           <ol className="svc__grid">
             {SERVICES.map((s, i) => (
@@ -223,9 +265,14 @@ function ServiceBody({ index, asCard }: { index: number; asCard?: boolean }) {
           Explore <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
         </span>
       ) : (
-        <Link href={href} className="svc__explore">
-          Explore<span className="sr-only"> {title}</span> <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-        </Link>
+        <span className="svc__actions">
+          <Link href={href} className="svc__explore">
+            Explore<span className="sr-only"> {title}</span> <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+          </Link>
+          <Link href={`/contact?service=${encodeURIComponent(title)}#enquiry`} className="svc__explore svc__explore--ghost">
+            Enquire<span className="sr-only"> about {title}</span>
+          </Link>
+        </span>
       )}
     </>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Pricing — AI Sprint, Custom & Enterprise Engagements",
@@ -13,7 +13,7 @@ const plans = [
     sub: "Structured Delivery",
     price: "Discuss Requirements",
     desc: "Our core engagement model. A structured, focused sprint from discovery to live solution.",
-    features: ["Discovery & requirements workshop", "AI solution design & architecture", "Development within agreed scope", "Testing, deployment & go-live", "Team training & documentation", "30-day post-launch support period"],
+    features: ["Discovery & requirements workshop", "AI solution design & architecture", "Development within agreed scope", "Testing, deployment & go-live", "Team training & documentation", "Post-launch support period agreed with you"],
     featured: false,
     cta: "Discuss Your Sprint",
     href: "/get-started/book-call",
@@ -31,11 +31,11 @@ const plans = [
   {
     name: "Enterprise",
     sub: "Full Programme",
-    price: "Contact Sales",
+    price: "Contact Us",
     desc: "Enterprise-grade AI transformation with dedicated engineering resource and full programme management.",
-    features: ["Everything in Custom Engagement", "Dedicated AI engineering team", "Enterprise security & compliance review", "Custom integration & API development", "SLA-backed support", "Quarterly business reviews"],
+    features: ["Everything in Custom Engagement", "Dedicated AI engineering team", "Enterprise security & compliance review", "Custom integration & API development", "Support terms agreed in your contract", "Quarterly business reviews"],
     featured: false,
-    cta: "Contact Enterprise Sales",
+    cta: "Discuss an Enterprise Engagement",
     href: "/get-started/contact-sales",
   },
 ];
@@ -43,7 +43,7 @@ const plans = [
 const support = [
   { name: "Essential", price: "Discuss", features: ["Email support", "Business hours", "Monthly check-in"] },
   { name: "Standard", price: "Discuss", features: ["Priority support", "Extended hours", "Weekly check-in", "Minor updates"] },
-  { name: "Managed", price: "Discuss", features: ["Dedicated engineer", "24/7 monitoring", "Daily ops review", "Ongoing optimisation"] },
+  { name: "Managed", price: "Discuss", features: ["Engineering support aligned with your project", "Monitoring options tailored to your requirements", "Regular operational reviews, as agreed", "Continuous improvement opportunities"] },
 ];
 
 export default function PricingPage() {
@@ -77,14 +77,6 @@ export default function PricingPage() {
                   border: `1px solid ${featured ? "var(--blue)" : "var(--border)"}`,
                   boxShadow: featured ? "0 0 60px rgba(37,99,235,0.2)" : "none",
                 }}>
-                {featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="flex items-center gap-1 text-xs font-bold px-4 py-1.5 rounded-full"
-                      style={{ background: "var(--bg-base)", color: "var(--blue)", border: "1px solid var(--border-blue)" }}>
-                      <Star className="w-3 h-3" /> Most Popular
-                    </span>
-                  </div>
-                )}
                 <div className="mb-5">
                   <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
                     style={{ background: featured ? "rgba(255,255,255,0.15)" : "var(--blue-glass)", color: featured ? "#fff" : "#8FE3FF" }}>
@@ -123,7 +115,7 @@ export default function PricingPage() {
               <h2 className="display-lg text-white mb-3" style={{ fontFamily: "var(--font-sora)" }}>
                 Ongoing <span className="text-gradient">AI Support</span>
               </h2>
-              <p style={{ color: "var(--text-secondary)" }}>Keep your AI solution performing at its best with a managed support plan.</p>
+              <p style={{ color: "var(--text-secondary)" }}>Keep your AI solution performing at its best with an ongoing support plan.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-5">
               {support.map(({ name, price, features }) => (

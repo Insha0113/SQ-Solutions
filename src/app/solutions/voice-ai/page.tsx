@@ -50,9 +50,9 @@ export default function VoiceAIPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "24/7", label: "Call availability" }, { val: "30+", label: "Languages supported" }, { val: "< 1s", label: "Response latency" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "24/7", label: "Call availability" }, { val: "Multilingual", label: "Voice conversations" }, { val: "Real-time", label: "Spoken responses" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

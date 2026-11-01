@@ -15,8 +15,8 @@ export default function RequestSolutionPage() {
             <span className="text-gradient">We Build the Solution</span>
           </h1>
           <p className="text-[#B6B6C2] text-lg leading-relaxed mb-8">
-            Tell us what business challenge you&apos;re facing. We&apos;ll put together a custom
-            AI solution proposal within 48 hours.
+            Tell us what business challenge you&apos;re facing. We&apos;ll review your requirements
+            and respond with next steps.
           </p>
           <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
             Submit Your Request

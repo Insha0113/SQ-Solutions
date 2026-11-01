@@ -1,6 +1,6 @@
 /**
- * Content carried over verbatim from the previous partners strip. The label
- * implies formal partnerships; flagged for owner review before launch.
+ * Platforms and tools we work with. Labelled as a technology stack, not as
+ * partners: no formal partnerships are claimed.
  */
 const PARTNERS = [
   "OpenAI", "Microsoft Azure", "Google Cloud", "AWS", "Anthropic",
@@ -9,7 +9,7 @@ const PARTNERS = [
 ];
 
 /**
- * Trusted Partners — a signal readout band. Screen readers get one plain
+ * Technology stack — a signal readout band. Screen readers get one plain
  * list; the scrolling tracks are decorative duplicates. Reduced motion shows
  * a static, wrapped readout instead.
  */
@@ -21,7 +21,7 @@ export default function PartnerTicker() {
       <div className="ptk__frame">
         <h2 id="ptk-heading" className="ptk__label">
           <span className="ptk__led" aria-hidden="true" />
-          Technology Partners &amp; Integrations
+          Technologies We Work With
         </h2>
 
         <ul className="sr-only">

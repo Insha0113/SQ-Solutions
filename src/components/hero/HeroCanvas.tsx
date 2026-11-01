@@ -3,7 +3,7 @@
 import { Component, useEffect, useState, type ReactNode, type RefObject } from "react";
 import dynamic from "next/dynamic";
 import { useReducedMotion } from "framer-motion";
-import { detectTier, probeWebGL, TIER_SETTINGS, type TierSettings } from "@/lib/device-tier";
+import { compactSettings, detectTier, probeWebGL, TIER_SETTINGS, type TierSettings } from "@/lib/device-tier";
 
 // three.js + the scene ship in their own chunk, fetched only when WebGL is usable.
 const loadScene = () => import("./HeroScene");
@@ -39,7 +39,7 @@ function initialSettings(): TierSettings | null {
   if (!caps.webgl) return null;
   // Start fetching the scene now rather than after the first render (avoids a waterfall).
   void loadScene();
-  return TIER_SETTINGS[detectTier(caps)];
+  return compactSettings(TIER_SETTINGS[detectTier(caps)]);
 }
 
 interface HeroCanvasProps {
@@ -54,7 +54,24 @@ export default function HeroCanvas({ observeRef, eventSource }: HeroCanvasProps)
   const [settings] = useState(initialSettings);
   const [failed, setFailed] = useState(false);
   const [active, setActive] = useState(true);
+  const [idle, setIdle] = useState(false);
   const reducedMotion = useReducedMotion() ?? false;
+
+  // Mount the scene (and its main-thread geometry build) only once the page's
+  // own content has painted and the browser is idle, so copy and CTAs come first.
+  useEffect(() => {
+    if (!settings) return;
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    if (w.requestIdleCallback) {
+      const id = w.requestIdleCallback(() => setIdle(true), { timeout: 1500 });
+      return () => w.cancelIdleCallback?.(id);
+    }
+    const t = window.setTimeout(() => setIdle(true), 300);
+    return () => window.clearTimeout(t);
+  }, [settings]);
 
   // Stop rendering entirely while the stage is off-screen.
   useEffect(() => {
@@ -66,6 +83,7 @@ export default function HeroCanvas({ observeRef, eventSource }: HeroCanvasProps)
   }, [observeRef]);
 
   if (!settings || failed) return <HeroFallback />;
+  if (!idle) return null;
 
   return (
     <div className="lab-canvas" data-tier={settings.tier}>

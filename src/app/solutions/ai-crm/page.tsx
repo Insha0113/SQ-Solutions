@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const features = [
   { Icon: Users, title: "Auto Contact Enrichment", desc: "AI automatically populates CRM records with company data, social profiles, and buying intent signals." },
   { Icon: TrendingUp, title: "Deal Intelligence", desc: "Predictive scoring shows which deals are most likely to close, and flags at-risk opportunities before they go cold." },
-  { Icon: Heart, title: "Churn Prediction", desc: "AI analyses engagement signals and usage patterns to predict customer churn 30–60 days in advance." },
+  { Icon: Heart, title: "Churn Prediction", desc: "AI analyses engagement signals and usage patterns to flag customers at risk of churning early." },
   { Icon: BarChart3, title: "Revenue Analytics", desc: "AI-powered revenue intelligence — forecasting, cohort analysis, and pipeline health monitoring in real time." },
   { Icon: MessageSquare, title: "Automated Follow-Ups", desc: "AI drafts and schedules personalised follow-up emails based on the context of each customer relationship." },
   { Icon: Zap, title: "Activity Capture", desc: "Automatically log calls, emails, and meetings from your existing tools — zero manual data entry for reps." },
@@ -50,9 +50,9 @@ export default function AICRMPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "0", label: "Manual data entry for reps" }, { val: "30–60d", label: "Churn prediction horizon" }, { val: "3x", label: "Improvement in forecast accuracy" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Automatic", label: "CRM data entry for reps" }, { val: "Early", label: "Churn risk signals" }, { val: "Sharper", label: "Pipeline forecasting" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

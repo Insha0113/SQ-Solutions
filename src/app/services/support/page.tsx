@@ -11,18 +11,18 @@ const plans = [
   {
     name: "Essential",
     tag: "For startups",
-    features: ["Monthly performance review", "Bug fixes and patches", "Email support (48h response)", "Security updates", "Monthly usage report"],
+    features: ["Email support", "Business hours", "Monthly check-in"],
   },
   {
-    name: "Growth",
-    tag: "Most popular",
+    name: "Standard",
+    tag: "For growing teams",
     featured: true,
-    features: ["Weekly performance monitoring", "Priority bug fixes", "Slack/email support (24h response)", "AI model retraining as needed", "Feature updates (up to 10h/month)", "Quarterly strategy review"],
+    features: ["Priority support", "Extended hours", "Weekly check-in", "Minor updates"],
   },
   {
-    name: "Enterprise",
+    name: "Managed",
     tag: "For scale",
-    features: ["Real-time monitoring & alerting", "Same-day critical response", "Dedicated account manager", "Unlimited feature requests", "Monthly AI optimisation", "SLA-backed uptime guarantee"],
+    features: ["Engineering support aligned with your project", "Monitoring options tailored to your requirements", "Regular operational reviews, as agreed", "Continuous improvement opportunities"],
   },
 ];
 
@@ -59,12 +59,11 @@ export default function SupportPage() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="label mb-5">Support Plans</div>
             <h2 className="display-md mb-4">Choose Your <span className="text-gradient">Support Level</span></h2>
-            <p style={{ color: "var(--text-secondary)" }}>All plans include a 30-day free support period after initial deployment.</p>
+            <p style={{ color: "var(--text-secondary)" }}>Each project includes a post-launch support period agreed with you. After that, choose the plan that suits you.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {plans.map(({ name, tag, features, featured }) => (
               <div key={name} className="card" style={featured ? { border: "1px solid var(--border-blue)", background: "var(--blue-glass)" } : {}}>
-                {featured && <div className="tag-blue mb-4 inline-block">Most Popular</div>}
                 <div style={{ color: "var(--text-muted)", fontSize: "0.8rem", marginBottom: "0.25rem" }}>{tag}</div>
                 <h3 style={{ fontWeight: 800, color: "var(--text-primary)", fontSize: "1.5rem", marginBottom: "1.5rem" }}>{name}</h3>
                 <div className="space-y-3">
@@ -90,14 +89,14 @@ export default function SupportPage() {
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="label mb-5">What&apos;s Covered</div>
-            <h2 className="display-md mb-4">Comprehensive <span className="text-gradient">Coverage</span></h2>
+            <h2 className="display-md mb-4">Coverage <span className="text-gradient">Agreed With You</span></h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { Icon: Shield, title: "Security Updates", desc: "Proactive patching and security hardening to keep your systems protected." },
-              { Icon: RefreshCw, title: "Model Retraining", desc: "Regular AI model updates to maintain accuracy as your data evolves." },
-              { Icon: Zap, title: "Performance Tuning", desc: "Ongoing optimisation to keep response times fast and costs efficient." },
-              { Icon: Headphones, title: "Priority Support", desc: "Direct access to the engineers who built your system for fast resolution." },
+              { Icon: Shield, title: "Maintenance & Updates", desc: "Minor updates to keep your solution working as your tools and needs change, as agreed in your plan." },
+              { Icon: RefreshCw, title: "Regular Reviews", desc: "Monthly or weekly check-ins, or regular operational reviews, depending on your plan." },
+              { Icon: Zap, title: "Monitoring Options", desc: "Monitoring tailored to your requirements, with continuous improvement opportunities identified along the way." },
+              { Icon: Headphones, title: "Priority Support", desc: "Priority support on higher plans, with engineering support aligned with your project." },
             ].map(({ Icon, title, desc }) => (
               <div key={title} className="card">
                 <div className="icon-box mb-4"><Icon className="w-5 h-5" style={{ color: "var(--blue)" }} /></div>

@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "60%", label: "Faster lead qualification with AI scoring" },
-  { value: "40%", label: "Reduction in document processing time" },
-  { value: "3x", label: "More property enquiries handled per agent" },
-  { value: "30%", label: "Improvement in viewing conversion rate" },
+  { value: "Faster", label: "Lead qualification with AI scoring" },
+  { value: "Less manual", label: "Document processing" },
+  { value: "Always on", label: "Property enquiry handling" },
+  { value: "Targeted", label: "Viewings with better-matched buyers" },
 ];
 
 export default function RealEstatePage() {

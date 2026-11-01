@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "40%", label: "Average reduction in unplanned downtime with predictive maintenance" },
-  { value: "60%", label: "Faster quality defect detection with AI vision" },
-  { value: "25%", label: "Typical inventory optimisation improvement" },
-  { value: "3x", label: "Faster production scheduling with AI planning" },
+  { value: "Predictive", label: "Maintenance that flags issues before breakdowns" },
+  { value: "AI vision", label: "Quality defect detection" },
+  { value: "Optimised", label: "Inventory planning" },
+  { value: "Faster", label: "Production scheduling with AI planning" },
 ];
 
 export default function ManufacturingPage() {

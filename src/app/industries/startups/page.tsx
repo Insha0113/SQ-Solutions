@@ -17,10 +17,9 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "10x", label: "Operational capacity without equivalent headcount growth" },
-  { value: "48hrs", label: "From discovery to first AI prototype" },
-  { value: "70%", label: "Reduction in repetitive operational tasks" },
-  { value: "3x", label: "Faster customer onboarding with AI automation" },
+  { value: "Scale", label: "Operational capacity without matching headcount growth" },
+  { value: "Less manual", label: "Repetitive operational tasks automated" },
+  { value: "Faster", label: "Customer onboarding with AI automation" },
 ];
 
 export default function StartupsPage() {

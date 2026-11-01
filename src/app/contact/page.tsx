@@ -1,11 +1,15 @@
-"use client";
-import { useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Calendar, MessageSquare, Mail, Phone, Clock, MapPin, CheckCircle } from "lucide-react";
+import { ArrowRight, Calendar, MessageSquare, Mail, Clock, MapPin, CheckCircle } from "lucide-react";
+import LeadForm from "@/components/lead/LeadForm";
+import { SERVICES } from "@/components/sections/services";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Tell us your business problem. We'll review your enquiry and get back to you.",
+};
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
   return (
     <div style={{ background: "var(--bg-base)" }}>
       {/* Hero */}
@@ -63,7 +67,7 @@ export default function ContactPage() {
 
               <div className="rounded-xl p-4" style={{ background: "var(--blue-glass)", border: "1px solid var(--border-blue)" }}>
                 <p className="text-xs font-semibold mb-2" style={{ color: "#8FE3FF" }}>Our Promise</p>
-                {["Response within 24 hours", "No-obligation consultation", "Transparent process"].map((i) => (
+                {["Every enquiry reviewed by our team", "No-obligation consultation", "Transparent process"].map((i) => (
                   <div key={i} className="flex items-center gap-2 text-xs mb-1.5" style={{ color: "var(--text-secondary)" }}>
                     <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--blue)" }} /> {i}
                   </div>
@@ -72,51 +76,48 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="lg:col-span-2 card p-8 rounded-2xl">
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5" style={{ background: "var(--blue-glass)", border: "1px solid var(--border-blue)" }}>
-                    <CheckCircle className="w-7 h-7" style={{ color: "var(--blue)" }} />
-                  </div>
-                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: "var(--font-sora)" }}>Message Received</h3>
-                  <p className="mb-6" style={{ color: "var(--text-secondary)" }}>We&apos;ll review your challenge and respond within 24 hours.</p>
-                  <Link href="/" className="btn-primary">Back to Home <ArrowRight className="w-4 h-4" /></Link>
+            <div id="enquiry" className="lg:col-span-2 card p-8 rounded-2xl scroll-mt-24">
+              <h2 className="text-white font-bold text-xl mb-2" style={{ fontFamily: "var(--font-sora)" }}>Describe Your Challenge</h2>
+              <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>Tell us about your business problem — we&apos;ll identify where AI can help.</p>
+              <LeadForm
+                source="contact"
+                variant="classic"
+                className="space-y-4"
+                submitLabel="Send Message"
+                note={<>No commitment · We&apos;ll get back to you · Treated confidentially</>}
+                successTitle="Message Received"
+                successBody="We'll review your challenge and get back to you."
+              >
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div><label htmlFor="ct-first" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>First Name *</label><input id="ct-first" name="firstName" type="text" required autoComplete="given-name" placeholder="John" className="input" /></div>
+                  <div><label htmlFor="ct-last" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Last Name *</label><input id="ct-last" name="lastName" type="text" required autoComplete="family-name" placeholder="Smith" className="input" /></div>
                 </div>
-              ) : (
-                <>
-                  <h2 className="text-white font-bold text-xl mb-2" style={{ fontFamily: "var(--font-sora)" }}>Describe Your Challenge</h2>
-                  <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>Tell us about your business problem — we&apos;ll identify where AI can help.</p>
-                  <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>First Name *</label><input type="text" required placeholder="John" className="input" /></div>
-                      <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Last Name *</label><input type="text" required placeholder="Smith" className="input" /></div>
-                    </div>
-                    <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Business Email *</label><input type="email" required placeholder="john@company.com" className="input" /></div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Company *</label><input type="text" required placeholder="Your Company" className="input" /></div>
-                      <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Industry</label>
-                        <select className="input">
-                          <option value="">Select</option>
-                          {["Manufacturing","Healthcare","Retail","Finance","Logistics","Education","Legal","Technology","Other"].map(i => <option key={i} value={i}>{i}</option>)}
-                        </select>
-                      </div>
-                    </div>
-                    <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Describe Your Business Challenge *</label>
-                      <textarea required rows={5} placeholder="Tell us what's slowing your business down, your current process, and what success looks like..." className="input resize-none" />
-                    </div>
-                    <div><label className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Budget Range</label>
-                      <select className="input">
-                        <option value="">Select range</option>
-                        {["Under £10,000","£10,000–£25,000","£25,000–£50,000","£50,000–£100,000","Over £100,000","Let's Discuss"].map(b => <option key={b} value={b}>{b}</option>)}
-                      </select>
-                    </div>
-                    <button type="submit" className="btn-primary w-full justify-center py-3 text-base">
-                      Send Message <ArrowRight className="w-4 h-4" />
-                    </button>
-                    <p className="text-center text-xs" style={{ color: "var(--text-muted)" }}>No commitment · 24-hour response · Treated confidentially</p>
-                  </form>
-                </>
-              )}
+                <div><label htmlFor="ct-email" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Business Email *</label><input id="ct-email" name="email" type="email" required autoComplete="email" placeholder="john@company.com" className="input" /></div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div><label htmlFor="ct-company" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Company *</label><input id="ct-company" name="company" type="text" required autoComplete="organization" placeholder="Your Company" className="input" /></div>
+                  <div><label htmlFor="ct-industry" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Industry</label>
+                    <select id="ct-industry" name="industry" className="input">
+                      <option value="">Select</option>
+                      {["Manufacturing","Healthcare","Retail","Finance","Logistics","Education","Legal","Technology","Other"].map(i => <option key={i} value={i}>{i}</option>)}
+                    </select>
+                  </div>
+                </div>
+                <div><label htmlFor="ct-service" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>What do you need help with?</label>
+                  <select id="ct-service" name="service" className="input">
+                    <option value="">Not sure yet</option>
+                    {SERVICES.map((s) => <option key={s.num} value={s.title}>{s.title} — {s.subtitle}</option>)}
+                  </select>
+                </div>
+                <div><label htmlFor="ct-message" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Describe Your Business Challenge *</label>
+                  <textarea id="ct-message" name="message" required rows={5} placeholder="Tell us what's slowing your business down, your current process, and what success looks like..." className="input resize-none" />
+                </div>
+                <div><label htmlFor="ct-budget" className="block text-xs font-medium mb-1.5" style={{ color: "var(--text-secondary)" }}>Budget Range</label>
+                  <select id="ct-budget" name="budget" className="input">
+                    <option value="">Select range</option>
+                    {["Under £10,000","£10,000–£25,000","£25,000–£50,000","£50,000–£100,000","Over £100,000","Let's Discuss"].map(b => <option key={b} value={b}>{b}</option>)}
+                  </select>
+                </div>
+              </LeadForm>
             </div>
           </div>
         </div>

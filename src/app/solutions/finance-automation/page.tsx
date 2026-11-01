@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const features = [
-  { Icon: FileText, title: "Invoice Processing", desc: "Automatically extract, validate, and post invoices to your accounting system. 99%+ accuracy, zero manual entry." },
+  { Icon: FileText, title: "Invoice Processing", desc: "Automatically extract, validate, and post invoices to your accounting system, with far less manual entry." },
   { Icon: RefreshCw, title: "Bank Reconciliation", desc: "Match transactions automatically across bank statements and your accounting records. Flag discrepancies instantly." },
   { Icon: BarChart3, title: "Financial Reporting", desc: "Auto-generate P&L, cashflow, and management reports. Distributed to stakeholders on schedule." },
   { Icon: TrendingDown, title: "Expense Management", desc: "AI classifies and validates expense claims against policy. Automatic approval for compliant claims." },
@@ -47,9 +47,9 @@ export default function FinanceAutomationPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "80%", label: "Reduction in manual finance work" }, { val: "99%+", label: "Invoice extraction accuracy" }, { val: "50%", label: "Faster month-end close" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Less manual", label: "Finance processing work" }, { val: "Validated", label: "Invoice data before it is posted" }, { val: "Faster", label: "Month-end close" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

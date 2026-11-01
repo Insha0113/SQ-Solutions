@@ -10,7 +10,7 @@ const reasons = [
   {
     num: "02",
     title: "Practical, Cost-Conscious",
-    desc: "We design around your budget and requirements. No unnecessary complexity, no bloated projects, no vendor lock-in.",
+    desc: "We design around your budget and requirements. No unnecessary complexity, no bloated projects — built on standard, maintainable technology.",
   },
   {
     num: "03",

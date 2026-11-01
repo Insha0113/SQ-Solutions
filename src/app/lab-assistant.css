@@ -1,0 +1,333 @@
+/* ============================================================
+   Site assistant: launcher, 10 s invitation, chat panel.
+   Near-opaque surfaces (no backdrop-filter over the live WebGL stage).
+   ============================================================ */
+.assist {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+.assist > * { pointer-events: auto; }
+
+.assist-launcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: var(--bg-base);
+  background: var(--cyan);
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 10px 30px -8px rgba(0,217,255,0.55), 0 0 0 1px rgba(0,217,255,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.assist-launcher:hover { transform: translateY(-2px); }
+.assist-launcher:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
+
+.assist-invite {
+  position: relative;
+  width: min(320px, calc(100vw - 2rem));
+  padding: 1rem 1.1rem 1.05rem;
+  background: linear-gradient(180deg, rgba(12,19,34,0.97), rgba(7,11,20,0.97));
+  border: 1px solid rgba(0,217,255,0.22);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px -20px rgba(0,0,0,0.8);
+  animation: assistIn 0.45s cubic-bezier(.2,.7,.2,1) both;
+}
+.assist-invite__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.assist-invite__close:hover { color: var(--text-primary); }
+.assist-invite__kicker,
+.assist-panel__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.assist-invite__led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
+.assist-invite__text { margin: 0.55rem 1.2rem 0.85rem 0; font-size: 0.86rem; line-height: 1.55; color: var(--text-secondary); }
+.assist-invite__cta {
+  min-height: 40px;
+  padding: 0 1rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--bg-base);
+  background: var(--cyan);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Pill: the one-line invitation beside the launcher, used when the space
+   above it would cover scene labels, the brain or a call to action. */
+.assist-invite--pill {
+  position: absolute;
+  right: calc(52px + 12px);
+  bottom: 0;
+  width: auto;
+  max-width: calc(100vw - 52px - 3rem);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0 0.3rem 0 0.4rem;
+  border-radius: 999px;
+}
+.assist-invite--pill .assist-invite__close { position: static; flex-shrink: 0; }
+.assist-invite__pill-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0 0.6rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-primary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.assist-invite__pill-cta:hover { color: var(--cyan); }
+.assist-invite__pill-cta:focus-visible,
+.assist-invite__close:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 999px; }
+
+/* Badge: nothing else fits right now, so the launcher itself signals. */
+.assist-launcher { position: relative; }
+.assist-launcher[data-attention]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #F5F8FF;
+  box-shadow: 0 0 0 2px var(--cyan);
+}
+.assist-launcher[data-attention]::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,217,255,0.6);
+  animation: assistPulse 1.8s ease-out infinite;
+}
+@keyframes assistPulse {
+  from { transform: scale(0.9); opacity: 1; }
+  to   { transform: scale(1.35); opacity: 0; }
+}
+
+.assist-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(400px, calc(100vw - 2rem));
+  height: min(620px, calc(100svh - 7rem));
+  background: linear-gradient(180deg, rgba(10,16,30,0.985), rgba(6,9,17,0.985));
+  border: 1px solid rgba(0,217,255,0.2);
+  border-radius: 10px;
+  box-shadow: 0 24px 70px -24px rgba(0,0,0,0.9);
+  overflow: hidden;
+  animation: assistIn 0.35s cubic-bezier(.2,.7,.2,1) both;
+}
+.assist-panel[hidden] { display: none; }
+.assist-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem 0.85rem 1.1rem;
+  border-bottom: 1px solid rgba(155,170,193,0.12);
+}
+.assist-panel__title {
+  margin-top: 0.3rem;
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.assist-panel__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid rgba(155,170,193,0.16);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.assist-panel__close:hover { color: var(--text-primary); }
+
+.assist-log {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.assist-msg {
+  max-width: 88%;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.assist-msg--user {
+  align-self: flex-end;
+  color: var(--text-primary);
+  background: rgba(37,99,235,0.28);
+  border: 1px solid rgba(37,99,235,0.45);
+}
+.assist-msg--bot {
+  align-self: flex-start;
+  color: var(--text-secondary);
+  background: rgba(155,170,193,0.06);
+  border: 1px solid rgba(155,170,193,0.12);
+}
+.assist-links { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; margin-top: 0.5rem; list-style: none; }
+.assist-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 32px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+.assist-links a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.assist-typing { display: inline-flex; gap: 4px; }
+.assist-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: assistDot 1s ease-in-out infinite;
+}
+.assist-typing span:nth-child(2) { animation-delay: 0.15s; }
+.assist-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+.assist-suggest { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0 1rem 0.75rem; list-style: none; }
+.assist-chip {
+  min-height: 36px;
+  padding: 0.35rem 0.7rem;
+  font: inherit;
+  font-size: 0.78rem;
+  text-align: left;
+  color: var(--text-primary);
+  background: rgba(0,217,255,0.05);
+  border: 1px solid rgba(0,217,255,0.24);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.assist-chip:hover { border-color: rgba(0,217,255,0.6); }
+.assist-chip--cta { margin-top: 0.6rem; color: var(--bg-base); background: var(--cyan); border-color: var(--cyan); font-weight: 600; }
+
+.assist-lead {
+  padding: 0.9rem;
+  border: 1px solid rgba(0,217,255,0.2);
+  border-radius: 8px;
+  background: rgba(7,11,20,0.9);
+}
+.assist-lead__intro { font-size: 0.82rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 0.8rem; }
+.assist-form { gap: 0.8rem; }
+/* 16px stops iOS zooming into the field on focus. */
+.assist-form .lab-input { padding-block: 0.6rem; font-size: 16px; }
+.assist-lead .lead-done { min-height: 200px; }
+
+.assist-input {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem 0.4rem;
+  border-top: 1px solid rgba(155,170,193,0.12);
+}
+.assist-input input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 0.85rem;
+  font: inherit;
+  font-size: 16px;
+  color: var(--text-primary);
+  background: rgba(155,170,193,0.06);
+  border: 1px solid rgba(155,170,193,0.18);
+  border-radius: 6px;
+}
+.assist-input input:focus { outline: none; border-color: var(--cyan); }
+.assist-input button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--bg-base);
+  background: var(--cyan);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.assist-input button:disabled { opacity: 0.45; cursor: default; }
+.assist-foot { padding: 0 1rem 0.7rem; font-size: 0.68rem; color: var(--text-muted); }
+
+/* Phones: the panel becomes a bottom sheet above the launcher, and the
+   invitation stays short so it doesn't cover the page it floats over. */
+@media (max-width: 639px) {
+  .assist-invite { width: min(260px, calc(100vw - 2rem)); padding: 0.8rem 0.9rem; }
+  .assist-invite__more { display: none; }
+  .assist-invite__text { margin-block: 0.4rem 0.6rem; font-size: 0.82rem; }
+  .assist[data-open] { left: 0.5rem; right: 0.5rem; }
+  .assist-panel { width: 100%; height: calc(100svh - 6.5rem); }
+}
+
+@keyframes assistIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes assistDot {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50%      { opacity: 1; transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .assist-invite, .assist-panel { animation: none; }
+  .assist-launcher[data-attention]::before { animation: none; opacity: 0.8; }
+  .assist-typing span { animation: none; opacity: 0.7; }
+  .assist-launcher { transition: none; }
+}

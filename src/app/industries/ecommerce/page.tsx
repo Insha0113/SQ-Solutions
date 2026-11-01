@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "40%", label: "Reduction in cart abandonment with AI re-engagement" },
-  { value: "30%", label: "Average uplift in average order value with AI recommendations" },
-  { value: "<30s", label: "AI first-response time for customer queries" },
-  { value: "25%", label: "Faster fulfilment with AI warehouse optimisation" },
+  { value: "Re-engage", label: "Automated follow-up on abandoned carts" },
+  { value: "Personal", label: "Product recommendations for every shopper" },
+  { value: "Instant", label: "AI first response to customer queries" },
+  { value: "Smarter", label: "Warehouse and fulfilment planning" },
 ];
 
 export default function EcommercePage() {

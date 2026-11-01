@@ -10,8 +10,10 @@ import "./lab-process.css";
 import "./lab-connect.css";
 import "./lab-home.css";
 import "./lab-inner.css";
+import "./lab-assistant.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AssistantLauncher from "@/components/assistant/AssistantLauncher";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -66,6 +68,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <AssistantLauncher />
       </body>
     </html>
   );

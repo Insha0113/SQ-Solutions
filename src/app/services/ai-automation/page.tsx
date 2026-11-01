@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const benefits = [
-  { val: "80%", label: "Reduction in manual work" },
-  { val: "99%", label: "Accuracy on repetitive tasks" },
+  { val: "Less manual", label: "Repetitive work automated" },
+  { val: "Consistent", label: "Repetitive tasks handled the same way every time" },
   { val: "24/7", label: "Workflows run non-stop" },
-  { val: "150hrs", label: "Average delivery time" },
+  { val: "150hrs", label: "Structured delivery framework" },
 ];
 
 const process = [
@@ -73,7 +73,7 @@ export default function AIAutomationPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {benefits.map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -161,8 +161,8 @@ export default function AIAutomationPage() {
                 <span className="text-gradient">Is an Hour AI Could Save</span>
               </h2>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-                Studies consistently show that knowledge workers spend 40–60% of their time on
-                tasks that could be automated. That&apos;s not just inefficiency — it&apos;s your
+                Knowledge workers spend a large share of their time on tasks that could be
+                automated. That&apos;s not just inefficiency — it&apos;s your
                 team&apos;s creative capacity going to waste.
               </p>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
@@ -178,9 +178,9 @@ export default function AIAutomationPage() {
               {[
                 "Runs 24/7 without breaks, errors, or sick days",
                 "Scales instantly with demand spikes",
-                "Maintains perfect audit trails automatically",
+                "Keeps a clear audit trail automatically",
                 "Frees your team for high-value strategic work",
-                "Reduces operational costs by 40–80%",
+                "Helps reduce operational costs",
                 "Integrates with your existing tools and systems",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">

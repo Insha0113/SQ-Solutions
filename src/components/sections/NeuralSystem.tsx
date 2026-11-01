@@ -6,7 +6,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROBLEMS } from "./problems";
-import { useOrbitMode } from "@/lib/orbit-mode";
+import { useLabMode } from "@/lib/orbit-mode";
+import NarrateSteps, { type NarrateItem } from "./NarrateSteps";
 import { sceneStore } from "@/lib/scene-store";
 
 const COUNT = PROBLEMS.length;
@@ -15,15 +16,34 @@ const COUNT = PROBLEMS.length;
 const autoIndexFor = (p: number) => (p < 0.04 ? -1 : Math.min(COUNT - 1, Math.floor(((p - 0.04) / 0.86) * COUNT)));
 const revealedFor = (p: number) => Math.max(0, Math.min(COUNT, Math.floor((p - 0.02) / 0.06) + 1));
 
+const NARRATE_ITEMS: NarrateItem[] = PROBLEMS.map((p) => ({
+  num: p.num,
+  kicker: `Signal ${p.num}`,
+  title: p.title,
+  desc: p.desc,
+  primary: { href: p.href, label: "See solution" },
+  secondary: { href: `/contact?topic=${encodeURIComponent(p.title)}#enquiry`, label: "Discuss this problem" },
+}));
+
+/** Narrated problem lights and turns toward its anchor on the brain. */
+const narrateFocus = (i: number) => {
+  sceneStore.focusAnchor = i;
+  window.dispatchEvent(new Event("hero:focus"));
+};
+
 /**
  * Scene 02 — The Neural System.
  * Wide screens: the section pins while the lab brain (shared stage) holds a
  * close-up; the eight problems surface as anchors on the cortex, joined to
  * their labels by live leader lines. Scrolling narrates them in turn; hover,
- * focus or click selects one. Elsewhere: a plain, accessible disclosure list.
+ * focus or click selects one. Small screens (narrate): the brain sticks at the
+ * top while a dock below narrates one problem at a time and the brain turns to
+ * it. Reduced motion: a plain, accessible disclosure list.
  */
 export default function NeuralSystem() {
-  const orbit = useOrbitMode();
+  const mode = useLabMode();
+  const orbit = mode === "orbit";
+  const narrate = mode === "narrate";
   const sectionRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -38,13 +58,15 @@ export default function NeuralSystem() {
   // Tell the journey/stage which mode we are in (CSS makes the stage sticky in orbit mode).
   useLayoutEffect(() => {
     const journey = sectionRef.current?.closest(".lab-journey");
-    journey?.setAttribute("data-orbit", orbit ? "on" : "off");
+    journey?.setAttribute("data-orbit", orbit ? "on" : narrate ? "narrate" : "off");
     sceneStore.scene2Enabled = orbit;
+    sceneStore.narrate = narrate;
     return () => {
       sceneStore.scene2Enabled = false;
+      sceneStore.narrate = false;
       sceneStore.scene2 = 0;
     };
-  }, [orbit]);
+  }, [orbit, narrate]);
 
   // Scroll progress through the pinned section.
   useEffect(() => {
@@ -79,9 +101,10 @@ export default function NeuralSystem() {
 
   // Selected problem lights its region of the brain.
   useEffect(() => {
+    if (narrate) return; // NarrateSteps drives the focus.
     sceneStore.focusAnchor = orbit ? active : -1;
     window.dispatchEvent(new Event("hero:focus"));
-  }, [orbit, active]);
+  }, [orbit, narrate, active]);
   useEffect(() => () => void (sceneStore.focusAnchor = -1), []);
 
   // Leader lines: follow projected anchors every frame while the section is on screen.
@@ -157,7 +180,7 @@ export default function NeuralSystem() {
     <section
       ref={sectionRef}
       className="neural"
-      data-mode={orbit ? "orbit" : "list"}
+      data-mode={mode}
       aria-labelledby="neural-heading"
     >
       <div ref={pinRef} className="neural__pin">
@@ -190,6 +213,9 @@ export default function NeuralSystem() {
           </svg>
         ) : null}
 
+        {narrate ? (
+          <NarrateSteps items={NARRATE_ITEMS} label="Problems" onActive={narrateFocus} />
+        ) : (
         <ol className="neural__list">
           {PROBLEMS.map((p, i) => {
             const isActive = i === shown;
@@ -237,14 +263,23 @@ export default function NeuralSystem() {
                   </p>
                   <h3 className="neural__detail-title">{p.title}</h3>
                   <p className="neural__detail-desc">{p.desc}</p>
-                  <Link href={p.href} className="neural__detail-link">
-                    See solution <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
-                  </Link>
+                  <span className="neural__detail-actions">
+                    <Link href={p.href} className="neural__detail-link">
+                      See solution <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </Link>
+                    <Link
+                      href={`/contact?topic=${encodeURIComponent(p.title)}#enquiry`}
+                      className="neural__detail-link neural__detail-link--ghost"
+                    >
+                      Discuss this problem
+                    </Link>
+                  </span>
                 </div>
               </li>
             );
           })}
         </ol>
+        )}
       </div>
     </section>
   );

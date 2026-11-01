@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 };
 
 const capabilities = [
-  { Icon: Shield, title: "Enterprise Security", desc: "SOC 2-aligned architecture, data encryption at rest and in transit, role-based access control, and audit logging." },
+  { Icon: Shield, title: "Enterprise Security", desc: "Encrypted connections and role-based access controls, designed to work within your existing security frameworks and policies." },
   { Icon: Globe, title: "Multi-System Integration", desc: "Deep integration across your enterprise technology stack — ERP, CRM, HRMS, BI, and legacy systems." },
   { Icon: Users, title: "Organisation-Wide Deployment", desc: "AI solutions that scale across departments, business units, and geographies from a single platform." },
   { Icon: BarChart3, title: "Executive Intelligence", desc: "AI-powered dashboards that give C-suite and leadership real-time operational intelligence." },
   { Icon: Zap, title: "Process Automation at Scale", desc: "Enterprise-wide automation programmes targeting the highest-value repetitive workflows." },
-  { Icon: Lock, title: "Compliance & Governance", desc: "Built-in compliance frameworks — GDPR, ISO 27001, and industry-specific requirements." },
+  { Icon: Lock, title: "Compliance & Governance", desc: "Solutions built with GDPR in mind and designed around your organisation's own compliance and governance requirements." },
 ];
 
 const process = [
@@ -46,7 +46,7 @@ export default function EnterprisePage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/get-started/contact-sales" className="btn-primary inline-flex items-center gap-2">
-                Contact Enterprise Sales
+                Contact Our Team
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link href="/resources/ai-readiness" className="btn-secondary">AI Readiness Assessment</Link>
@@ -58,9 +58,10 @@ export default function EnterprisePage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "Enterprise", label: "Security standards" }, { val: "13+", label: "Industries served" }, { val: "100%", label: "GDPR compliant" }, { val: "Dedicated", label: "Account management" }].map(({ val, label }) => (
+            {[{ val: "Enterprise", label: "Security standards" }, { val: "13+", label: "Industries served" }, { val: "GDPR", label: "Considered from the start" }, { val: "Ongoing", label: "Communication throughout delivery" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                {/* Word values ("Enterprise") need a smaller floor than numbers to fit two columns on phones. */}
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -121,7 +122,7 @@ export default function EnterprisePage() {
                 Speak with our enterprise team. We&apos;ll scope your transformation roadmap and identify quick wins.
               </p>
               <Link href="/get-started/contact-sales" className="lab-btn">
-                Talk to Enterprise Sales
+                Talk to Our Team
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

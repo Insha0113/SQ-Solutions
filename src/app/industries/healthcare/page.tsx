@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "30%", label: "Reduction in administrative overhead with AI" },
-  { value: "4hrs", label: "Average time saved per clinician per week on documentation" },
-  { value: "50%", label: "Faster patient query resolution with AI support" },
-  { value: "99%", label: "Accuracy target for AI-assisted document processing" },
+  { value: "Less admin", label: "Routine administrative work handled by AI" },
+  { value: "Assisted", label: "Clinical documentation support" },
+  { value: "Faster", label: "Responses to patient queries with AI support" },
+  { value: "Reliable", label: "AI-assisted document processing" },
 ];
 
 export default function HealthcarePage() {

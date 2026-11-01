@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: "Does 150 hours mean my project will be done in under a week?",
-    a: "The 150 hours refers to the active development hours, not calendar time. Depending on team size and project complexity, this typically translates to 2–4 weeks of elapsed calendar time. We work with you on the timeline during discovery.",
+    a: "The 150 hours refers to the active development hours, not calendar time. Depending on team size and project complexity, this typically translates to 2–6 weeks of elapsed calendar time. We work with you on the timeline during discovery.",
   },
   {
     q: "What happens if my project is more complex than 150 hours?",
@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "What happens after my AI solution goes live?",
-    a: "We offer support and maintenance plans to ensure your solution stays running, secure, and optimised. We also offer expansion sprints to add features and capabilities as your needs grow.",
+    a: "We offer ongoing support plans, with the level of support agreed with you, to help keep your solution working well as your business changes. We also offer expansion sprints to add features and capabilities as your needs grow.",
   },
   {
     q: "How does the discovery session work?",

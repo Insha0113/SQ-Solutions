@@ -15,6 +15,8 @@ export const sceneStore = {
   scene2: 0,
   /** True when Scene 02 runs in pinned 3D mode (wide screens). */
   scene2Enabled: false,
+  /** True when Scenes 02/03 narrate under a sticky brain on small screens. */
+  narrate: false,
   /** Pointer in normalised device coords relative to the lab journey (-1..1). */
   pointer: { x: 0, y: 0 },
   /** Index of the delivery stage being hovered/focused in the HUD, or -1. */

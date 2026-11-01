@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "35%", label: "Improvement in customer retention with personalised AI" },
-  { value: "20%", label: "Average inventory waste reduction" },
+  { value: "Personal", label: "Customer experiences that encourage repeat visits" },
+  { value: "Leaner", label: "Inventory planning with less waste" },
   { value: "24/7", label: "AI customer support availability" },
-  { value: "2x", label: "Faster product recommendation accuracy" },
+  { value: "Relevant", label: "Product recommendations" },
 ];
 
 export default function RetailPage() {

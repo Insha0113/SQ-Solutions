@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const solutions = [
-  { Icon: FileText, title: "Tender & Bid Automation", desc: "AI drafts tender responses using past winning bids as reference. Cut bid preparation time by 60%." },
+  { Icon: FileText, title: "Tender & Bid Automation", desc: "AI drafts tender responses using past winning bids as reference, so bids take less time to prepare." },
   { Icon: BarChart3, title: "Project Cost Intelligence", desc: "Real-time cost tracking with AI alerts when projects approach budget thresholds — before overruns happen." },
   { Icon: Bot, title: "Site Report Automation", desc: "Voice or photo input from site. AI generates structured daily reports, punch lists, and safety records." },
   { Icon: Cog, title: "Procurement Optimisation", desc: "AI analyses supplier quotes, flags anomalies, and recommends optimal procurement decisions." },

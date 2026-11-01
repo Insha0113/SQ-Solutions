@@ -16,7 +16,7 @@ const OPTIONS = [
     Icon: MessageSquare,
     num: "02",
     title: "Tell Us Your Problem",
-    desc: "Describe your operational challenge. We'll identify where AI can help and respond within 24 hours.",
+    desc: "Describe your operational challenge. We'll identify where AI can help and get back to you.",
     cta: "Contact Us",
     href: "/contact",
     featured: false,
@@ -95,7 +95,7 @@ export default function ConnectScene() {
         </ul>
 
         <p className="cx__foot">
-          No commitment required · Response within 24 hours · All enquiries treated confidentially
+          No commitment required · Every enquiry reviewed · All enquiries treated confidentially
         </p>
       </div>
     </section>

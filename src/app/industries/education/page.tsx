@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "40%", label: "Reduction in administrative workload with AI" },
-  { value: "3x", label: "Faster student query resolution" },
-  { value: "60%", label: "Improvement in personalised learning outcomes" },
-  { value: "25%", label: "Reduction in student churn with early intervention AI" },
+  { value: "Less admin", label: "Routine administrative work automated" },
+  { value: "Faster", label: "Answers to common student queries" },
+  { value: "Tailored", label: "Learning support personalised to each student" },
+  { value: "Early", label: "Signals to support at-risk students" },
 ];
 
 export default function EducationPage() {

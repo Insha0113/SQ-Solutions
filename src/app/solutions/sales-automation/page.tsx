@@ -17,9 +17,9 @@ const features = [
 ];
 
 const stats = [
-  { val: "3x", label: "More leads qualified per rep" },
-  { val: "40%", label: "Increase in meeting bookings" },
-  { val: "80%", label: "Reduction in manual CRM work" },
+  { val: "Scaled", label: "Lead follow-up for every rep" },
+  { val: "Automated", label: "Meeting booking" },
+  { val: "Less manual", label: "CRM updates" },
   { val: "150hrs", label: "Deployment time" },
 ];
 
@@ -58,7 +58,7 @@ export default function SalesAutomationPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

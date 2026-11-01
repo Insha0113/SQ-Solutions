@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const types = [
-  { Icon: Headphones, title: "Customer Support Bot", desc: "Handle 80% of support queries automatically. Resolve tickets instantly, escalate complex issues to humans, and maintain full conversation history." },
+  { Icon: Headphones, title: "Customer Support Bot", desc: "Handle routine support queries automatically. Resolve tickets instantly, escalate complex issues to humans, and maintain full conversation history." },
   { Icon: ShoppingCart, title: "Sales & Lead Qualifier", desc: "Engage website visitors, qualify leads, answer product questions, and book calls — 24/7 without a sales rep." },
   { Icon: Calendar, title: "Booking & Scheduling Bot", desc: "Let customers book appointments, get quotes, and manage reservations through a natural conversation interface." },
   { Icon: Bot, title: "Internal Knowledge Bot", desc: "Give your team instant access to company policies, documentation, and procedures through a conversational AI assistant." },
@@ -39,9 +39,9 @@ const platforms = [
 ];
 
 const metrics = [
-  { val: "80%", label: "Queries resolved without human" },
+  { val: "Routine", label: "Queries handled without staff involvement" },
   { val: "24/7", label: "Always-on availability" },
-  { val: "< 2s", label: "Average response time" },
+  { val: "Instant", label: "Responses to visitors" },
   { val: "150hrs", label: "Deployment time" },
 ];
 
@@ -63,7 +63,7 @@ export default function AIChatbotsPage() {
             </h1>
             <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", lineHeight: 1.7, marginBottom: "2rem" }}>
               Squadify builds AI chatbots and virtual assistants that handle customer support, qualify
-              leads, and streamline operations — 24 hours a day, 7 days a week, in any language.
+              leads, and streamline operations — 24 hours a day, 7 days a week, in multiple languages.
               Custom-built for your business in 150 hours.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -85,7 +85,7 @@ export default function AIChatbotsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {metrics.map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

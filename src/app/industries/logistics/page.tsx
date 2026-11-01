@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "20%", label: "Average fuel cost reduction with AI route optimisation" },
-  { value: "35%", label: "Faster delivery exception resolution" },
-  { value: "99%", label: "Shipment tracking accuracy with AI" },
-  { value: "30%", label: "Warehouse pick efficiency improvement" },
+  { value: "Optimised", label: "Delivery routes planned with AI" },
+  { value: "Faster", label: "Delivery exception handling" },
+  { value: "Real-time", label: "Shipment tracking visibility" },
+  { value: "Smarter", label: "Warehouse picking workflows" },
 ];
 
 export default function LogisticsPage() {

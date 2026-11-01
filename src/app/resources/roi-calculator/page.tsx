@@ -7,7 +7,7 @@ export default function ROICalculatorPage() {
   const [employees, setEmployees] = useState(10);
   const [hoursPerWeek, setHoursPerWeek] = useState(15);
   const [hourlyCost, setHourlyCost] = useState(30);
-  const [savingPercent, setSavingPercent] = useState(60);
+  const [savingPercent, setSavingPercent] = useState(30);
 
   const annualHoursSaved = employees * hoursPerWeek * 52 * (savingPercent / 100);
   const annualSaving = annualHoursSaved * hourlyCost;

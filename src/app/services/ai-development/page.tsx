@@ -33,12 +33,12 @@ const process = [
 
 const features = [
   "Clean, documented, maintainable codebase",
-  "Full source code ownership — no vendor lock-in",
+  "Code ownership agreed before work begins, on standard, maintainable technology",
   "Automated testing and CI/CD pipelines",
   "Production-grade security and compliance",
   "Scalable cloud-native architecture",
   "Comprehensive API documentation",
-  "30-day post-launch support included",
+  "Post-launch support period agreed with you",
   "Optional ongoing maintenance plans",
 ];
 
@@ -81,13 +81,13 @@ export default function AIDevelopmentPage() {
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { val: "150hrs", label: "Average delivery time" },
-              { val: "100%", label: "Source code ownership" },
-              { val: "30 days", label: "Post-launch support" },
-              { val: "0", label: "Vendor lock-in" },
+              { val: "150hrs", label: "Structured delivery framework" },
+              { val: "Agreed", label: "Code ownership terms" },
+              { val: "Agreed", label: "Post-launch support" },
+              { val: "Standard", label: "Maintainable technology" },
             ].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

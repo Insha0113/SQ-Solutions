@@ -85,12 +85,12 @@ export default function LabHero() {
           </p>
 
           <div className="lab-hero__actions reveal" style={delay(1.8)}>
-            <MagneticLink href="/150-hour-delivery" className="lab-btn">
-              See the 150-hour framework
+            <MagneticLink href="/contact#enquiry" className="lab-btn">
+              Tell us your problem
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </MagneticLink>
-            <Link href="/industries" className="lab-link">
-              Industries we serve
+            <Link href="/150-hour-delivery" className="lab-link">
+              See the 150-hour framework
             </Link>
           </div>
 

@@ -31,6 +31,10 @@ const CLUSTER_SLOTS = Array.from({ length: CLUSTER_COUNT }, (_, i) => {
   return [Math.cos(a), Math.sin(a), Math.sin(i * 2.1) * 0.25] as const;
 });
 const HALF_FOV_TAN = Math.tan(THREE.MathUtils.degToRad(19));
+/** Narrate mode (small screens): brain scale and constellation radii (fractions of the half-extents). */
+const NARRATE3_SCALE = 0.42;
+const NARRATE3_RX = 0.78;
+const NARRATE3_RY = 0.72;
 
 /** Angle equivalent to `target` that is nearest to `from` (avoids unwinding spins). */
 function nearestAngle(from: number, target: number) {
@@ -59,6 +63,9 @@ export class HeroController {
   private scene3 = 0;
   private spin3 = 0;
   private sel = 0;
+  /** Narrate mode: 0..1 blend toward facing the narrated anchor, and that anchor's yaw. */
+  private turn = 0;
+  private turnYaw = 0;
   private readonly lookAt = new THREE.Vector3();
   private readonly anchors: THREE.Vector3[] = [];
   private readonly tmp = new THREE.Vector3();
@@ -128,7 +135,8 @@ export class HeroController {
     this.scene3In = ease(this.scene3In, sceneStore.scene3In, 5);
     this.scene3 = ease(this.scene3, sceneStore.scene3, 5);
     // Scene 03 takes over from the problem/stage focus.
-    const k3 = sceneStore.scene2Enabled ? smoothstep(this.scene3In, 0, 1) : 0;
+    const narrate = sceneStore.narrate && !sceneStore.scene2Enabled;
+    const k3 = sceneStore.scene2Enabled || narrate ? smoothstep(this.scene3In, 0, 1) : 0;
 
     // Focus: a Scene 02 problem anchor wins over a hero delivery-stage region.
     const fa = sceneStore.focusAnchor;
@@ -190,6 +198,23 @@ export class HeroController {
       yaw = heroYaw + s1 * 1.1;
       camZ = 6.2 - s1 * 1.5;
       lookFactor = 0.45;
+
+      if (narrate) {
+        // Turn the brain so the narrated problem's anchor faces the viewer:
+        // rotation.y = atan2(-x, z) brings local (x, z) onto the +z axis.
+        const a = fa >= 0 ? this.anchors[fa] : undefined;
+        if (a) this.turnYaw = Math.atan2(-a.x, a.z);
+        this.turn = ease(this.turn, a && k3 < 0.5 ? 1 : 0, 3);
+        yaw = lerp(yaw, nearestAngle(yaw, this.turnYaw), this.turn);
+        if (k3 > 0) {
+          // Scene 03: brain recentres, smaller, as the hub of the constellation.
+          if (!reduced) this.spin3 += delta * 0.06;
+          x = lerp(x, 0, k3);
+          scale = lerp(scale, baseScale * NARRATE3_SCALE, k3);
+          yaw += this.spin3 * k3;
+          camZ = lerp(camZ, SCENE3_CAM_Z, k3);
+        }
+      }
     }
 
     if (group) {
@@ -242,11 +267,14 @@ export class HeroController {
     constellation.updateMatrixWorld();
     const halfH = HALF_FOV_TAN * SCENE3_CAM_Z;
     const reach = 0.35 + 0.65 * k3;
+    const narrate = !sceneStore.scene2Enabled;
+    const rx = (narrate ? NARRATE3_RX : SCENE3_RX) * halfH * aspect;
+    const ry = (narrate ? NARRATE3_RY : SCENE3_RY) * halfH;
     for (let i = 0; i < CLUSTER_COUNT; i++) {
       const [sx, sy, sz] = CLUSTER_SLOTS[i];
       const bob = this.reducedMotion ? 0 : Math.sin(t * 0.5 + i * 1.7) * 0.03;
       const end = cu.uEnds.value[i];
-      end.set(sx * SCENE3_RX * halfH * aspect * reach, (sy * SCENE3_RY * halfH + bob) * reach, sz * reach);
+      end.set(sx * rx * reach, (sy * ry + bob) * reach, sz * reach);
       this.tmp.copy(end).applyMatrix4(constellation.matrixWorld).project(cam);
       out[i * 3] = this.tmp.x;
       out[i * 3 + 1] = this.tmp.y;

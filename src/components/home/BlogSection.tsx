@@ -14,7 +14,7 @@ const posts = [
     num: "02",
     category: "Automation",
     title: "The Real Cost of Manual Data Entry (And How AI Eliminates It)",
-    desc: "Manual data processing costs UK SMEs an average of 14 hours per week per employee. Here's how AI document intelligence changes that equation completely.",
+    desc: "Manual data processing quietly consumes hours of skilled staff time every week. Here's how AI document intelligence changes that equation.",
     readTime: "5 min read",
     href: "/resources/blog",
   },

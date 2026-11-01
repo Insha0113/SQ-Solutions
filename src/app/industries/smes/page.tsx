@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "15hrs", label: "Average hours saved per week with AI automation" },
-  { value: "40%", label: "Reduction in operational overhead" },
-  { value: "£0", label: "Required upfront investment for pilot projects" },
-  { value: "6wks", label: "Average time from pilot to live deployment" },
+  { value: "Time back", label: "Routine tasks automated for small teams" },
+  { value: "Leaner", label: "Operations with less manual overhead" },
+  { value: "Scoped", label: "Pilot projects scoped to your budget" },
+  { value: "Phased", label: "Pilot first, then live deployment" },
 ];
 
 export default function SMEsPage() {

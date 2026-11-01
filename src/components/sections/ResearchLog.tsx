@@ -3,9 +3,9 @@ import { ArrowRight } from "lucide-react";
 import SectionHead from "./SectionHead";
 
 /**
- * Content carried over verbatim from the previous blog section. These
- * articles are not yet published on /resources/blog (links go to the index)
- * and post 02 cites an unsourced statistic; flagged for owner review.
+ * Content carried over from the previous blog section. These articles are
+ * not yet published on /resources/blog (links go to the index). Post 02's
+ * unsourced statistic was removed.
  */
 const POSTS = [
   {
@@ -20,7 +20,7 @@ const POSTS = [
     num: "02",
     category: "Automation",
     title: "The Real Cost of Manual Data Entry (And How AI Eliminates It)",
-    desc: "Manual data processing costs UK SMEs an average of 14 hours per week per employee. Here's how AI document intelligence changes that equation completely.",
+    desc: "Manual data processing quietly consumes hours of skilled staff time every week. Here's how AI document intelligence changes that equation.",
     readTime: "5 min read",
     href: "/resources/blog",
   },

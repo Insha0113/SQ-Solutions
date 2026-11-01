@@ -12,7 +12,7 @@ const reasons = [
     num: "01",
     title: "150-Hour Delivery System",
     desc: "We move from business problem to working AI solution in 150 engineering hours — weeks, not quarters. Our structured 5-stage system keeps delivery fast without sacrificing quality.",
-    points: ["Fixed-price project scopes", "Weekly milestones you can see", "No runaway timelines"],
+    points: ["Clearly agreed project scopes", "Milestones you can follow", "No runaway timelines"],
   },
   {
     num: "02",
@@ -24,13 +24,13 @@ const reasons = [
     num: "03",
     title: "Production-Quality Engineering",
     desc: "Everything we build is production-grade — clean code, automated testing, proper error handling, monitoring, and documentation. No prototypes that break in week two.",
-    points: ["Full source code ownership", "Automated CI/CD pipelines", "Comprehensive documentation"],
+    points: ["Code ownership agreed before work begins", "Automated CI/CD pipelines", "Comprehensive documentation"],
   },
   {
     num: "04",
     title: "Complete Transparency",
-    desc: "Fixed-price quotes before we start. Progress reports every week. Honest feedback when timelines shift. No surprise bills, no scope creep, no evasive answers.",
-    points: ["Fixed-price project quotes", "Weekly progress updates", "Honest about what's possible"],
+    desc: "Clear quotes agreed before we start. Regular progress updates. Honest feedback when timelines shift. Changes to scope or cost discussed with you first, and no evasive answers.",
+    points: ["Clear project quotes", "Regular progress updates", "Honest about what's possible"],
   },
 ];
 

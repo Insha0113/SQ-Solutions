@@ -231,3 +231,7 @@ a.svc__explore:hover { text-decoration: underline; text-underline-offset: 3px; }
   .svc__detail .svc__tags { margin-top: 0.7rem; }
   .svc__detail .svc__explore { margin-top: 0.7rem; }
 }
+
+/* Detail panel actions: explore plus a direct enquiry. */
+.svc__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; }
+.svc__explore--ghost { color: var(--text-primary); }

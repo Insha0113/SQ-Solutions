@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const features = [
-  { Icon: FileText, title: "CV Screening & Ranking", desc: "AI reviews every application against your job criteria and ranks candidates — cutting screening time by 90%." },
+  { Icon: FileText, title: "CV Screening & Ranking", desc: "AI reviews every application against your job criteria and ranks candidates, so screening takes far less time." },
   { Icon: Users, title: "Automated Onboarding", desc: "Personalised onboarding workflows that guide new hires through documentation, training, and setup automatically." },
   { Icon: Clock, title: "Leave & Absence Management", desc: "Automate leave requests, approvals, absence tracking, and payroll notifications — no spreadsheets needed." },
   { Icon: Brain, title: "Performance Analytics", desc: "AI surfaces performance trends, flags flight risks, and recommends development actions based on data." },
@@ -46,9 +46,9 @@ export default function HRAutomationPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "90%", label: "Faster CV screening" }, { val: "50%", label: "Reduction in HR admin" }, { val: "3x", label: "Faster onboarding" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Faster", label: "CV screening" }, { val: "Less admin", label: "For your HR team" }, { val: "Smoother", label: "Employee onboarding" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

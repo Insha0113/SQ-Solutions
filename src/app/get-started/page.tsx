@@ -21,7 +21,7 @@ export default function GetStartedPage() {
               { title: "Book a Discovery Call", desc: "Free 30-min call to understand your business challenge", href: "/get-started/book-call", featured: true },
               { title: "Free Consultation", desc: "Get expert AI advice for your specific problem", href: "/get-started/consultation", featured: false },
               { title: "Request a Solution", desc: "Describe your needs, get a custom proposal", href: "/get-started/request-solution", featured: false },
-              { title: "Contact Sales", desc: "Talk to our enterprise sales team directly", href: "/get-started/contact-sales", featured: false },
+              { title: "Contact Our Team", desc: "Talk to our team about enterprise engagements", href: "/get-started/contact-sales", featured: false },
             ].map((item) => (
               <Link
                 key={item.title}

@@ -49,9 +49,9 @@ export default function DedicatedTeamPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "48hrs", label: "Team onboarding time" }, { val: "0", label: "Recruitment overhead" }, { val: "100%", label: "Transparent reporting" }, { val: "Flexible", label: "Scale up or down anytime" }].map(({ val, label }) => (
+            {[{ val: "Agreed", label: "Start date set during scoping" }, { val: "Managed", label: "We handle team resourcing" }, { val: "Open", label: "Transparent progress reporting" }, { val: "Flexible", label: "Scale up or down anytime" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -95,7 +95,7 @@ export default function DedicatedTeamPage() {
               </Link>
             </div>
             <div className="grid grid-cols-1 gap-3">
-              {["Ready to start in 48 hours", "No recruitment or onboarding overhead", "Fully managed team — no HR headache", "Daily standups and transparent progress tracking", "Scale team size up or down as needed", "UK timezone availability and communication", "Senior engineers — not junior outsourced staff"].map((item) => (
+              {["Start date agreed during scoping", "No recruitment or onboarding overhead", "Fully managed team — no HR headache", "Daily standups and transparent progress tracking", "Scale team size up or down as needed", "UK timezone availability and communication", "Senior engineers — not junior outsourced staff"].map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: "var(--blue)" }} />
                   <span style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>{item}</span>
@@ -113,7 +113,7 @@ export default function DedicatedTeamPage() {
             <div style={{ position: "relative", zIndex: 1 }}>
               <Users className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
               <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
-                Get Your Dedicated AI Team in 48 Hours
+                Get Your Dedicated AI Team
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Tell us what you need. We&apos;ll match you with the right engineers and have them ready in two days.

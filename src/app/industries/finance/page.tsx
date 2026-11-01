@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "70%", label: "Reduction in manual compliance documentation" },
-  { value: "5x", label: "Faster fraud pattern detection vs manual review" },
-  { value: "40%", label: "Cost reduction in back-office processing" },
-  { value: "<2min", label: "AI-assisted loan pre-qualification time" },
+  { value: "Less manual", label: "Compliance documentation workflows" },
+  { value: "Always on", label: "Monitoring for unusual transaction patterns" },
+  { value: "Leaner", label: "Back-office processing" },
+  { value: "Faster", label: "Loan pre-qualification with AI assistance" },
 ];
 
 export default function FinancePage() {

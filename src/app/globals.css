@@ -387,6 +387,15 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
+/* Small screens: blurring the live WebGL stage beneath re-rasterises the
+   blur every frame on mobile GPUs. A near-opaque bar reads the same. */
+@media (max-width: 1023px) {
+  .nav-glass {
+    background: rgba(5,7,13,0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
 
 /* Number counter visual */
 .number-large {
@@ -513,4 +522,21 @@ body {
   .animate-marquee, .animate-marquee-slow, .animate-float, .animate-pulse-blue {
     animation: none;
   }
+}
+
+/* Brand mark (BrandMark.tsx): the black-on-transparent logo on a light tile
+   so it stays legible on the near-black header and footer. */
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 2px;
+  border-radius: 8px;
+  background: #F5F8FF;
+}
+.brand-mark__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* never stretched or cropped */
 }

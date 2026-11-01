@@ -36,7 +36,7 @@ export default function HeroScene({ settings, active, reducedMotion, eventSource
     <Canvas
       flat
       dpr={[settings.dpr[0], dprMax]}
-      frameloop={!active ? "never" : reducedMotion ? "demand" : "always"}
+      frameloop={!active ? "never" : reducedMotion || settings.maxFps > 0 ? "demand" : "always"}
       camera={{ position: [0, 0.3, 6.2], fov: 38, near: 0.1, far: 60 }}
       gl={{ antialias: settings.tier !== "low", alpha: false, stencil: false, powerPreference: "high-performance" }}
       eventSource={eventSource as RefObject<HTMLElement>}
@@ -48,6 +48,7 @@ export default function HeroScene({ settings, active, reducedMotion, eventSource
       }}
       aria-hidden="true"
     >
+      {active && !reducedMotion && settings.maxFps > 0 ? <FrameCap fps={settings.maxFps} /> : null}
       <PerformanceMonitor
         onDecline={() => setDprMax((d) => Math.max(settings.dpr[0], +(d - 0.25).toFixed(2)))}
       />
@@ -62,12 +63,34 @@ export default function HeroScene({ settings, active, reducedMotion, eventSource
   );
 }
 
+/** Fixed-rate rendering for frameloop="demand": one frame per 1/fps, aligned to vsync. */
+function FrameCap({ fps }: { fps: number }) {
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => {
+    const step = 1000 / fps;
+    let last = 0;
+    let raf = requestAnimationFrame(function loop(now) {
+      raf = requestAnimationFrame(loop);
+      // 2 ms slack so a 60 Hz display lands on every second vsync rather than drifting.
+      if (now - last >= step - 2) {
+        last = now;
+        invalidate();
+      }
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [fps, invalidate]);
+  return null;
+}
+
 interface RigOptions {
   settings: TierSettings;
   reducedMotion: boolean;
 }
 
 function ProceduralBrain(props: RigOptions) {
+  // Built on the main thread once the browser is idle (HeroCanvas defers mounting).
+  // A Web Worker was tried, but `new Worker(new URL(...))` hangs Next 16.4.3's
+  // Turbopack production build, so the geometry stays here.
   const geometry = useMemo(() => createProceduralBrain(props.settings.brainDetail), [props.settings.brainDetail]);
   return <Rig geometry={geometry} {...props} />;
 }
@@ -120,18 +143,25 @@ function Rig({ geometry, settings, reducedMotion }: RigOptions & { geometry: THR
 
   useFrame((frame, delta) => controller.step(frame, delta, group.current, constellation.current));
 
+  // Hover glow needs a mouse. Touch devices skip the BVH build and per-event raycasts entirely.
+  const [hover] = useState(() => window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+
   return (
     <>
       <group ref={group}>
-        <Bvh firstHitOnly>
-          <Brain
-            geometry={geometry}
-            uniforms={controller.uniforms}
-            backFaces={settings.backFaces}
-            onPointerMove={(e: ThreeEvent<PointerEvent>) => controller.pointerMove(e.point)}
-            onPointerLeave={() => controller.pointerLeave()}
-          />
-        </Bvh>
+        {hover ? (
+          <Bvh firstHitOnly>
+            <Brain
+              geometry={geometry}
+              uniforms={controller.uniforms}
+              backFaces={settings.backFaces}
+              onPointerMove={(e: ThreeEvent<PointerEvent>) => controller.pointerMove(e.point)}
+              onPointerLeave={() => controller.pointerLeave()}
+            />
+          </Bvh>
+        ) : (
+          <Brain geometry={geometry} uniforms={controller.uniforms} backFaces={settings.backFaces} />
+        )}
         <NeuralNetwork geometry={geometry} uniforms={controller.uniforms} count={settings.neuralNodes} />
       </group>
       <ServiceClusters
@@ -141,7 +171,12 @@ function Rig({ geometry, settings, reducedMotion }: RigOptions & { geometry: THR
         count={CLUSTER_COUNT}
         pointsPerCluster={settings.clusterPoints}
       />
-      <Laboratory uniforms={controller.uniforms} dust={settings.dustParticles} reflections={settings.reflections} />
+      <Laboratory
+        uniforms={controller.uniforms}
+        dust={settings.dustParticles}
+        reflections={settings.reflections}
+        full={settings.fullLab}
+      />
     </>
   );
 }

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const opportunities = [
   "Automate repetitive operational workflows",
-  "Reduce customer support costs by 60–80%",
+  "Reduce customer support costs",
   "Improve employee productivity across teams",
   "Automate documents, emails & reports",
   "Turn data into actionable business insights",
@@ -80,12 +80,12 @@ export default function AIConsultingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { val: "150hrs", label: "From Problem to Solution" },
-              { val: "60–80%", label: "Support Cost Reduction" },
+              { val: "Lower", label: "Support Costs Through Automation" },
               { val: "13+", label: "Industries Served" },
-              { val: "100%", label: "Custom-Built Solutions" },
+              { val: "Tailored", label: "Solutions Built Around Your Needs" },
             ].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

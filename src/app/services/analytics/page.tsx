@@ -57,13 +57,13 @@ export default function AnalyticsPage() {
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { val: "90%", label: "Faster insights vs manual reporting" },
+              { val: "Faster", label: "Insights than manual reporting" },
               { val: "Real-time", label: "Dashboard data refresh" },
               { val: "150hrs", label: "Analytics system delivery" },
-              { val: "100%", label: "Your data — fully owned" },
+              { val: "Private", label: "Data handling agreed with you" },
             ].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

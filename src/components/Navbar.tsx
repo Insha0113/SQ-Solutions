@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Zap } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import BrandMark from "@/components/BrandMark";
 
 const nav = [
   {
@@ -188,10 +189,8 @@ export default function Navbar() {
       >
         <div className="container flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-[#2563EB] flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white fill-white" />
-            </div>
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="Squadify Solutions — home">
+            <BrandMark />
             <span
               className="font-heading font-800 text-white text-lg tracking-tight"
               style={{ fontFamily: "var(--font-sora)", fontWeight: 800 }}

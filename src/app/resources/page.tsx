@@ -16,19 +16,19 @@ const QUICK = [
 ];
 
 /*
- * Content carried over verbatim. Flagged for owner review: none of these
- * article routes exist yet (they 404), and post 01 describes an unverified
- * client result (40% cost saving, 90% fewer errors).
+ * Content carried over verbatim. The individual articles are not published
+ * yet, so entries link to the blog index (their old /resources/blog/<slug>
+ * routes 404'd). Post 01's unverified client figures were removed.
  */
 const POSTS = [
   {
-    title: "How AI Automation Saved a Logistics Company 40% in Operational Costs",
+    title: "How AI Workflow Automation Can Reduce Manual Work in Logistics",
     category: "AI Automation",
     author: "Squadify Team",
     date: "Oct 20, 2026",
     readTime: "5 min read",
-    excerpt: "Discover how we built a custom AI workflow automation system for a mid-sized logistics company that eliminated manual data entry, reduced errors by 90%, and cut operational costs by 40% — delivered in just 150 hours.",
-    href: "/resources/blog/logistics-automation",
+    excerpt: "How a custom AI workflow automation system can take manual data entry off a logistics team's plate, reduce avoidable errors and lower operational costs — scoped and delivered through our 150-hour framework.",
+    href: "/resources/blog",
   },
   {
     title: "The 150-Hour Delivery Model: Why Speed Matters in AI Projects",
@@ -37,7 +37,7 @@ const POSTS = [
     date: "Oct 15, 2026",
     readTime: "4 min read",
     excerpt: "Traditional software projects take months. We believe businesses deserve faster results. Here's why our 150-hour sprint model consistently outperforms conventional approaches.",
-    href: "/resources/blog/150-hour-model",
+    href: "/resources/blog",
   },
   {
     title: "5 Business Problems AI Can Solve This Week",
@@ -46,7 +46,7 @@ const POSTS = [
     date: "Oct 10, 2026",
     readTime: "6 min read",
     excerpt: "You don't need a massive budget or months of planning to benefit from AI. Here are five common business problems that AI can solve quickly, practically, and cost-effectively.",
-    href: "/resources/blog/five-problems-ai-solves",
+    href: "/resources/blog",
   },
   {
     title: "AI vs. Traditional Software Development: What Business Owners Need to Know",
@@ -55,7 +55,7 @@ const POSTS = [
     date: "Oct 5, 2026",
     readTime: "7 min read",
     excerpt: "Understanding the key differences between AI-powered solutions and traditional software, and why AI delivers faster, smarter results for business problems.",
-    href: "/resources/blog/ai-vs-traditional",
+    href: "/resources/blog",
   },
   {
     title: "How to Measure ROI on Your AI Investment",
@@ -64,7 +64,7 @@ const POSTS = [
     date: "Sep 28, 2026",
     readTime: "5 min read",
     excerpt: "A practical guide for business owners to measure and track the return on investment from AI solutions, with real metrics and examples.",
-    href: "/resources/blog/ai-roi",
+    href: "/resources/blog",
   },
   {
     title: "Building an AI-Ready Organization: A Practical Checklist",
@@ -73,7 +73,7 @@ const POSTS = [
     date: "Sep 20, 2026",
     readTime: "8 min read",
     excerpt: "Before you implement AI, your organization needs to be ready. Here's a practical checklist to assess your AI readiness and prepare for successful implementation.",
-    href: "/resources/blog/ai-readiness",
+    href: "/resources/blog",
   },
 ];
 

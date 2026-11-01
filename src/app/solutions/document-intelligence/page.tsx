@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 const features = [
-  { Icon: Search, title: "Intelligent Data Extraction", desc: "Extract structured data from unstructured documents — invoices, contracts, forms, receipts — with 99%+ accuracy." },
+  { Icon: Search, title: "Intelligent Data Extraction", desc: "Extract structured data from unstructured documents — invoices, contracts, forms and receipts." },
   { Icon: Cpu, title: "Document Classification", desc: "Automatically categorise and route incoming documents to the correct workflow, system, or team." },
   { Icon: FileText, title: "Contract Analysis", desc: "AI reviews contracts for key terms, obligations, risks, and renewal dates — flagging issues for human review." },
   { Icon: Shield, title: "Compliance Validation", desc: "Automatically check documents against compliance rules and flag missing information or policy violations." },
-  { Icon: Clock, title: "Real-Time Processing", desc: "Process hundreds of documents per minute. From upload to structured data in under 5 seconds." },
+  { Icon: Clock, title: "Real-Time Processing", desc: "Process documents as they arrive, from upload to structured data in moments." },
   { Icon: BarChart3, title: "Analytics & Reporting", desc: "Track document volumes, processing times, extraction accuracy, and exception rates in a live dashboard." },
 ];
 
@@ -51,9 +51,9 @@ export default function DocumentIntelligencePage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "99%+", label: "Extraction accuracy" }, { val: "< 5s", label: "Per document processing" }, { val: "100+", label: "Document types supported" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Structured", label: "Data from unstructured documents" }, { val: "Fast", label: "Per-document processing" }, { val: "Varied", label: "Invoices, contracts, forms and receipts" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}

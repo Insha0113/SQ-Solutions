@@ -229,3 +229,122 @@
 }
 .neural__wires .is-active polyline { stroke: rgba(0,217,255,0.9); }
 .neural__wires .is-active circle { fill: var(--cyan); filter: drop-shadow(0 0 6px var(--cyan)); }
+
+/* ============================================================
+   NARRATE MODE — small screens with motion allowed.
+   The stage sticks at the top across Hero, Scene 02 and Scene 03;
+   a dock under it narrates one item at a time.
+   ============================================================ */
+@media (max-width: 1023px) {
+  .lab-journey[data-orbit="narrate"] .lab-journey__stage { position: sticky; }
+  .lab-journey[data-orbit="narrate"] > .lab-hero { margin-top: -62svh; }
+}
+
+.neural[data-mode="narrate"] .neural__veil,
+.svc[data-mode="narrate"] .svc__veil { display: none; }
+.neural[data-mode="narrate"] .neural__intro,
+.svc[data-mode="narrate"] .svc__intro {
+  position: relative;
+  padding: 4.5rem clamp(1.25rem, 5vw, 4rem) 2.5rem;
+  /* Reads over the sticky brain as it scrolls past. */
+  background: linear-gradient(180deg, rgba(5,7,13,0) 0%, rgba(5,7,13,0.9) 3.5rem, rgba(5,7,13,0.9) calc(100% - 3rem), rgba(5,7,13,0) 100%);
+}
+
+.nsteps {
+  position: relative;
+  /* 50svh of scroll per item, after a full-screen entry. */
+  height: calc(var(--steps) * 50svh + 100svh);
+}
+.nsteps__dock {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0 clamp(1rem, 5vw, 2rem) max(1rem, env(safe-area-inset-bottom));
+  pointer-events: none; /* the brain stays visible and the page scrolls through the empty top */
+}
+.nsteps__card,
+.nsteps__dots { pointer-events: auto; }
+.nsteps__card {
+  position: relative;
+  max-width: 560px;
+  padding: 1.1rem 1.2rem 1.05rem;
+  background: linear-gradient(180deg, rgba(12,19,34,0.95), rgba(7,11,20,0.94));
+  border: 1px solid rgba(0,217,255,0.14);
+  border-radius: 6px;
+}
+.nsteps__body { animation: neuralDetailIn 0.4s cubic-bezier(.2,.7,.2,1) both; }
+.nsteps__kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.5rem;
+}
+.nsteps__kicker span { color: var(--text-muted); }
+.nsteps__title {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.nsteps__desc { margin-top: 0.4rem; font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); }
+.nsteps__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.65rem; list-style: none; }
+.nsteps__tags li {
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(155,170,193,0.16);
+  border-radius: 3px;
+  color: var(--text-secondary);
+}
+.nsteps__actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-top: 0.8rem; }
+.nsteps__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+.nsteps__link--ghost { color: var(--text-primary); }
+.nsteps__link:focus-visible { outline: 1px solid var(--cyan); outline-offset: 3px; }
+.nsteps__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  /* Clear of the chat launcher at the bottom right. */
+  padding-right: 4.5rem;
+}
+.nsteps__dot {
+  min-width: 30px;
+  min-height: 34px;
+  padding: 0 0.3rem;
+  font: inherit;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  background: rgba(7,11,20,0.85);
+  border: 1px solid rgba(155,170,193,0.16);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.nsteps__dot[aria-current] {
+  color: var(--bg-base);
+  background: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0,217,255,0.45);
+}
+.nsteps__dot:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+
+/* Detail panel actions: solution link plus a direct enquiry. */
+.neural__detail-actions { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+.neural__detail-link--ghost { color: var(--text-primary); }

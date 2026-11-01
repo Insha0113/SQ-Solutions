@@ -1,27 +1,27 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-// Honest placeholder case studies — no fabricated names, ROI claims, or client details
+// Illustrative examples, not client case studies — no fabricated names, ROI claims, or client details
 const studies = [
   {
     num: "01",
     sector: "Professional Services",
     title: "Document Processing Automation",
-    outcome: "Automated extraction and routing of key data from client documents — reducing manual processing time per document significantly.",
+    outcome: "Automatically extracting and routing key data from incoming documents, so staff spend far less time on manual processing.",
     tags: ["Document AI", "Automation", "Integration"],
   },
   {
     num: "02",
     sector: "Retail & E-commerce",
     title: "AI Customer Support Agent",
-    outcome: "Deployed a 24/7 AI support agent handling common queries, order tracking, and returns — reducing first-response time to under 30 seconds.",
+    outcome: "A 24/7 AI support agent handling common queries, order tracking and returns, so customers get an immediate first response.",
     tags: ["AI Chatbot", "Customer Support", "API Integration"],
   },
   {
     num: "03",
     sector: "B2B Technology",
     title: "Sales Pipeline Intelligence",
-    outcome: "Built an AI layer on top of an existing CRM to automatically score leads, draft follow-up sequences, and flag stalled deals for human review.",
+    outcome: "An AI layer on top of an existing CRM that scores leads, drafts follow-up sequences and flags stalled deals for human review.",
     tags: ["Sales AI", "CRM Integration", "Lead Scoring"],
   },
 ];
@@ -50,15 +50,15 @@ export default function CaseStudies() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 mb-20">
           <div style={{ maxWidth: "540px" }}>
-            <div className="label mb-6">Our Work</div>
+            <div className="label mb-6">Example Use Cases</div>
             <h2 className="display-xl" style={{ marginBottom: 0 }}>
-              AI Delivered.{" "}
-              <span className="text-gradient">Real Outcomes.</span>
+              Real Problems.{" "}
+              <span className="text-gradient">Practical AI.</span>
             </h2>
           </div>
           <div style={{ maxWidth: "400px", paddingTop: "1rem" }}>
             <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem" }}>
-              A sample of the business problems we&apos;ve helped solve with AI — from document
+              Illustrative examples of the business problems we solve with AI — from document
               automation to intelligent sales pipelines.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function CaseStudies() {
             marginBottom: "2rem",
           }}
         >
-          Client details are kept confidential. Projects are described at an outcome level only.
+          These are illustrative examples, not descriptions of specific client projects.
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>

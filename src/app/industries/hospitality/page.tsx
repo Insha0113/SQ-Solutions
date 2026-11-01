@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "30%", label: "Increase in direct bookings with AI personalisation" },
+  { value: "Direct", label: "Bookings encouraged with AI personalisation" },
   { value: "24/7", label: "AI concierge availability" },
-  { value: "25%", label: "Reduction in staff admin time" },
-  { value: "40%", label: "Faster guest request resolution" },
+  { value: "Less admin", label: "Routine staff tasks automated" },
+  { value: "Faster", label: "Guest request handling" },
 ];
 
 export default function HospitalityPage() {

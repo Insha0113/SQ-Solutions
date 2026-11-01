@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "60%", label: "Reduction in document review time with AI" },
-  { value: "80%", label: "Faster contract clause extraction" },
-  { value: "40%", label: "Cost reduction in due diligence workflows" },
-  { value: "3x", label: "More matters per fee-earner with AI assistance" },
+  { value: "Faster", label: "Document review with AI assistance" },
+  { value: "AI-assisted", label: "Contract clause extraction" },
+  { value: "Leaner", label: "Due diligence workflows" },
+  { value: "Leverage", label: "AI assistance for fee-earners on routine work" },
 ];
 
 export default function LegalPage() {

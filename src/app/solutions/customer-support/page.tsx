@@ -4,22 +4,22 @@ import { ArrowRight, Headphones, Bot, BarChart3, Globe, Clock, TrendingDown, Che
 
 export const metadata: Metadata = {
   title: "Customer Support AI",
-  description: "Resolve 80% of customer queries automatically with AI. Squadify builds intelligent customer support systems that cut costs and delight customers.",
+  description: "Resolve routine customer queries automatically with AI. Squadify builds intelligent customer support systems that cut costs and delight customers.",
 };
 
 const features = [
-  { Icon: Bot, title: "AI-Powered Ticket Resolution", desc: "Automatically classify, prioritise, and resolve support tickets. Handles 80% of queries without human involvement." },
+  { Icon: Bot, title: "AI-Powered Ticket Resolution", desc: "Automatically classify, prioritise, and resolve support tickets. Handles routine queries without human involvement." },
   { Icon: Globe, title: "Omnichannel Support", desc: "One AI brain across email, live chat, WhatsApp, social media, and your mobile app." },
   { Icon: BarChart3, title: "Real-Time Analytics", desc: "Dashboards showing ticket volume, resolution rates, CSAT scores, and AI performance in real time." },
   { Icon: Headphones, title: "Smart Escalation", desc: "AI detects complex or high-priority queries and escalates to the right human agent with full context." },
   { Icon: Clock, title: "24/7 Availability", desc: "Always-on support that never sleeps. Customers get instant responses at any hour, any day." },
-  { Icon: TrendingDown, title: "Cost Reduction", desc: "Reduce per-ticket support costs by 60–80% while simultaneously improving response times and satisfaction." },
+  { Icon: TrendingDown, title: "Cost Reduction", desc: "Lower per-ticket support costs while improving response times." },
 ];
 
 const stats = [
-  { val: "80%", label: "Queries resolved by AI" },
-  { val: "< 5s", label: "Average response time" },
-  { val: "60–80%", label: "Cost reduction" },
+  { val: "Routine", label: "Queries resolved by AI" },
+  { val: "Instant", label: "First response" },
+  { val: "Lower", label: "Support costs" },
   { val: "24/7", label: "Availability" },
 ];
 
@@ -35,12 +35,12 @@ export default function CustomerSupportPage() {
           <div className="max-w-3xl">
             <div className="label mb-6">Customer Support AI</div>
             <h1 className="display-xl mb-6">
-              Resolve 80% of Support Queries{" "}
+              Resolve Routine Support Queries{" "}
               <span className="text-gradient">Automatically</span>
             </h1>
             <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", lineHeight: 1.7, marginBottom: "2rem" }}>
               Squadify builds AI-powered customer support systems that handle the majority of queries
-              instantly — reducing costs by 60–80% while improving response times and customer satisfaction.
+              instantly — helping reduce costs while improving response times and customer satisfaction.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/get-started/book-call" className="btn-primary inline-flex items-center gap-2">
@@ -58,7 +58,7 @@ export default function CustomerSupportPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -93,7 +93,7 @@ export default function CustomerSupportPage() {
               <div className="label mb-5">The Business Case</div>
               <h2 className="display-md mb-6">Support That Scales Without <span className="text-gradient">Scaling Headcount</span></h2>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
-                Traditional support scales linearly — more customers means more agents. AI support scales exponentially. Handle 10x the ticket volume at the same cost, with faster response times and consistent quality.
+                Traditional support scales linearly — more customers means more agents. AI support scales with demand, handling more ticket volume without adding headcount, with faster response times and consistent quality.
               </p>
               <Link href="/get-started/book-call" className="btn-primary inline-flex items-center gap-2">
                 Get a Support AI Demo
@@ -102,9 +102,9 @@ export default function CustomerSupportPage() {
             </div>
             <div className="space-y-4">
               {[
-                { before: "4–24h response time", after: "Under 5 seconds" },
-                { before: "80% of queries need human", after: "80% resolved by AI" },
-                { before: "Support costs scale with volume", after: "Fixed cost regardless of volume" },
+                { before: "Customers wait in a queue", after: "Instant first response" },
+                { before: "Every query needs a human", after: "Routine queries resolved by AI" },
+                { before: "Support costs scale with volume", after: "More volume without more headcount" },
                 { before: "9–5 support availability", after: "24/7/365 availability" },
               ].map(({ before, after }) => (
                 <div key={before} className="p-4 rounded-xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>

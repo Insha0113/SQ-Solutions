@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import LeadForm from "@/components/lead/LeadForm";
 import { LabChecklist, LabField, LabPageHero, LabPanel } from "@/components/lab/LabPage";
 
 export const metadata: Metadata = {
@@ -29,24 +29,24 @@ export default function DiscoveryCallPage() {
               ]}
             />
             <div className="lab-panel__divider" aria-hidden="true" />
-            <form className="lab-form">
+            <LeadForm source="discovery-call" className="lab-form" submitLabel="Book My Free Discovery Call" note={<>No commitment required. We&apos;ll be in touch to confirm a time.</>}>
               <div className="lab-form__row">
                 <LabField id="dc-first-name" label="First Name *">
-                  <input id="dc-first-name" type="text" required placeholder="John" className="lab-input" />
+                  <input id="dc-first-name" name="firstName" autoComplete="given-name" type="text" required placeholder="John" className="lab-input" />
                 </LabField>
                 <LabField id="dc-last-name" label="Last Name *">
-                  <input id="dc-last-name" type="text" required placeholder="Smith" className="lab-input" />
+                  <input id="dc-last-name" name="lastName" autoComplete="family-name" type="text" required placeholder="Smith" className="lab-input" />
                 </LabField>
               </div>
               <LabField id="dc-email" label="Business Email *">
-                <input id="dc-email" type="email" required placeholder="john@company.com" className="lab-input" />
+                <input id="dc-email" name="email" autoComplete="email" type="email" required placeholder="john@company.com" className="lab-input" />
               </LabField>
               <LabField id="dc-company" label="Company *">
-                <input id="dc-company" type="text" required placeholder="Your Company" className="lab-input" />
+                <input id="dc-company" name="company" autoComplete="organization" type="text" required placeholder="Your Company" className="lab-input" />
               </LabField>
               <LabField id="dc-challenge" label="Your Biggest Business Challenge *">
                 <textarea
-                  id="dc-challenge"
+                  id="dc-challenge" name="message"
                   required
                   rows={4}
                   placeholder="What's the problem you're trying to solve? What's currently slowing your business down?"
@@ -54,19 +54,14 @@ export default function DiscoveryCallPage() {
                 />
               </LabField>
               <LabField id="dc-time" label="Preferred Call Time">
-                <select id="dc-time" className="lab-input">
+                <select id="dc-time" name="preferredTime" className="lab-input">
                   <option>Morning (9am–12pm GMT)</option>
                   <option>Afternoon (12pm–5pm GMT)</option>
                   <option>Evening (5pm–8pm GMT)</option>
                   <option>Flexible — Any time works</option>
                 </select>
               </LabField>
-              <button type="submit" className="lab-btn lab-btn--block">
-                Book My Free Discovery Call
-                <ArrowRight className="w-5 h-5" aria-hidden="true" />
-              </button>
-              <p className="lab-form__note">No commitment required. We confirm your call within 2 hours.</p>
-            </form>
+            </LeadForm>
           </LabPanel>
         </div>
       </section>

@@ -3,37 +3,37 @@ import { ArrowRight } from "lucide-react";
 import SectionHead from "./SectionHead";
 
 /**
- * Content carried over verbatim from the previous case studies section,
- * whose source marked these as placeholders. Flagged for owner review
- * before launch; do not add client names, figures or results here.
+ * Illustrative examples, not client case studies (the previous section's
+ * source marked them as placeholders). They are labelled as such on the
+ * page; do not add client names, figures or results here.
  */
 const STUDIES = [
   {
     num: "01",
     sector: "Professional Services",
     title: "Document Processing Automation",
-    outcome: "Automated extraction and routing of key data from client documents — reducing manual processing time per document significantly.",
+    outcome: "Automatically extracting and routing key data from incoming documents, so staff spend far less time on manual processing.",
     tags: ["Document AI", "Automation", "Integration"],
   },
   {
     num: "02",
     sector: "Retail & E-commerce",
     title: "AI Customer Support Agent",
-    outcome: "Deployed a 24/7 AI support agent handling common queries, order tracking, and returns — reducing first-response time to under 30 seconds.",
+    outcome: "A 24/7 AI support agent handling common queries, order tracking and returns, so customers get an immediate first response.",
     tags: ["AI Chatbot", "Customer Support", "API Integration"],
   },
   {
     num: "03",
     sector: "B2B Technology",
     title: "Sales Pipeline Intelligence",
-    outcome: "Built an AI layer on top of an existing CRM to automatically score leads, draft follow-up sequences, and flag stalled deals for human review.",
+    outcome: "An AI layer on top of an existing CRM that scores leads, drafts follow-up sequences and flags stalled deals for human review.",
     tags: ["Sales AI", "CRM Integration", "Lead Scoring"],
   },
 ];
 
 /**
- * Case Studies — confidential case files: tabbed dossiers with redaction
- * bars that echo the confidentiality note (decorative only).
+ * Case Studies — example files: tabbed dossiers, each tagged as an
+ * illustrative example rather than a client project.
  */
 export default function CaseFiles() {
   return (
@@ -41,15 +41,15 @@ export default function CaseFiles() {
       <div className="hs-inner">
         <SectionHead
           id="cf-heading"
-          eyebrow="Our Work"
+          eyebrow="Example Use Cases"
           title={
             <>
-              AI Delivered. <span className="lab-accent">Real Outcomes.</span>
+              Real Problems. <span className="lab-accent">Practical AI.</span>
             </>
           }
         >
           <p className="hs-lede">
-            A sample of the business problems we&apos;ve helped solve with AI — from document automation to intelligent
+            Illustrative examples of the business problems we solve with AI — from document automation to intelligent
             sales pipelines.
           </p>
         </SectionHead>
@@ -63,10 +63,7 @@ export default function CaseFiles() {
               <div className="cf__sheet">
                 <div className="cf__meta">
                   <span className="cf__sector">{sector}</span>
-                  <span className="cf__redact" aria-hidden="true">
-                    <span />
-                    <span />
-                  </span>
+                  <span className="cf__label">Illustrative</span>
                 </div>
                 <h3 className="cf__title">{title}</h3>
                 <p className="cf__outcome">{outcome}</p>
@@ -80,7 +77,10 @@ export default function CaseFiles() {
           ))}
         </ul>
 
-        <p className="cf__note">Client details are kept confidential. Projects are described at an outcome level only.</p>
+        <p className="cf__note">
+          These are illustrative examples, not descriptions of specific client projects. Client-approved case studies
+          will be published as they are confirmed.
+        </p>
 
         <div className="cf__cta">
           <Link href="/contact" className="lab-link hs-cta">

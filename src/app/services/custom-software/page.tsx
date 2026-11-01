@@ -24,13 +24,13 @@ const stack = [
 
 const features = [
   "Clean, documented, maintainable code",
-  "Full source code ownership",
+  "Code ownership agreed before work begins",
   "Mobile-first, fully responsive design",
   "Automated testing and CI/CD",
   "GDPR-compliant data handling",
   "Enterprise-grade security",
   "Scalable to millions of users",
-  "30-day post-launch support",
+  "Post-launch support period agreed with you",
 ];
 
 export default function CustomSoftwarePage() {

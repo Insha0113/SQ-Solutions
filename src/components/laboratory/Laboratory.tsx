@@ -127,9 +127,11 @@ interface LaboratoryProps {
   uniforms: SharedUniforms;
   dust: number;
   reflections: boolean;
+  /** False on small screens: drops the ribs and ceiling rings and shrinks the floor to what the camera sees. */
+  full?: boolean;
 }
 
-export default function Laboratory({ uniforms, dust, reflections }: LaboratoryProps) {
+export default function Laboratory({ uniforms, dust, reflections, full = true }: LaboratoryProps) {
   const lineMats = useMemo(() => createLabMaterials(), []);
 
   const { ribs, edges } = useMemo(() => {
@@ -230,32 +232,37 @@ export default function Laboratory({ uniforms, dust, reflections }: LaboratoryPr
         </mesh>
       ) : null}
       <mesh rotation-x={-Math.PI / 2} position-y={FLOOR_Y} material={floorMat} raycast={() => null}>
-        <circleGeometry args={[30, 64]} />
+        {/* The grid has faded out (exp(-r * 0.18)) well before r = 12. */}
+        <circleGeometry args={full ? [30, 64] : [12, 48]} />
       </mesh>
 
       {/* Architectural ribs and their thin illuminated inner edges. */}
-      {ribs.map(({ pos, rot }, i) => (
+      {full && ribs.map(({ pos, rot }, i) => (
         <mesh key={`rib-${i}`} position={pos} rotation-y={rot} material={lineMats.rib} raycast={() => null}>
           <boxGeometry args={[0.5, RIB_HEIGHT, 0.6]} />
         </mesh>
       ))}
-      {edges.map(({ pos, rot }, i) => (
+      {full && edges.map(({ pos, rot }, i) => (
         <mesh key={`edge-${i}`} position={pos} rotation-y={rot} material={lineMats.edge} raycast={() => null}>
           <boxGeometry args={[0.018, RIB_HEIGHT, 0.018]} />
         </mesh>
       ))}
 
-      {/* Ceiling aperture rings. */}
-      <mesh position-y={4.4} rotation-x={Math.PI / 2} material={lineMats.ring} raycast={() => null}>
-        <torusGeometry args={[2.4, 0.012, 8, 160]} />
-      </mesh>
-      <mesh position-y={4.4} rotation-x={Math.PI / 2} material={lineMats.outerRing} raycast={() => null}>
-        <torusGeometry args={[4.6, 0.008, 8, 200]} />
-      </mesh>
+      {/* Ceiling aperture rings (above a portrait camera's view). */}
+      {full ? (
+        <>
+          <mesh position-y={4.4} rotation-x={Math.PI / 2} material={lineMats.ring} raycast={() => null}>
+            <torusGeometry args={[2.4, 0.012, 8, 160]} />
+          </mesh>
+          <mesh position-y={4.4} rotation-x={Math.PI / 2} material={lineMats.outerRing} raycast={() => null}>
+            <torusGeometry args={[4.6, 0.008, 8, 200]} />
+          </mesh>
+        </>
+      ) : null}
 
       {/* Light shaft. ConeGeometry apex points +y; uv.y = 1 at the apex. */}
       <mesh position-y={1.4} material={coneMat} raycast={() => null}>
-        <coneGeometry args={[2.6, 6, 64, 1, true]} />
+        <coneGeometry args={[2.6, 6, full ? 64 : 32, 1, true]} />
       </mesh>
 
       <points geometry={dustGeo} material={dustMat} raycast={() => null} />

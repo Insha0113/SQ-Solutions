@@ -4,14 +4,14 @@ import { ArrowRight, Clock, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Our Work — Case Studies & Project Outcomes",
-  description: "Verified project outcomes and case studies from Squadify Solutions AI engagements.",
+  description: "Illustrative examples of the business problems Squadify Solutions solves with AI. Client-approved case studies will be published as they are confirmed.",
 };
 
 const placeholders = [
-  { industry: "E-commerce", label: "Customer Experience", challenge: "High cart abandonment and slow customer query response times impacting retention and revenue.", approach: "AI-powered support and personalisation tooling — scope, outcome, and client details to be confirmed.", href: "/our-work" },
-  { industry: "Manufacturing", label: "Operational Efficiency", challenge: "Unplanned equipment downtime causing production disruption and significant maintenance expenditure.", approach: "Predictive maintenance AI analysing sensor data — scope, outcome, and client details to be confirmed.", href: "/our-work" },
-  { industry: "Professional Services", label: "Document Automation", challenge: "Manual contract review consuming significant professional time on low-value processing tasks.", approach: "AI document intelligence and workflow automation — scope, outcome, and client details to be confirmed.", href: "/our-work" },
-  { industry: "Logistics", label: "Process Automation", challenge: "Manual data entry across multiple systems creating errors, delays, and high operational overhead.", approach: "Workflow automation and AI integration layer — scope, outcome, and client details to be confirmed.", href: "/our-work" },
+  { industry: "E-commerce", label: "Customer Experience", challenge: "High cart abandonment and slow customer query response times impacting retention and revenue.", approach: "AI-powered support and personalisation tooling.", href: "/our-work" },
+  { industry: "Manufacturing", label: "Operational Efficiency", challenge: "Unplanned equipment downtime causing production disruption and significant maintenance expenditure.", approach: "Predictive maintenance AI analysing sensor data.", href: "/our-work" },
+  { industry: "Professional Services", label: "Document Automation", challenge: "Manual contract review consuming significant professional time on low-value processing tasks.", approach: "AI document intelligence and workflow automation.", href: "/our-work" },
+  { industry: "Logistics", label: "Process Automation", challenge: "Manual data entry across multiple systems creating errors, delays, and high operational overhead.", approach: "Workflow automation and AI integration layer.", href: "/our-work" },
 ];
 
 export default function OurWorkPage() {
@@ -27,8 +27,9 @@ export default function OurWorkPage() {
             Real Problems. <span className="text-gradient">Practical Solutions.</span>
           </h1>
           <p className="text-lg max-w-2xl mb-10" style={{ color: "var(--text-secondary)", lineHeight: 1.7 }}>
-            We present verified project outcomes only. Client-approved case studies will be published
-            as projects are confirmed. The cards below are structured placeholders.
+            We present verified project outcomes only, and client-approved case studies will be published
+            as projects are confirmed. The examples below are illustrative: they show the kinds of
+            problems we solve, not specific client engagements.
           </p>
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14"
@@ -67,7 +68,7 @@ export default function OurWorkPage() {
                   <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{approach}</p>
                 </div>
                 <div className="rounded-lg px-3 py-2" style={{ background: "var(--bg-raised)", border: "1px solid var(--border)" }}>
-                  <p className="text-xs italic" style={{ color: "var(--text-muted)" }}>⚠ Verified project details pending client approval.</p>
+                  <p className="text-xs italic" style={{ color: "var(--text-muted)" }}>Illustrative example — not a specific client project.</p>
                 </div>
                 <Link href={href} className="btn-ghost text-sm px-0 mt-auto" style={{ color: "var(--blue)" }}>
                   More details <ArrowRight className="w-3.5 h-3.5" />
