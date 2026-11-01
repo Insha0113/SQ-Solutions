@@ -3,16 +3,16 @@ import Link from "next/link";
 import { ArrowRight, FileText, Search, Cpu, Shield, Clock, BarChart3 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Document Intelligence AI — Squadify Solutions",
+  title: "Document Intelligence AI",
   description: "Extract, classify, and process documents automatically with AI. Invoices, contracts, forms — processed in seconds, not hours.",
 };
 
 const features = [
-  { Icon: Search, title: "Intelligent Data Extraction", desc: "Extract structured data from unstructured documents — invoices, contracts, forms, receipts — with 99%+ accuracy." },
+  { Icon: Search, title: "Intelligent Data Extraction", desc: "Extract structured data from unstructured documents — invoices, contracts, forms and receipts." },
   { Icon: Cpu, title: "Document Classification", desc: "Automatically categorise and route incoming documents to the correct workflow, system, or team." },
   { Icon: FileText, title: "Contract Analysis", desc: "AI reviews contracts for key terms, obligations, risks, and renewal dates — flagging issues for human review." },
   { Icon: Shield, title: "Compliance Validation", desc: "Automatically check documents against compliance rules and flag missing information or policy violations." },
-  { Icon: Clock, title: "Real-Time Processing", desc: "Process hundreds of documents per minute. From upload to structured data in under 5 seconds." },
+  { Icon: Clock, title: "Real-Time Processing", desc: "Process documents as they arrive, from upload to structured data in moments." },
   { Icon: BarChart3, title: "Analytics & Reporting", desc: "Track document volumes, processing times, extraction accuracy, and exception rates in a live dashboard." },
 ];
 
@@ -51,9 +51,9 @@ export default function DocumentIntelligencePage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "99%+", label: "Extraction accuracy" }, { val: "< 5s", label: "Per document processing" }, { val: "100+", label: "Document types supported" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Structured", label: "Data from unstructured documents" }, { val: "Fast", label: "Per-document processing" }, { val: "Varied", label: "Invoices, contracts, forms and receipts" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -95,17 +95,17 @@ export default function DocumentIntelligencePage() {
 
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <FileText className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Stop Processing Documents Manually
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a demo. We&apos;ll show you how AI handles your specific document types.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Demo
                 <ArrowRight className="w-5 h-5" />
               </Link>

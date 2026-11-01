@@ -15,7 +15,7 @@ const options = [
     Icon: MessageSquare,
     num: "02",
     title: "Tell Us Your Problem",
-    desc: "Describe your operational challenge. We'll identify where AI can help and respond within 24 hours.",
+    desc: "Describe your operational challenge. We'll identify where AI can help and get back to you.",
     cta: "Contact Us",
     href: "/contact",
     featured: false,
@@ -42,7 +42,7 @@ export default function ContactCTA() {
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(16,0,255,0.12) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.12) 0%, transparent 65%)",
         }}
       />
       <div className="dot-grid absolute inset-0 opacity-[0.25] pointer-events-none" />
@@ -181,7 +181,7 @@ export default function ContactCTA() {
 
         {/* Trust footer */}
         <p style={{ textAlign: "center", fontSize: "0.75rem", color: "var(--text-muted)" }}>
-          No commitment required · Response within 24 hours · All enquiries treated confidentially
+          No commitment required · Every enquiry reviewed · All enquiries treated confidentially
         </p>
       </div>
     </section>

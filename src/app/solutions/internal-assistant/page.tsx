@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Brain, Users, MessageSquare, Clock, BarChart3, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Internal AI Assistant — Squadify Solutions",
+  title: "Internal AI Assistant",
   description: "Give your team an AI assistant trained on your company knowledge. Answer HR questions, policies, procedures, and more — instantly.",
 };
 
@@ -50,9 +50,9 @@ export default function InternalAssistantPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "90%", label: "Of internal questions answered instantly" }, { val: "< 3s", label: "Response time" }, { val: "50%", label: "Reduction in HR email volume" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Instant", label: "Answers to common internal questions" }, { val: "Self-serve", label: "Access to company knowledge" }, { val: "Fewer", label: "Repetitive questions to HR" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -82,14 +82,14 @@ export default function InternalAssistantPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Brain className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Give Your Team an AI That Knows Everything
               </h3>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Build My Internal Assistant
                 <ArrowRight className="w-5 h-5" />
               </Link>

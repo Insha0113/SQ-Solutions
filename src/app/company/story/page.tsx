@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Brain, Zap, Users, Target, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Story — Squadify Solutions",
+  title: "Our Story",
   description: "How Squadify Solutions was founded and why we believe every business deserves access to AI that works.",
 };
 
@@ -68,7 +68,7 @@ export default function StoryPage() {
             {[
               { Icon: Brain, title: "Business-First AI", desc: "We start with your problem. Technology serves strategy — not the other way around." },
               { Icon: Zap, title: "Speed Without Sacrifice", desc: "150-hour delivery because your business can't wait months for results that matter now." },
-              { Icon: Shield, title: "Honest & Transparent", desc: "No jargon, no overpromising. Clear scopes, fixed prices, real outcomes." },
+              { Icon: Shield, title: "Honest & Transparent", desc: "No jargon, no overpromising. Clear scopes, transparent pricing agreed before work begins, real outcomes." },
             ].map(({ Icon, title, desc }) => (
               <div key={title} className="card">
                 <div className="icon-box mb-4"><Icon className="w-5 h-5" style={{ color: "var(--blue)" }} /></div>

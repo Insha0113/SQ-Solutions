@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Zap, Bot, GitBranch, Mail, FileText, BarChart3, Settings, Clock, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Automation — Squadify Solutions",
+  title: "AI Automation",
   description: "Automate repetitive workflows with AI. Squadify builds intelligent automation systems that free your team to focus on high-value work.",
 };
 
@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const benefits = [
-  { val: "80%", label: "Reduction in manual work" },
-  { val: "99%", label: "Accuracy on repetitive tasks" },
+  { val: "Less manual", label: "Repetitive work automated" },
+  { val: "Consistent", label: "Repetitive tasks handled the same way every time" },
   { val: "24/7", label: "Workflows run non-stop" },
-  { val: "150hrs", label: "Average delivery time" },
+  { val: "150hrs", label: "Structured delivery framework" },
 ];
 
 const process = [
@@ -73,7 +73,7 @@ export default function AIAutomationPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {benefits.map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -161,8 +161,8 @@ export default function AIAutomationPage() {
                 <span className="text-gradient">Is an Hour AI Could Save</span>
               </h2>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-                Studies consistently show that knowledge workers spend 40–60% of their time on
-                tasks that could be automated. That&apos;s not just inefficiency — it&apos;s your
+                Knowledge workers spend a large share of their time on tasks that could be
+                automated. That&apos;s not just inefficiency — it&apos;s your
                 team&apos;s creative capacity going to waste.
               </p>
               <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
@@ -178,9 +178,9 @@ export default function AIAutomationPage() {
               {[
                 "Runs 24/7 without breaks, errors, or sick days",
                 "Scales instantly with demand spikes",
-                "Maintains perfect audit trails automatically",
+                "Keeps a clear audit trail automatically",
                 "Frees your team for high-value strategic work",
-                "Reduces operational costs by 40–80%",
+                "Helps reduce operational costs",
                 "Integrates with your existing tools and systems",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
@@ -196,11 +196,11 @@ export default function AIAutomationPage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Zap className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Ready to Automate Your Workflows?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>

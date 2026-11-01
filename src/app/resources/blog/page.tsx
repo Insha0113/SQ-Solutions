@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Rss, Clock, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Blog & Insights — Squadify Solutions",
+  title: "AI Blog & Insights",
   description: "Practical AI insights for business leaders. Real-world guides on AI implementation, automation ROI, and digital transformation.",
 };
 
@@ -24,7 +24,7 @@ const posts = [
   },
   {
     category: "AI Chatbots",
-    title: "Why 80% of Customer Support Queries Can Be Resolved by AI",
+    title: "Why Many Customer Support Queries Can Be Resolved by AI",
     excerpt: "Most customer support queries are repetitive and well-defined. We explain how AI chatbots are trained to handle them accurately — and when you still need a human in the loop.",
     readTime: "7 min read",
     date: "Oct 2024",

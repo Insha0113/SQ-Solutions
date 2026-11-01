@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Briefcase, MapPin, Clock, Star } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers — Join Squadify Solutions",
+  title: "Careers",
   description: "Join the Squadify Solutions team. We're building the future of business AI. See open roles and learn about life at Squadify.",
 };
 

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { ArrowRight, DollarSign, FileText, TrendingDown, BarChart3, Shield, RefreshCw } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Finance Automation AI — Squadify Solutions",
+  title: "Finance Automation AI",
   description: "Automate finance and accounting workflows with AI. Invoice processing, reconciliation, reporting, and compliance — handled automatically.",
 };
 
 const features = [
-  { Icon: FileText, title: "Invoice Processing", desc: "Automatically extract, validate, and post invoices to your accounting system. 99%+ accuracy, zero manual entry." },
+  { Icon: FileText, title: "Invoice Processing", desc: "Automatically extract, validate, and post invoices to your accounting system, with far less manual entry." },
   { Icon: RefreshCw, title: "Bank Reconciliation", desc: "Match transactions automatically across bank statements and your accounting records. Flag discrepancies instantly." },
   { Icon: BarChart3, title: "Financial Reporting", desc: "Auto-generate P&L, cashflow, and management reports. Distributed to stakeholders on schedule." },
   { Icon: TrendingDown, title: "Expense Management", desc: "AI classifies and validates expense claims against policy. Automatic approval for compliant claims." },
@@ -47,9 +47,9 @@ export default function FinanceAutomationPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "80%", label: "Reduction in manual finance work" }, { val: "99%+", label: "Invoice extraction accuracy" }, { val: "50%", label: "Faster month-end close" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Less manual", label: "Finance processing work" }, { val: "Validated", label: "Invoice data before it is posted" }, { val: "Faster", label: "Month-end close" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -79,17 +79,17 @@ export default function FinanceAutomationPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <DollarSign className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Automate Your Finance Operations
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a call to identify your highest-value finance automation opportunities.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Get Started
                 <ArrowRight className="w-5 h-5" />
               </Link>

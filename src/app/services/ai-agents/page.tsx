@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Bot, Brain, Search, Database, Workflow, Network, CheckCircle, Cpu } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Agents — Autonomous AI Agents | Squadify Solutions",
+  title: "AI Agents — Autonomous AI Agents",
   description: "Build autonomous AI agents that plan, decide, and execute complex tasks. Squadify creates custom AI agents for business automation and operations.",
 };
 
@@ -160,17 +160,17 @@ export default function AIAgentsPage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Cpu className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Ready to Deploy Autonomous AI?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a call to discuss your agent requirements. We&apos;ll design and deliver a custom AI agent in 150 hours.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Start Your Agent Project
                 <ArrowRight className="w-5 h-5" />
               </Link>

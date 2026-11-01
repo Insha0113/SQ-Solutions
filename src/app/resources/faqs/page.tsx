@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, HelpCircle, ChevronDown } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "FAQs — Frequently Asked Questions | Squadify Solutions",
+  title: "FAQs — Frequently Asked Questions",
   description: "Answers to common questions about Squadify Solutions — our services, delivery model, pricing, process, and AI approach.",
 };
 
@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "How much does an AI solution cost?",
-    a: "Costs vary significantly by scope, complexity, and ongoing requirements. Our AI consulting engagements start from a fixed project fee, and our ongoing support plans are priced based on usage and support level. We always provide a clear, fixed-price quote before any work begins. Book a call and we'll scope your project with full pricing transparency.",
+    a: "Costs vary significantly by scope, complexity, and ongoing requirements. Our AI consulting engagements are priced according to the agreed scope, and our ongoing support plans are priced based on usage and support level. We provide a clear quote before any work begins. Book a call and we'll scope your project with full pricing transparency.",
   },
   {
     q: "Do I need to already have a lot of data?",
@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: "What happens after the initial delivery?",
-    a: "We offer ongoing support and maintenance plans that include performance monitoring, model retraining, bug fixes, and feature updates. All clients receive 30 days of post-launch support as standard. After that, you can continue with one of our support plans or manage the system internally — we provide full documentation either way.",
+    a: "We offer three ongoing support plans — Essential, Standard and Managed. Depending on the plan, they cover email or priority support, regular check-ins or operational reviews, minor updates, and monitoring options tailored to your requirements. Each project includes a post-launch support period agreed with you. After that, you can continue with one of our support plans or manage the system internally — we provide documentation either way.",
   },
   {
     q: "Do you work with specific industries?",

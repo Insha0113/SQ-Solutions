@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Target, BarChart3, TrendingUp, Zap, CheckCircle, Brain } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Lead Qualification AI — Squadify Solutions",
+  title: "Lead Qualification AI",
   description: "Score, qualify, and route every lead automatically with AI. Focus your sales team on the leads most likely to close.",
 };
 
@@ -50,9 +50,9 @@ export default function LeadQualificationPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "< 5s", label: "Lead engagement speed" }, { val: "3x", label: "More qualified meetings" }, { val: "60%", label: "Less sales team wasted effort" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Instant", label: "Lead engagement" }, { val: "Focused", label: "Sales time on qualified leads" }, { val: "Less", label: "Time spent on poor-fit leads" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -82,17 +82,17 @@ export default function LeadQualificationPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Target className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Stop Wasting Sales Time on Bad Leads
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a call to see how AI qualification can transform your sales efficiency.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Demo
                 <ArrowRight className="w-5 h-5" />
               </Link>

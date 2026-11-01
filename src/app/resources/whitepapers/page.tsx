@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, FileText, Download, Rss } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Whitepapers & Guides — Squadify Solutions",
+  title: "Whitepapers & Guides",
   description: "Download free AI guides, whitepapers, and frameworks from Squadify Solutions. Practical resources for business leaders exploring AI adoption.",
 };
 
@@ -91,7 +91,7 @@ export default function WhitepapersPage() {
                 Get New Resources First
               </h2>
               <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem", fontSize: "0.9rem" }}>
-                Join 500+ business leaders receiving Squadify&apos;s practical AI resources and insights.
+                Get Squadify&apos;s practical AI guides and insights for business leaders as they are published.
               </p>
               <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
                 Subscribe to Resources

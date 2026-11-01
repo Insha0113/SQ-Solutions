@@ -32,7 +32,7 @@ export default function TrustedPartners() {
             color: "var(--text-muted)",
           }}
         >
-          Technology Partners &amp; Integrations
+          Technologies We Work With
         </p>
       </div>
 

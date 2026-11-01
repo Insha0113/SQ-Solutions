@@ -3,13 +3,13 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle, Search, Brain, Target, MessageSquare, Rocket, TrendingUp, Lightbulb, BarChart3, Zap, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Consulting — Squadify Solutions",
+  title: "AI Consulting",
   description: "Identify where AI can transform your business. Squadify's AI consulting helps you move from problem to working solution in 150 hours.",
 };
 
 const opportunities = [
   "Automate repetitive operational workflows",
-  "Reduce customer support costs by 60–80%",
+  "Reduce customer support costs",
   "Improve employee productivity across teams",
   "Automate documents, emails & reports",
   "Turn data into actionable business insights",
@@ -54,7 +54,7 @@ export default function AIConsultingPage() {
             <div className="label mb-6">AI Consulting</div>
             <h1 className="display-xl mb-6">
               Have a Business Problem?{" "}
-              <span className="text-gradient">Let's Find the AI Solution.</span>
+              <span className="text-gradient">Let&apos;s Find the AI Solution.</span>
             </h1>
             <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", lineHeight: 1.7, marginBottom: "2rem" }}>
               You don&apos;t need to be an AI expert to benefit from AI. Squadify helps businesses
@@ -80,12 +80,12 @@ export default function AIConsultingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { val: "150hrs", label: "From Problem to Solution" },
-              { val: "60–80%", label: "Support Cost Reduction" },
+              { val: "Lower", label: "Support Costs Through Automation" },
               { val: "13+", label: "Industries Served" },
-              { val: "100%", label: "Custom-Built Solutions" },
+              { val: "Tailored", label: "Solutions Built Around Your Needs" },
             ].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -213,18 +213,18 @@ export default function AIConsultingPage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center" style={{ background: "var(--blue)", position: "relative", overflow: "hidden" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Clock className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "#fff", marginBottom: "1rem" }}>
                 Your Problem → AI Opportunity → Solution<br />Live in 150 Hours
               </h3>
               <p style={{ color: "rgba(255,255,255,0.75)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 We&apos;ve turned this formula into a repeatable system. Tell us your problem,
                 and we&apos;ll find the AI opportunity hiding inside it.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm transition-all" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Start with a Free Consultation
                 <ArrowRight className="w-5 h-5" />
               </Link>

@@ -7,28 +7,34 @@
    ============================================================ */
 
 :root {
+  /* Headings: Space Grotesk. --font-sora is kept as an alias because
+     existing pages reference it directly. */
+  --font-sora: var(--font-heading);
+
   /* Brand */
-  --blue:        #1000FF;
-  --blue-mid:    #3026FF;
-  --blue-bright: #4B3FFF;
-  --blue-glow:   rgba(16, 0, 255, 0.22);
-  --blue-glass:  rgba(16, 0, 255, 0.08);
+  --blue:        #2563EB;
+  --blue-mid:    #2B7BF0;
+  --blue-bright: #1E93F3;
+  --blue-glow:   rgba(37,99,235, 0.22);
+  --blue-glass:  rgba(37,99,235, 0.08);
+  --cyan:        #00D9FF;
+  --cyan-glow:   rgba(0, 217, 255, 0.35);
 
   /* Surfaces */
-  --bg-base:    #080808;
-  --bg-2:       #0D0D0D;
-  --bg-card:    #111111;
-  --bg-raised:  #181818;
+  --bg-base:    #05070D;
+  --bg-2:       #0A1020;
+  --bg-card:    #0C1322;
+  --bg-raised:  #111A2D;
 
   /* Borders */
-  --border:       #1F1F1F;
-  --border-light: #2A2A2A;
-  --border-blue:  rgba(16, 0, 255, 0.30);
+  --border:       #172036;
+  --border-light: #223050;
+  --border-blue:  rgba(37,99,235, 0.30);
 
   /* Text */
-  --text-primary:   #FFFFFF;
-  --text-secondary: #A8A8B8;
-  --text-muted:     #6B6B7A;
+  --text-primary:   #F5F8FF;
+  --text-secondary: #9BAAC1;
+  --text-muted:     #6B7A93;
 
   /* Radii */
   --r-sm:  6px;
@@ -42,7 +48,9 @@
 }
 
 /* ── Base ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+}
 
 html {
   scroll-behavior: smooth;
@@ -112,14 +120,14 @@ body {
 
 /* Gradient text — deep blue to bright */
 .text-gradient {
-  background: linear-gradient(135deg, var(--blue) 0%, #6057FF 50%, #9A96FF 100%);
+  background: linear-gradient(135deg, var(--blue) 0%, #0EA9F6 50%, #00D9FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 /* White-to-blue gradient variant */
 .text-gradient-white {
-  background: linear-gradient(135deg, #ffffff 0%, #a0a8ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #8FE3FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -155,6 +163,8 @@ body {
    COMPONENTS
    ============================================================ */
 
+/* Layered so Tailwind utilities (e.g. "py-2 px-4") can refine them. */
+@layer components {
 /* Label / eyebrow */
 .label {
   display: inline-flex;
@@ -167,8 +177,8 @@ body {
   color: var(--blue);
   padding: 6px 14px;
   border-radius: 99px;
-  background: rgba(16,0,255,0.08);
-  border: 1px solid rgba(16,0,255,0.2);
+  background: rgba(37,99,235,0.08);
+  border: 1px solid rgba(37,99,235,0.2);
 }
 .label::before {
   content: '';
@@ -190,7 +200,7 @@ body {
 }
 .card:hover {
   border-color: var(--border-light);
-  box-shadow: 0 0 40px rgba(16,0,255,0.06);
+  box-shadow: 0 0 40px rgba(37,99,235,0.06);
 }
 
 .card-sm {
@@ -216,11 +226,11 @@ body {
   transition: all 0.2s;
   text-decoration: none;
   letter-spacing: 0.01em;
-  box-shadow: 0 0 0 0 rgba(16,0,255,0);
+  box-shadow: 0 0 0 0 rgba(37,99,235,0);
 }
 .btn-primary:hover {
   background: var(--blue-mid);
-  box-shadow: 0 0 28px rgba(16,0,255,0.45);
+  box-shadow: 0 0 28px rgba(37,99,235,0.45);
   transform: translateY(-1px);
 }
 
@@ -274,8 +284,8 @@ body {
   transition: background 0.2s, box-shadow 0.2s;
 }
 .icon-box:hover, .group:hover .icon-box {
-  background: rgba(16,0,255,0.15);
-  box-shadow: 0 0 16px rgba(16,0,255,0.2);
+  background: rgba(37,99,235,0.15);
+  box-shadow: 0 0 16px rgba(37,99,235,0.2);
 }
 
 /* Step circle */
@@ -310,7 +320,7 @@ body {
 }
 .input:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(16,0,255,0.12);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
 }
 .input::placeholder { color: var(--text-muted); }
 
@@ -338,7 +348,8 @@ body {
   border-radius: 99px;
   background: var(--blue-glass);
   border: 1px solid var(--border-blue);
-  color: #a0a8ff;
+  color: #8FE3FF;
+}
 }
 
 /* ============================================================
@@ -371,10 +382,19 @@ body {
 
 /* Glassmorphism navbar */
 .nav-glass {
-  background: rgba(8,8,8,0.88);
+  background: rgba(5,7,13,0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
+}
+/* Small screens: blurring the live WebGL stage beneath re-rasterises the
+   blur every frame on mobile GPUs. A near-opaque bar reads the same. */
+@media (max-width: 1023px) {
+  .nav-glass {
+    background: rgba(5,7,13,0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* Number counter visual */
@@ -403,8 +423,8 @@ body {
   50%       { transform: translateY(-10px); }
 }
 @keyframes pulseBlue {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(16,0,255,0.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(16,0,255,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(37,99,235,0); }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -481,7 +501,7 @@ body {
 
 /* Service card hover */
 .service-card { transition: background 0.2s, border-color 0.2s, box-shadow 0.2s; }
-.service-card:hover { background: var(--bg-raised) !important; border-color: var(--border-light) !important; box-shadow: 0 0 40px rgba(16,0,255,0.06) !important; }
+.service-card:hover { background: var(--bg-raised) !important; border-color: var(--border-light) !important; box-shadow: 0 0 40px rgba(37,99,235,0.06) !important; }
 
 /* Industry card hover */
 .industry-card { transition: background 0.2s, border-color 0.2s; }
@@ -493,3 +513,30 @@ body {
 .tech-pill:hover { border-color: var(--border-blue) !important; background: var(--blue-glass) !important; }
 .tech-pill:hover .tech-name { color: var(--blue) !important; }
 
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee, .animate-marquee-slow, .animate-float, .animate-pulse-blue {
+    animation: none;
+  }
+}
+
+/* Brand mark (BrandMark.tsx): the black-on-transparent logo on a light tile
+   so it stays legible on the near-black header and footer. */
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 2px;
+  border-radius: 8px;
+  background: #F5F8FF;
+}
+.brand-mark__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* never stretched or cropped */
+}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, Database, Search, Brain, Workflow, MessageSquare, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Knowledge Management AI — Squadify Solutions",
+  title: "Knowledge Management AI",
   description: "Build an intelligent knowledge base that employees can query in natural language. AI-powered knowledge management that learns and improves.",
 };
 
@@ -50,9 +50,9 @@ export default function KnowledgeManagementPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "90%", label: "Faster information retrieval" }, { val: "Any", label: "Document format supported" }, { val: "50+", label: "Languages supported" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Faster", label: "Information retrieval" }, { val: "Common", label: "Document formats supported" }, { val: "Multilingual", label: "Search and answers" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -82,17 +82,17 @@ export default function KnowledgeManagementPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <BookOpen className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Unlock Your Organisation&apos;s Knowledge
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a call to see how AI can make your organisation&apos;s knowledge instantly accessible.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Get Started
                 <ArrowRight className="w-5 h-5" />
               </Link>

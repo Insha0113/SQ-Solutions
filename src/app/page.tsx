@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import HeroSection from "@/components/home/HeroSection";
-import ProblemsSection from "@/components/home/ProblemsSection";
-import ServicesSection from "@/components/home/ServicesSection";
-import SolutionsSection from "@/components/home/SolutionsSection";
-import DeliveryFramework from "@/components/home/DeliveryFramework";
-import IndustriesSection from "@/components/home/IndustriesSection";
-import WhySquadify from "@/components/home/WhySquadify";
-import CaseStudies from "@/components/home/CaseStudies";
-import TechEcosystem from "@/components/home/TechEcosystem";
-import TrustedPartners from "@/components/home/TrustedPartners";
-import BlogSection from "@/components/home/BlogSection";
-import ContactCTA from "@/components/home/ContactCTA";
+import LabHero from "@/components/hero/LabHero";
+import LabJourney from "@/components/laboratory/LabJourney";
+import NeuralSystem from "@/components/sections/NeuralSystem";
+import ServicesScene from "@/components/sections/ServicesScene";
+import WorkspaceScene from "@/components/sections/WorkspaceScene";
+import ProcessScene from "@/components/sections/ProcessScene";
+import IndustriesMatrix from "@/components/sections/IndustriesMatrix";
+import WhyProtocol from "@/components/sections/WhyProtocol";
+import CaseFiles from "@/components/sections/CaseFiles";
+import StackDiagram from "@/components/sections/StackDiagram";
+import PartnerTicker from "@/components/sections/PartnerTicker";
+import ResearchLog from "@/components/sections/ResearchLog";
+import ConnectScene from "@/components/sections/ConnectScene";
 
 export const metadata: Metadata = {
   title: "Squadify Solutions — AI-Powered Business Transformation",
@@ -21,18 +22,20 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
-      <ProblemsSection />
-      <ServicesSection />
-      <SolutionsSection />
-      <DeliveryFramework />
-      <IndustriesSection />
-      <WhySquadify />
-      <CaseStudies />
-      <TechEcosystem />
-      <TrustedPartners />
-      <BlogSection />
-      <ContactCTA />
+      <LabJourney>
+        <LabHero />
+        <NeuralSystem />
+        <ServicesScene />
+      </LabJourney>
+      <WorkspaceScene />
+      <ProcessScene />
+      <IndustriesMatrix />
+      <WhyProtocol />
+      <CaseFiles />
+      <StackDiagram />
+      <PartnerTicker />
+      <ResearchLog />
+      <ConnectScene />
     </>
   );
 }

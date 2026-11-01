@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, Layers, Shield, Cpu, Database, GitBranch, Workflow, CheckCircle, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI Development — Custom AI Solutions | Squadify Solutions",
+  title: "AI Development — Custom AI Solutions",
   description: "Custom AI development for businesses. Squadify builds production-ready AI systems, APIs, and applications tailored to your exact requirements.",
 };
 
@@ -33,12 +33,12 @@ const process = [
 
 const features = [
   "Clean, documented, maintainable codebase",
-  "Full source code ownership — no vendor lock-in",
+  "Code ownership agreed before work begins, on standard, maintainable technology",
   "Automated testing and CI/CD pipelines",
   "Production-grade security and compliance",
   "Scalable cloud-native architecture",
   "Comprehensive API documentation",
-  "30-day post-launch support included",
+  "Post-launch support period agreed with you",
   "Optional ongoing maintenance plans",
 ];
 
@@ -81,13 +81,13 @@ export default function AIDevelopmentPage() {
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { val: "150hrs", label: "Average delivery time" },
-              { val: "100%", label: "Source code ownership" },
-              { val: "30 days", label: "Post-launch support" },
-              { val: "0", label: "Vendor lock-in" },
+              { val: "150hrs", label: "Structured delivery framework" },
+              { val: "Agreed", label: "Code ownership terms" },
+              { val: "Agreed", label: "Post-launch support" },
+              { val: "Standard", label: "Maintainable technology" },
             ].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -195,17 +195,17 @@ export default function AIDevelopmentPage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Code2 className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Have a Custom AI Project in Mind?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Tell us your requirements. We&apos;ll scope the project, provide a fixed quote, and deliver in 150 hours.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Get a Project Quote
                 <ArrowRight className="w-5 h-5" />
               </Link>

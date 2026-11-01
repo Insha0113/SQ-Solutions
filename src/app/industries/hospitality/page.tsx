@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Star, MessageSquare, Calendar, Users, BarChart2, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Hospitality AI Solutions | Squadify Solutions",
+  title: "Hospitality AI Solutions",
   description: "AI solutions for hospitality businesses — AI guest concierge, dynamic pricing, reservation management, guest feedback analysis, and loyalty programme automation to increase bookings and guest satisfaction.",
 };
 
@@ -17,10 +17,10 @@ const useCases = [
 ];
 
 const stats = [
-  { value: "30%", label: "Increase in direct bookings with AI personalisation" },
+  { value: "Direct", label: "Bookings encouraged with AI personalisation" },
   { value: "24/7", label: "AI concierge availability" },
-  { value: "25%", label: "Reduction in staff admin time" },
-  { value: "40%", label: "Faster guest request resolution" },
+  { value: "Less admin", label: "Routine staff tasks automated" },
+  { value: "Faster", label: "Guest request handling" },
 ];
 
 export default function HospitalityPage() {
@@ -28,7 +28,7 @@ export default function HospitalityPage() {
     <>
       {/* Hero */}
       <section className="section relative overflow-hidden" style={{ background: "var(--bg-base)", paddingTop: "7rem" }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 0%, rgba(16,0,255,0.12) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 60% 0%, rgba(37,99,235,0.12) 0%, transparent 60%)" }} />
         <div className="dot-grid absolute inset-0 opacity-25 pointer-events-none" />
         <div className="container relative" style={{ zIndex: 1 }}>
           <div className="label mb-6">Hospitality Solutions</div>
@@ -51,7 +51,7 @@ export default function HospitalityPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1px", background: "var(--border)" }}>
             {stats.map(({ value, label }) => (
               <div key={label} style={{ background: "var(--bg-card)", padding: "2rem 1.5rem" }}>
-                <div style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--blue)", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.5rem" }}>{value}</div>
+                <div style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--blue)", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "0.5rem" }}>{value}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.82rem", fontWeight: 500 }}>{label}</div>
               </div>
             ))}
@@ -69,7 +69,7 @@ export default function HospitalityPage() {
               <div key={num} style={{ background: "var(--bg-base)", padding: "2rem 1.75rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <div className="icon-box"><Icon className="w-5 h-5" style={{ color: "var(--blue)" }} /></div>
-                  <span style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "0.65rem", color: "var(--border-light)", letterSpacing: "0.08em" }}>{num}</span>
+                  <span style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "0.65rem", color: "var(--border-light)", letterSpacing: "0.08em" }}>{num}</span>
                 </div>
                 <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 700, color: "var(--text-primary)", fontSize: "0.95rem" }}>{title}</h3>
                 <p style={{ color: "var(--text-muted)", fontSize: "0.82rem", lineHeight: 1.7 }}>{desc}</p>
@@ -80,19 +80,19 @@ export default function HospitalityPage() {
       </section>
 
       {/* CTA */}
-      <section className="section" style={{ background: "var(--blue)", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+      <section className="section lab-cta-band">
         <div className="container" style={{ textAlign: "center" }}>
-          <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#fff", marginBottom: "1.25rem", letterSpacing: "-0.025em" }}>
+          <h2 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#fff", marginBottom: "1.25rem", letterSpacing: "-0.025em" }}>
             Ready to Explore AI for Your Hospitality Business?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.72)", fontSize: "1.05rem", lineHeight: 1.75, maxWidth: "560px", margin: "0 auto 2.5rem" }}>
             Book a discovery call and we&apos;ll identify where AI can deliver genuine value for your specific operation.
           </p>
           <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem" }}>
-            <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#fff", color: "var(--blue)", padding: "0.85rem 2rem", borderRadius: "9999px", fontWeight: 800, fontSize: "0.9rem", textDecoration: "none" }}>
+            <Link href="/contact" className="lab-btn">
               Book Discovery Call <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/services" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "transparent", color: "#fff", border: "1.5px solid rgba(255,255,255,0.4)", padding: "0.85rem 2rem", borderRadius: "9999px", fontWeight: 700, fontSize: "0.9rem", textDecoration: "none" }}>
+            <Link href="/services" className="lab-btn lab-btn--ghost">
               Our Services <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

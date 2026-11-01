@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "The 150-Hour Delivery Framework — Squadify Solutions",
+  title: "The 150-Hour Delivery Framework",
   description: "Our structured delivery approach moves from business problem to practical AI solution through five clear stages.",
 };
 
@@ -12,7 +12,7 @@ const stages = [
   { num: "02", title: "Design", hours: "Hours 16–35", desc: "We define the solution architecture, user experience, integrations, and implementation plan. Nothing is built until the design is approved.", deliverables: ["Technical solution design", "System architecture", "Integration mapping", "UI/UX wireframes (if applicable)", "Technical specification"], output: "Approved design & technical specification" },
   { num: "03", title: "Build", hours: "Hours 36–115", desc: "We develop the agreed functionality, integrate with your existing systems, and maintain transparency throughout the development process.", deliverables: ["Core AI development", "System integrations & APIs", "Frontend & backend build", "Internal testing", "Progress updates"], output: "Working AI solution ready for validation" },
   { num: "04", title: "Launch", hours: "Hours 116–140", desc: "We test, deploy, and validate the solution — then prepare your team to use it confidently from the first day.", deliverables: ["Quality assurance testing", "Cloud deployment", "User acceptance testing", "Performance validation", "Go-live support"], output: "Live, deployed AI solution" },
-  { num: "05", title: "Scale", hours: "Hours 141–150+", desc: "We monitor performance, provide agreed support, and identify opportunities to extend and improve as your business evolves.", deliverables: ["Team training sessions", "Documentation handover", "30-day support window", "Performance monitoring", "Optimisation recommendations"], output: "Trained team & ongoing support activated" },
+  { num: "05", title: "Scale", hours: "Hours 141–150+", desc: "We monitor performance, provide agreed support, and identify opportunities to extend and improve as your business evolves.", deliverables: ["Team training sessions", "Documentation handover", "Post-launch support, as agreed", "Performance monitoring", "Optimisation recommendations"], output: "Trained team & ongoing support activated" },
 ];
 
 export default function DeliveryPage() {
@@ -22,7 +22,7 @@ export default function DeliveryPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-25 pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top, rgba(16,0,255,0.12) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top, rgba(37,99,235,0.12) 0%, transparent 65%)" }} />
         <div className="container relative z-10 text-center">
           <span className="label mb-6 inline-flex">The 150-Hour Framework</span>
           <h1 className="display-hero text-white mb-5" style={{ fontFamily: "var(--font-sora)" }}>
@@ -69,7 +69,7 @@ export default function DeliveryPage() {
                       <div className="step-circle">{num}</div>
                       <h3 className="text-white font-bold text-lg" style={{ fontFamily: "var(--font-sora)" }}>{title}</h3>
                     </div>
-                    <div className="flex items-center gap-2 text-xs" style={{ color: "#a0a8ff" }}>
+                    <div className="flex items-center gap-2 text-xs" style={{ color: "#8FE3FF" }}>
                       <Clock className="w-3.5 h-3.5" /> {hours}
                     </div>
                     <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{desc}</p>

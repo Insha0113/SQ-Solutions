@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle, Brain, Zap, Target, Shield, TrendingUp, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Squadify Solutions — AI-First Technology Company",
+  title: "About — AI-First Technology Company",
   description: "Squadify Solutions is an AI-first technology company built to solve real business problems with practical, cost-effective AI solutions.",
 };
 
@@ -21,7 +21,7 @@ export default function AboutPage() {
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at top right, rgba(16,0,255,0.1) 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(ellipse at top right, rgba(37,99,235,0.1) 0%, transparent 65%)" }} />
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <span className="label mb-6 inline-flex">About Squadify</span>
@@ -82,9 +82,9 @@ export default function AboutPage() {
       <section className="section-sm" style={{ borderTop: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container">
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-2xl p-8" style={{ background: "var(--blue)", border: "1px solid var(--blue)" }}>
-              <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center mb-5">
-                <Target className="w-5 h-5 text-white" />
+            <div className="lab-cta-panel rounded-2xl p-8 relative overflow-hidden">
+              <div className="icon-box mb-5">
+                <Target className="w-5 h-5" style={{ color: "var(--cyan)" }} />
               </div>
               <h3 className="text-white font-bold text-xl mb-4" style={{ fontFamily: "var(--font-sora)" }}>Our Mission</h3>
               <p className="text-white/80 leading-relaxed text-sm">To help business owners solve real-world challenges through practical, intelligent, and affordable AI solutions. We aim to make advanced technology accessible by turning pain points into working solutions — quickly and efficiently.</p>
@@ -93,7 +93,7 @@ export default function AboutPage() {
               <div className="icon-box mb-5"><TrendingUp className="w-5 h-5" style={{ color: "var(--blue)" }} /></div>
               <h3 className="text-white font-bold text-xl mb-4" style={{ fontFamily: "var(--font-sora)" }}>Our Vision</h3>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>To become a trusted global partner for businesses seeking to work smarter with AI, where every business problem has the potential to become an opportunity for automation, innovation, and growth.</p>
-              <p className="text-sm italic" style={{ color: "#a0a8ff" }}>&ldquo;AI should work for your business — not the other way around.&rdquo;</p>
+              <p className="text-sm italic" style={{ color: "#8FE3FF" }}>&ldquo;AI should work for your business — not the other way around.&rdquo;</p>
             </div>
           </div>
         </div>

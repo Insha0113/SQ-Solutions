@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowRight, Users, TrendingUp, Heart, BarChart3, MessageSquare, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "AI CRM — Intelligent Customer Relationship Management | Squadify Solutions",
+  title: "AI CRM — Intelligent Customer Relationship Management",
   description: "AI-powered CRM that automatically enriches contacts, predicts churn, and surfaces the right opportunities at the right time.",
 };
 
 const features = [
   { Icon: Users, title: "Auto Contact Enrichment", desc: "AI automatically populates CRM records with company data, social profiles, and buying intent signals." },
   { Icon: TrendingUp, title: "Deal Intelligence", desc: "Predictive scoring shows which deals are most likely to close, and flags at-risk opportunities before they go cold." },
-  { Icon: Heart, title: "Churn Prediction", desc: "AI analyses engagement signals and usage patterns to predict customer churn 30–60 days in advance." },
+  { Icon: Heart, title: "Churn Prediction", desc: "AI analyses engagement signals and usage patterns to flag customers at risk of churning early." },
   { Icon: BarChart3, title: "Revenue Analytics", desc: "AI-powered revenue intelligence — forecasting, cohort analysis, and pipeline health monitoring in real time." },
   { Icon: MessageSquare, title: "Automated Follow-Ups", desc: "AI drafts and schedules personalised follow-up emails based on the context of each customer relationship." },
   { Icon: Zap, title: "Activity Capture", desc: "Automatically log calls, emails, and meetings from your existing tools — zero manual data entry for reps." },
@@ -50,9 +50,9 @@ export default function AICRMPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "0", label: "Manual data entry for reps" }, { val: "30–60d", label: "Churn prediction horizon" }, { val: "3x", label: "Improvement in forecast accuracy" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Automatic", label: "CRM data entry for reps" }, { val: "Early", label: "Churn risk signals" }, { val: "Sharper", label: "Pipeline forecasting" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -82,14 +82,14 @@ export default function AICRMPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Users className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Make Your CRM Work for You
               </h3>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a CRM AI Demo
                 <ArrowRight className="w-5 h-5" />
               </Link>

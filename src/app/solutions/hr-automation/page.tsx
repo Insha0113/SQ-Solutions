@@ -3,12 +3,12 @@ import Link from "next/link";
 import { ArrowRight, Users, Clock, FileText, TrendingUp, Brain, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "HR Automation AI — Squadify Solutions",
+  title: "HR Automation AI",
   description: "Automate HR processes with AI. From CV screening to onboarding and performance tracking — Squadify streamlines your people operations.",
 };
 
 const features = [
-  { Icon: FileText, title: "CV Screening & Ranking", desc: "AI reviews every application against your job criteria and ranks candidates — cutting screening time by 90%." },
+  { Icon: FileText, title: "CV Screening & Ranking", desc: "AI reviews every application against your job criteria and ranks candidates, so screening takes far less time." },
   { Icon: Users, title: "Automated Onboarding", desc: "Personalised onboarding workflows that guide new hires through documentation, training, and setup automatically." },
   { Icon: Clock, title: "Leave & Absence Management", desc: "Automate leave requests, approvals, absence tracking, and payroll notifications — no spreadsheets needed." },
   { Icon: Brain, title: "Performance Analytics", desc: "AI surfaces performance trends, flags flight risks, and recommends development actions based on data." },
@@ -46,9 +46,9 @@ export default function HRAutomationPage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "90%", label: "Faster CV screening" }, { val: "50%", label: "Reduction in HR admin" }, { val: "3x", label: "Faster onboarding" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
+            {[{ val: "Faster", label: "CV screening" }, { val: "Less admin", label: "For your HR team" }, { val: "Smoother", label: "Employee onboarding" }, { val: "150hrs", label: "Deployment time" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -78,14 +78,14 @@ export default function HRAutomationPage() {
 
       <section className="section" style={{ background: "var(--bg-2)" }}>
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Users className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Ready to Transform Your HR Operations?
               </h3>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Call
                 <ArrowRight className="w-5 h-5" />
               </Link>

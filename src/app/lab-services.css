@@ -1,0 +1,237 @@
+/* ============================================================
+   SCENE 03 — Intelligence in Motion (services)
+   ============================================================ */
+.svc {
+  --gutter: max(clamp(1.25rem, 5vw, 4rem), calc((100% - 1280px) / 2 + clamp(1.25rem, 5vw, 4rem)));
+  position: relative;
+  z-index: 1;
+}
+
+.svc__title {
+  font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+.svc__lede {
+  margin-top: 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.svc__cta { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; }
+
+/* ---------- Shared service body (detail panel + cards) ---------- */
+.svc__body-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.85rem; }
+.svc__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  color: var(--cyan);
+  background: rgba(0,217,255,0.06);
+  border: 1px solid rgba(0,217,255,0.18);
+}
+.svc__kicker {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.svc__body-title {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.svc__body-desc { margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.65; color: var(--text-secondary); }
+.svc__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; list-style: none; }
+.svc__tags li {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 99px;
+  color: var(--text-secondary);
+  background: rgba(155,170,193,0.06);
+  border: 1px solid rgba(155,170,193,0.14);
+}
+.svc__explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+a.svc__explore:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- List mode (narrow screens, reduced motion, no WebGL) ---------- */
+.svc[data-mode="list"] {
+  padding-block: clamp(4rem, 9vw, 7rem);
+  background: var(--bg-2);
+  border-top: 1px solid rgba(155,170,193,0.08);
+}
+.svc[data-mode="list"] .svc__pin {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+.svc[data-mode="list"] .svc__veil { display: none; }
+.svc[data-mode="list"] .svc__intro { max-width: 640px; margin-bottom: 3rem; }
+.svc__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1rem;
+}
+.svc__grid > li { display: flex; }
+.svc__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.5rem 1.4rem 1.35rem;
+  background: linear-gradient(180deg, rgba(12,19,34,0.94), rgba(7,11,20,0.92));
+  border: 1px solid rgba(0,217,255,0.1);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.svc__card .svc__explore { margin-top: auto; padding-top: 1rem; }
+.svc__card:hover {
+  border-color: rgba(0,217,255,0.35);
+  box-shadow: 0 0 0 1px rgba(0,217,255,0.08), 0 18px 40px rgba(0,0,0,0.35), inset 0 0 30px rgba(0,217,255,0.04);
+}
+.svc__card:focus-visible { outline: 1px solid var(--cyan); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .svc__card:hover { transform: translateY(-2px); }
+}
+
+/* ---------- Orbit mode (pinned over the shared 3D stage) ---------- */
+.svc[data-mode="orbit"] { height: 300svh; }
+.svc[data-mode="orbit"] .svc__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+.svc__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Same left fade as Scene 02 so the two pins meet seamlessly. */
+  background:
+    linear-gradient(90deg, rgba(5,7,13,0.88) 0%, rgba(5,7,13,0.55) 28%, rgba(5,7,13,0) 46%),
+    /* Soft hand-off into the next section as the stage releases. */
+    linear-gradient(180deg, rgba(5,7,13,0) 86%, var(--bg-base) 100%);
+}
+.svc[data-mode="orbit"] .svc__intro {
+  position: absolute;
+  left: var(--gutter);
+  top: 14svh;
+  width: min(27%, 400px);
+}
+.svc__nodes { list-style: none; }
+.svc__node {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  width: 170px;
+  margin-left: -85px;
+  padding: 3.4rem 0 0.4rem;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: var(--rev, 0);
+  will-change: transform;
+  transition: color 0.25s ease;
+}
+.svc__node[data-hidden] { visibility: hidden; }
+/* The top cluster's strand rises from below, so its label sits beside it. */
+.svc__node[data-beside] {
+  align-items: flex-start;
+  width: 190px;
+  margin-left: 0;
+  padding: 0 0 0 3.8rem;
+  text-align: left;
+  translate: 0 -50%;
+}
+.svc__node[data-beside] .svc__ring { left: 0; top: 50%; }
+.svc__node:hover,
+.svc__item[data-active] .svc__node { color: var(--text-primary); }
+.svc__node:focus-visible { outline: none; }
+.svc__node:focus-visible .svc__name { outline: 1px solid var(--cyan); outline-offset: 4px; }
+/* Invisible hit area over the 3D cluster; shows a reticle on keyboard focus. */
+.svc__ring {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 92px;
+  height: 92px;
+  margin: -46px 0 0 -46px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,217,255,0);
+  transition: border-color 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1);
+  transform: scale(0.85);
+}
+.svc__node:focus-visible .svc__ring {
+  border-color: rgba(0,217,255,0.35);
+  border-style: dashed;
+  transform: scale(1);
+}
+.svc__num {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.svc__item[data-active] .svc__num { color: var(--cyan); }
+.svc__name { font-size: 0.86rem; font-weight: 500; line-height: 1.25; }
+
+.svc__detail {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 8svh;
+  width: min(27%, 400px);
+  padding: 1.2rem 1.35rem 1.15rem;
+  /* Near-opaque instead of backdrop-filter (live WebGL behind). */
+  background: linear-gradient(180deg, rgba(12,19,34,0.94), rgba(7,11,20,0.92));
+  border: 1px solid rgba(0,217,255,0.12);
+  border-radius: 6px;
+  animation: svcDetailIn 0.45s cubic-bezier(.2,.7,.2,1) both;
+}
+.svc__detail[hidden] { display: none; }
+@keyframes svcDetailIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Short desktop viewports: tighten the copy so intro and detail never meet. */
+@media (max-height: 820px) {
+  .svc[data-mode="orbit"] .svc__intro { top: 11svh; }
+  .svc[data-mode="orbit"] .svc__lede { margin-top: 0.8rem; font-size: 0.9rem; line-height: 1.6; }
+  .svc[data-mode="orbit"] .svc__title { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
+  .svc__detail { bottom: 6svh; padding: 1rem 1.2rem; }
+  .svc__detail .svc__body-desc { font-size: 0.84rem; line-height: 1.55; }
+  .svc__detail .svc__body-head { margin-bottom: 0.6rem; }
+  .svc__detail .svc__tags { margin-top: 0.7rem; }
+  .svc__detail .svc__explore { margin-top: 0.7rem; }
+}
+
+/* Detail panel actions: explore plus a direct enquiry. */
+.svc__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.25rem; }
+.svc__explore--ghost { color: var(--text-primary); }

@@ -48,7 +48,7 @@ export default function DeliveryFramework() {
           transform: "translateX(-50%)",
           width: "800px",
           height: "400px",
-          background: "radial-gradient(ellipse, rgba(16,0,255,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(37,99,235,0.07) 0%, transparent 70%)",
         }}
       />
 
@@ -91,7 +91,7 @@ export default function DeliveryFramework() {
                   fontFamily: "var(--font-sora)",
                   fontWeight: 900,
                   fontSize: "clamp(2rem, 3vw, 3rem)",
-                  color: "rgba(16,0,255,0.25)",
+                  color: "rgba(37,99,235,0.25)",
                   lineHeight: 1,
                   letterSpacing: "-0.04em",
                   flexShrink: 0,
@@ -145,7 +145,7 @@ export default function DeliveryFramework() {
                     fontFamily: "var(--font-sora)",
                     fontWeight: 900,
                     fontSize: "2rem",
-                    color: "rgba(16,0,255,0.3)",
+                    color: "rgba(37,99,235,0.3)",
                     lineHeight: 1,
                     letterSpacing: "-0.04em",
                   }}

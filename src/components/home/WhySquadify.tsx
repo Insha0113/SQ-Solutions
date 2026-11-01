@@ -10,7 +10,7 @@ const reasons = [
   {
     num: "02",
     title: "Practical, Cost-Conscious",
-    desc: "We design around your budget and requirements. No unnecessary complexity, no bloated projects, no vendor lock-in.",
+    desc: "We design around your budget and requirements. No unnecessary complexity, no bloated projects — built on standard, maintainable technology.",
   },
   {
     num: "03",
@@ -49,7 +49,7 @@ export default function WhySquadify() {
           left: "-10%",
           width: "500px",
           height: "500px",
-          background: "radial-gradient(circle, rgba(16,0,255,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />

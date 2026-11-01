@@ -3,17 +3,17 @@ import Link from "next/link";
 import { ArrowRight, Building2, Shield, Globe, Users, BarChart3, Zap, CheckCircle, Lock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Enterprise AI Solutions — Squadify Solutions",
+  title: "Enterprise AI Solutions",
   description: "Enterprise-grade AI transformation at scale. Squadify delivers secure, compliant, and fully integrated AI systems for large organisations.",
 };
 
 const capabilities = [
-  { Icon: Shield, title: "Enterprise Security", desc: "SOC 2-aligned architecture, data encryption at rest and in transit, role-based access control, and audit logging." },
+  { Icon: Shield, title: "Enterprise Security", desc: "Encrypted connections and role-based access controls, designed to work within your existing security frameworks and policies." },
   { Icon: Globe, title: "Multi-System Integration", desc: "Deep integration across your enterprise technology stack — ERP, CRM, HRMS, BI, and legacy systems." },
   { Icon: Users, title: "Organisation-Wide Deployment", desc: "AI solutions that scale across departments, business units, and geographies from a single platform." },
   { Icon: BarChart3, title: "Executive Intelligence", desc: "AI-powered dashboards that give C-suite and leadership real-time operational intelligence." },
   { Icon: Zap, title: "Process Automation at Scale", desc: "Enterprise-wide automation programmes targeting the highest-value repetitive workflows." },
-  { Icon: Lock, title: "Compliance & Governance", desc: "Built-in compliance frameworks — GDPR, ISO 27001, and industry-specific requirements." },
+  { Icon: Lock, title: "Compliance & Governance", desc: "Solutions built with GDPR in mind and designed around your organisation's own compliance and governance requirements." },
 ];
 
 const process = [
@@ -46,7 +46,7 @@ export default function EnterprisePage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/get-started/contact-sales" className="btn-primary inline-flex items-center gap-2">
-                Contact Enterprise Sales
+                Contact Our Team
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link href="/resources/ai-readiness" className="btn-secondary">AI Readiness Assessment</Link>
@@ -58,9 +58,10 @@ export default function EnterprisePage() {
       <section style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", background: "var(--bg-2)" }}>
         <div className="container py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[{ val: "Enterprise", label: "Security standards" }, { val: "13+", label: "Industries served" }, { val: "100%", label: "GDPR compliant" }, { val: "Dedicated", label: "Account management" }].map(({ val, label }) => (
+            {[{ val: "Enterprise", label: "Security standards" }, { val: "13+", label: "Industries served" }, { val: "GDPR", label: "Considered from the start" }, { val: "Ongoing", label: "Communication throughout delivery" }].map(({ val, label }) => (
               <div key={label}>
-                <div className="metric" style={{ color: "var(--blue)" }}>{val}</div>
+                {/* Word values ("Enterprise") need a smaller floor than numbers to fit two columns on phones. */}
+                <div className="metric" style={{ color: "var(--blue)", fontSize: "clamp(1.25rem, 2.4vw, 2.25rem)" }}>{val}</div>
                 <div style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>{label}</div>
               </div>
             ))}
@@ -110,18 +111,18 @@ export default function EnterprisePage() {
 
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Building2 className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Start Your Enterprise AI Programme
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Speak with our enterprise team. We&apos;ll scope your transformation roadmap and identify quick wins.
               </p>
-              <Link href="/get-started/contact-sales" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
-                Talk to Enterprise Sales
+              <Link href="/get-started/contact-sales" className="lab-btn">
+                Talk to Our Team
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, Zap } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import BrandMark from "@/components/BrandMark";
 
 const nav = [
   {
@@ -162,10 +163,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
+  // Close menus on navigation (adjust state during render, not in an effect).
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setMobileOpen(false);
     setOpen(null);
-  }, [pathname]);
+  }
 
   const handleEnter = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -185,10 +189,8 @@ export default function Navbar() {
       >
         <div className="container flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-[#1000FF] flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white fill-white" />
-            </div>
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0" aria-label="Squadify Solutions — home">
+            <BrandMark />
             <span
               className="font-heading font-800 text-white text-lg tracking-tight"
               style={{ fontFamily: "var(--font-sora)", fontWeight: 800 }}
@@ -198,7 +200,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-1 whitespace-nowrap" aria-label="Main navigation">
             {nav.map((item) =>
               item.href ? (
                 <Link
@@ -294,7 +296,7 @@ export default function Navbar() {
           </nav>
 
           {/* Right CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 whitespace-nowrap">
             <Link href="/contact" className="btn-secondary py-2 px-4 text-sm">
               Contact
             </Link>

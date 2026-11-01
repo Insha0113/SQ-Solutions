@@ -1,16 +1,22 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
+import { ChevronDown } from "lucide-react";
+import { LabPageHero } from "@/components/lab/LabPage";
+import { LabCta } from "@/components/lab/LabTiles";
 
-const faqs = [
+export const metadata: Metadata = {
+  title: "Delivery FAQs",
+  description: "Everything you need to know about how our 150-hour AI delivery framework works.",
+};
+
+/* Content carried over verbatim. Answer 05 ("refined this over many projects") is flagged for owner review. */
+const FAQS = [
   {
     q: "What exactly is included in 150 hours?",
     a: "The 150 hours covers the full build cycle — discovery and planning, design, development, testing, and deployment. It's a structured sprint with defined deliverables at each phase. Some complex projects may require multiple 150-hour sprints.",
   },
   {
     q: "Does 150 hours mean my project will be done in under a week?",
-    a: "The 150 hours refers to the active development hours, not calendar time. Depending on team size and project complexity, this typically translates to 2–4 weeks of elapsed calendar time. We work with you on the timeline during discovery.",
+    a: "The 150 hours refers to the active development hours, not calendar time. Depending on team size and project complexity, this typically translates to 2–6 weeks of elapsed calendar time. We work with you on the timeline during discovery.",
   },
   {
     q: "What happens if my project is more complex than 150 hours?",
@@ -30,7 +36,7 @@ const faqs = [
   },
   {
     q: "What happens after my AI solution goes live?",
-    a: "We offer support and maintenance plans to ensure your solution stays running, secure, and optimised. We also offer expansion sprints to add features and capabilities as your needs grow.",
+    a: "We offer ongoing support plans, with the level of support agreed with you, to help keep your solution working well as your business changes. We also offer expansion sprints to add features and capabilities as your needs grow.",
   },
   {
     q: "How does the discovery session work?",
@@ -38,76 +44,36 @@ const faqs = [
   },
 ];
 
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border border-gray-200 rounded-2xl overflow-hidden transition-all">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition-colors gap-4"
-      >
-        <span className="font-semibold text-gray-900">{q}</span>
-        <ChevronDown
-          className={`w-5 h-5 text-[#1000FF] flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-      {open && (
-        <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-          {a}
-        </div>
-      )}
-    </div>
-  );
-}
-
+/** Native <details> disclosures: keyboard and screen-reader support without script. */
 export default function DeliveryFaqsPage() {
   return (
-    <main>
-      {/* Hero */}
-      <section className="hero-gradient section px-4">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <span className="inline-block bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-            150-Hour Delivery
-          </span>
-          <h1 className="text-5xl font-bold mb-4">
-            Delivery <span className="text-[#1000FF]">FAQs</span>
-          </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Everything you need to know about how our 150-hour AI delivery framework works.
-          </p>
-        </div>
-      </section>
+    <>
+      <LabPageHero eyebrow="150-Hour Delivery" title="Delivery" accent="FAQs">
+        Everything you need to know about how our 150-hour AI delivery framework works.
+      </LabPageHero>
 
-      {/* FAQ List */}
-      <section className="py-20 px-4">
-        <div className="max-w-3xl mx-auto space-y-3">
-          {faqs.map((faq, i) => (
-            <FaqItem key={i} q={faq.q} a={faq.a} />
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="bg-gray-900 rounded-3xl p-12 text-white">
-            <div className="w-16 h-16 rounded-2xl bg-[#1000FF] flex items-center justify-center mx-auto mb-6">
-              <span className="text-white font-bold text-xl">150</span>
-            </div>
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your 150-Hour Sprint?</h2>
-            <p className="text-gray-400 mb-8">
-              Book a free discovery call to see how we solve your business problem in 150 hours.
-            </p>
-            <Link
-              href="/contact/discovery-call"
-              className="btn-primary inline-flex items-center gap-2"
-            >
-              Book a Discovery Call <ArrowRight className="w-4 h-4" />
-            </Link>
+      <section className="lab-section">
+        <div className="container lab-narrow">
+          <div className="lab-faq">
+            {FAQS.map(({ q, a }, i) => (
+              <details key={q} className="lab-faq__item">
+                <summary className="lab-faq__q">
+                  <span className="lab-faq__num" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="lab-faq__text">{q}</span>
+                  <ChevronDown className="lab-faq__chev w-5 h-5" aria-hidden="true" />
+                </summary>
+                <p className="lab-faq__a">{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
-    </main>
+
+      <LabCta title="Ready to Start Your 150-Hour Sprint?" href="/contact/discovery-call" label="Book a Discovery Call">
+        Book a free discovery call to see how we solve your business problem in 150 hours.
+      </LabCta>
+    </>
   );
 }
-

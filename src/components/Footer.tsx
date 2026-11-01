@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Zap, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import BrandMark from "@/components/BrandMark";
 import type { CSSProperties } from "react";
 
 const footerLinks = {
@@ -94,7 +95,7 @@ export default function Footer() {
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-3"
-                style={{ color: "var(--blue)" }}
+                style={{ color: "var(--cyan)" }}
               >
                 Ready to get started?
               </p>
@@ -127,13 +128,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-5">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: "var(--blue)" }}
-              >
-                <Zap className="w-4 h-4 text-white fill-white" />
-              </div>
+            <Link href="/" className="flex items-center gap-2 mb-5" aria-label="Squadify Solutions — home">
+              <BrandMark />
               <span
                 className="text-white text-base"
                 style={{ fontFamily: "var(--font-sora)", fontWeight: 800 }}

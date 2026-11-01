@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Code2, Smartphone, Globe, Layers, Zap, Shield, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Custom Software Development — Squadify Solutions",
+  title: "Custom Software Development",
   description: "Custom software built for your exact requirements. Squadify delivers web applications, mobile apps, and bespoke business tools with AI baked in.",
 };
 
@@ -24,13 +24,13 @@ const stack = [
 
 const features = [
   "Clean, documented, maintainable code",
-  "Full source code ownership",
+  "Code ownership agreed before work begins",
   "Mobile-first, fully responsive design",
   "Automated testing and CI/CD",
   "GDPR-compliant data handling",
   "Enterprise-grade security",
   "Scalable to millions of users",
-  "30-day post-launch support",
+  "Post-launch support period agreed with you",
 ];
 
 export default function CustomSoftwarePage() {
@@ -132,17 +132,17 @@ export default function CustomSoftwarePage() {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="rounded-2xl p-12 text-center relative overflow-hidden" style={{ background: "var(--blue)" }}>
-            <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.1), transparent 60%)" }} />
+          <div className="lab-cta-panel rounded-2xl p-12 text-center relative overflow-hidden">
+            <div className="lab-cta-panel__light" aria-hidden="true" />
             <div style={{ position: "relative", zIndex: 1 }}>
               <Code2 className="w-10 h-10 mx-auto mb-5" style={{ color: "rgba(255,255,255,0.8)" }} />
-              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 900, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
+              <h3 style={{ fontFamily: "var(--font-sora)", fontWeight: 600, fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "#fff", marginBottom: "1rem" }}>
                 Have a Software Project in Mind?
               </h3>
               <p style={{ color: "rgba(255,255,255,0.8)", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
                 Book a discovery call. We&apos;ll scope your project, provide a fixed quote, and start building.
               </p>
-              <Link href="/get-started/book-call" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm" style={{ background: "#fff", color: "var(--blue)" }}>
+              <Link href="/get-started/book-call" className="lab-btn">
                 Book a Discovery Call
                 <ArrowRight className="w-5 h-5" />
               </Link>

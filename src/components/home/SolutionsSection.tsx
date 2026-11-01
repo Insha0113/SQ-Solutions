@@ -27,7 +27,7 @@ export default function SolutionsSection() {
           right: "-15%",
           width: "600px",
           height: "600px",
-          background: "radial-gradient(circle, rgba(16,0,255,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />

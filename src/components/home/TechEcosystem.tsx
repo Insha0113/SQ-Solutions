@@ -22,17 +22,17 @@ const technologies = [
 ];
 
 const categoryColors: Record<string, string> = {
-  LLM: "#1000FF",
-  Framework: "#3026FF",
-  Cloud: "#4B3FFF",
-  Language: "#6057FF",
-  Backend: "#7B75FF",
-  Frontend: "#9A96FF",
-  Database: "#3026FF",
-  "Vector DB": "#4B3FFF",
-  Cache: "#6057FF",
-  DevOps: "#7B75FF",
-  Automation: "#9A96FF",
+  LLM: "#2563EB",
+  Framework: "#2B7BF0",
+  Cloud: "#1E93F3",
+  Language: "#0EA9F6",
+  Backend: "#03C2FA",
+  Frontend: "#00D9FF",
+  Database: "#2B7BF0",
+  "Vector DB": "#1E93F3",
+  Cache: "#0EA9F6",
+  DevOps: "#03C2FA",
+  Automation: "#00D9FF",
 };
 
 const layers = [
@@ -162,7 +162,7 @@ export default function TechEcosystem() {
                     fontFamily: "var(--font-sora)",
                     fontWeight: 900,
                     fontSize: "2.5rem",
-                    color: `rgba(16,0,255,${0.08 + i * 0.04})`,
+                    color: `rgba(37,99,235,${0.08 + i * 0.04})`,
                     lineHeight: 1,
                     marginBottom: "0.75rem",
                     letterSpacing: "-0.04em",
